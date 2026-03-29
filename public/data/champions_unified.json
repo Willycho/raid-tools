@@ -32286,7 +32286,7 @@
         "booked_cooldown": 0,
         "buffs": [],
         "debuffs": [],
-        "extra_turn": true,
+        "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
         "buff_extend": null,
