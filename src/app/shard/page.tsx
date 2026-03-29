@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import { useAuth } from "@/lib/AuthContext";
+import { supabase } from "@/lib/supabase";
 
 // ── 타입 & 상수 ─────────────────────────────────────
 type ShardType = "ancient" | "void" | "sacred" | "primal";
@@ -30,6 +32,8 @@ interface PullRecord {
   timestamp: number;
   wasCeiling: boolean;
   championName?: string;
+  /** DB row id (only present for logged-in users) */
+  dbId?: string;
 }
 
 const SHARDS: Record<ShardType, ShardDef> = {
@@ -138,6 +142,124 @@ function avgPullRate(records: PullRecord[], track: MercyTrack): string | null {
   if (pct >= 100) return "100%";
   if (pct < 0.01) return "<0.01%";
   return pct.toFixed(2) + "%";
+}
+
+// ── trackKey ↔ DB 매핑 헬퍼 ─────────────────────────
+function trackKeyToShardType(trackKey: string): string {
+  return trackKey.split("_")[0];
+}
+
+function trackKeyToRarity(trackKey: string): string {
+  const idx = parseInt(trackKey.split("_")[1]);
+  return idx === 0 ? "legendary" : "mythical";
+}
+
+function rarityToTrackIndex(rarity: string): number {
+  return rarity === "legendary" ? 0 : 1;
+}
+
+function toTrackKey(shardType: string, rarity: string): string {
+  return `${shardType}_${rarityToTrackIndex(rarity)}`;
+}
+
+/** pity column: _0 → legendary, _1 → epic (used for mythical track) */
+function trackKeyToPityColumn(trackKey: string): "legendary" | "epic" {
+  const idx = parseInt(trackKey.split("_")[1]);
+  return idx === 0 ? "legendary" : "epic";
+}
+
+// ── Supabase CRUD 헬퍼 ──────────────────────────────
+async function dbLoadAccounts(userId: string): Promise<ShardAccount[]> {
+  const { data, error } = await supabase
+    .from("shard_accounts")
+    .select("id, name, created_at")
+    .order("created_at", { ascending: true });
+  if (error) { console.error("dbLoadAccounts error:", error); return []; }
+  return (data || []).map((row) => ({
+    id: row.id,
+    name: row.name,
+    createdAt: new Date(row.created_at).getTime(),
+  }));
+}
+
+async function dbCreateAccount(userId: string, name: string): Promise<ShardAccount | null> {
+  const { data, error } = await supabase
+    .from("shard_accounts")
+    .insert({ user_id: userId, name })
+    .select("id, name, created_at")
+    .single();
+  if (error) { console.error("dbCreateAccount error:", error); return null; }
+  return { id: data.id, name: data.name, createdAt: new Date(data.created_at).getTime() };
+}
+
+async function dbDeleteAccount(accountId: string): Promise<void> {
+  const { error } = await supabase.from("shard_accounts").delete().eq("id", accountId);
+  if (error) console.error("dbDeleteAccount error:", error);
+}
+
+async function dbLoadPity(accountId: string): Promise<Record<string, number>> {
+  const { data, error } = await supabase
+    .from("shard_pity")
+    .select("shard_type, legendary, epic")
+    .eq("account_id", accountId);
+  if (error) { console.error("dbLoadPity error:", error); return {}; }
+  const result: Record<string, number> = {};
+  for (const row of data || []) {
+    if (row.legendary > 0) result[`${row.shard_type}_0`] = row.legendary;
+    if (row.epic > 0) result[`${row.shard_type}_1`] = row.epic;
+  }
+  return result;
+}
+
+async function dbSavePity(accountId: string, trackKey: string, value: number): Promise<void> {
+  const shardType = trackKeyToShardType(trackKey);
+  const col = trackKeyToPityColumn(trackKey);
+
+  const { error } = await supabase
+    .from("shard_pity")
+    .upsert(
+      { account_id: accountId, shard_type: shardType, [col]: value },
+      { onConflict: "account_id,shard_type" }
+    );
+  if (error) console.error("dbSavePity error:", error);
+}
+
+async function dbLoadHistory(accountId: string): Promise<PullRecord[]> {
+  const { data, error } = await supabase
+    .from("shard_history")
+    .select("id, shard_type, rarity, count, is_mercy, pulled_at")
+    .eq("account_id", accountId)
+    .order("pulled_at", { ascending: true });
+  if (error) { console.error("dbLoadHistory error:", error); return []; }
+  return (data || []).map((row) => ({
+    trackKey: toTrackKey(row.shard_type, row.rarity),
+    pulledAt: row.count,
+    timestamp: new Date(row.pulled_at).getTime(),
+    wasCeiling: row.is_mercy,
+    dbId: row.id,
+  }));
+}
+
+async function dbAddHistory(accountId: string, record: PullRecord): Promise<string | null> {
+  const { data, error } = await supabase
+    .from("shard_history")
+    .insert({
+      account_id: accountId,
+      shard_type: trackKeyToShardType(record.trackKey),
+      rarity: trackKeyToRarity(record.trackKey),
+      count: record.pulledAt,
+      is_mercy: record.wasCeiling,
+      pulled_at: new Date(record.timestamp).toISOString(),
+    })
+    .select("id")
+    .single();
+  if (error) { console.error("dbAddHistory error:", error); return null; }
+  return data?.id ?? null;
+}
+
+async function dbDeleteHistory(dbId: string): Promise<void> {
+  const { error } = await supabase.from("shard_history").delete().eq("id", dbId);
+  if (error) console.error("dbDeleteHistory error:", error);
 }
 
 // ── 계정 시스템 ────────────────────────────────────
@@ -493,6 +615,9 @@ function TrackCard({
 
 // ── 메인 컴포넌트 ────────────────────────────────────
 export default function ShardCalculator() {
+  const { user } = useAuth();
+  const isLoggedIn = !!user;
+
   const [is2x, setIs2x] = useState(false);
   const [pityState, setPityState] = useState<Record<string, number>>({});
   const [history, setHistory] = useState<PullRecord[]>([]);
@@ -508,6 +633,9 @@ export default function ShardCalculator() {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const accountMenuRef = useRef<HTMLDivElement>(null);
 
+  // pity 디바운스 저장용 ref (Supabase 모드)
+  const pityTimerRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+
   // 계정 메뉴 외부 클릭 닫기
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -519,51 +647,94 @@ export default function ShardCalculator() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  // 초기 로드
+  // ── 초기 로드 ─────────────────────────────────────
   useEffect(() => {
-    const accs = loadAccounts();
-    setAccounts(accs);
+    let cancelled = false;
 
-    if (accs.length > 0) {
-      const savedId = loadActiveAccountId();
-      const activeId = (savedId && accs.find(a => a.id === savedId)) ? savedId : accs[0].id;
-      setActiveAccountId(activeId);
-      saveActiveAccountId(activeId);
-      setPityState(loadPity(activeId));
-      setHistory(loadHistory(activeId));
-    } else {
-      // 기존 데이터가 있으면 마이그레이션 준비
-      const hasOldData = !!(localStorage.getItem("rsl_shard_pity") || localStorage.getItem("rsl_shard_history"));
-      if (hasOldData) {
-        // 자동으로 "기본 계정" 생성 + 기존 데이터 마이그레이션
-        const defaultAcc: ShardAccount = { id: "default", name: "기본 계정", createdAt: Date.now() };
-        migrateOldData(defaultAcc.id);
-        setAccounts([defaultAcc]);
-        saveAccounts([defaultAcc]);
-        setActiveAccountId(defaultAcc.id);
-        saveActiveAccountId(defaultAcc.id);
-        setPityState(loadPity(defaultAcc.id));
-        setHistory(loadHistory(defaultAcc.id));
+    async function init() {
+      if (isLoggedIn) {
+        // === Supabase 모드 ===
+        const accs = await dbLoadAccounts(user!.id);
+        if (cancelled) return;
+        setAccounts(accs);
+
+        if (accs.length > 0) {
+          const savedId = loadActiveAccountId();
+          const activeId = (savedId && accs.find((a) => a.id === savedId)) ? savedId : accs[0].id;
+          setActiveAccountId(activeId);
+          saveActiveAccountId(activeId);
+          const [pity, hist] = await Promise.all([
+            dbLoadPity(activeId),
+            dbLoadHistory(activeId),
+          ]);
+          if (cancelled) return;
+          setPityState(pity);
+          setHistory(hist);
+        }
+      } else {
+        // === localStorage 모드 (게스트) ===
+        const accs = loadAccounts();
+        setAccounts(accs);
+
+        if (accs.length > 0) {
+          const savedId = loadActiveAccountId();
+          const activeId = (savedId && accs.find((a) => a.id === savedId)) ? savedId : accs[0].id;
+          setActiveAccountId(activeId);
+          saveActiveAccountId(activeId);
+          setPityState(loadPity(activeId));
+          setHistory(loadHistory(activeId));
+        } else {
+          const hasOldData = !!(localStorage.getItem("rsl_shard_pity") || localStorage.getItem("rsl_shard_history"));
+          if (hasOldData) {
+            const defaultAcc: ShardAccount = { id: "default", name: "기본 계정", createdAt: Date.now() };
+            migrateOldData(defaultAcc.id);
+            setAccounts([defaultAcc]);
+            saveAccounts([defaultAcc]);
+            setActiveAccountId(defaultAcc.id);
+            saveActiveAccountId(defaultAcc.id);
+            setPityState(loadPity(defaultAcc.id));
+            setHistory(loadHistory(defaultAcc.id));
+          }
+        }
       }
+      if (!cancelled) setLoaded(true);
     }
-    setLoaded(true);
-  }, []);
 
-  // 계정 전환
-  const switchAccount = useCallback((id: string) => {
-    if (activeAccountId && loaded) {
+    setLoaded(false);
+    init();
+    return () => { cancelled = true; };
+    // user 변경 (로그인/로그아웃) 시 데이터 새로 로드
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id]);
+
+  // ── 계정 전환 ─────────────────────────────────────
+  const switchAccount = useCallback(async (id: string) => {
+    if (activeAccountId && loaded && !isLoggedIn) {
+      // 게스트: 현재 계정 데이터 localStorage에 저장
       savePity(activeAccountId, pityState);
       saveHistory(activeAccountId, history);
     }
+    // Supabase 모드에서는 이미 실시간 저장되므로 별도 저장 불필요
+
     setActiveAccountId(id);
     saveActiveAccountId(id);
-    setPityState(loadPity(id));
-    setHistory(loadHistory(id));
-    setAccountMenuOpen(false);
-  }, [activeAccountId, pityState, history, loaded]);
 
-  // 계정 추가 (최대 10개)
-  const handleAddAccount = useCallback(() => {
+    if (isLoggedIn) {
+      const [pity, hist] = await Promise.all([
+        dbLoadPity(id),
+        dbLoadHistory(id),
+      ]);
+      setPityState(pity);
+      setHistory(hist);
+    } else {
+      setPityState(loadPity(id));
+      setHistory(loadHistory(id));
+    }
+    setAccountMenuOpen(false);
+  }, [activeAccountId, pityState, history, loaded, isLoggedIn]);
+
+  // ── 계정 추가 (최대 10개) ─────────────────────────
+  const handleAddAccount = useCallback(async () => {
     const name = newAccountName.trim();
     if (!name) return;
     if (accounts.length >= 10) {
@@ -571,46 +742,63 @@ export default function ShardCalculator() {
       setNewAccountName("");
       return;
     }
-    const newAcc: ShardAccount = {
-      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
-      name,
-      createdAt: Date.now(),
-    };
-    const updated = [...accounts, newAcc];
-    setAccounts(updated);
-    saveAccounts(updated);
-    setNewAccountName("");
-    setShowAccountInput(false);
-    // 새 계정으로 전환
-    if (activeAccountId && loaded) {
-      savePity(activeAccountId, pityState);
-      saveHistory(activeAccountId, history);
-    }
-    setActiveAccountId(newAcc.id);
-    saveActiveAccountId(newAcc.id);
-    setPityState({});
-    setHistory([]);
-  }, [newAccountName, accounts, activeAccountId, pityState, history, loaded]);
 
-  // 계정 삭제
-  const handleDeleteAccount = useCallback((id: string) => {
-    const updated = accounts.filter(a => a.id !== id);
+    if (isLoggedIn) {
+      const newAcc = await dbCreateAccount(user!.id, name);
+      if (!newAcc) return;
+      const updated = [...accounts, newAcc];
+      setAccounts(updated);
+      setNewAccountName("");
+      setShowAccountInput(false);
+      setActiveAccountId(newAcc.id);
+      saveActiveAccountId(newAcc.id);
+      setPityState({});
+      setHistory([]);
+    } else {
+      const newAcc: ShardAccount = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+        name,
+        createdAt: Date.now(),
+      };
+      const updated = [...accounts, newAcc];
+      setAccounts(updated);
+      saveAccounts(updated);
+      setNewAccountName("");
+      setShowAccountInput(false);
+      if (activeAccountId && loaded) {
+        savePity(activeAccountId, pityState);
+        saveHistory(activeAccountId, history);
+      }
+      setActiveAccountId(newAcc.id);
+      saveActiveAccountId(newAcc.id);
+      setPityState({});
+      setHistory([]);
+    }
+  }, [newAccountName, accounts, activeAccountId, pityState, history, loaded, isLoggedIn, user]);
+
+  // ── 계정 삭제 ─────────────────────────────────────
+  const handleDeleteAccount = useCallback(async (id: string) => {
+    if (isLoggedIn) {
+      await dbDeleteAccount(id);
+    } else {
+      localStorage.removeItem(pityKey(id));
+      localStorage.removeItem(historyKey(id));
+    }
+
+    const updated = accounts.filter((a) => a.id !== id);
     setAccounts(updated);
-    saveAccounts(updated);
-    // 해당 계정 데이터 삭제
-    localStorage.removeItem(pityKey(id));
-    localStorage.removeItem(historyKey(id));
-    // 활성 계정이 삭제되면 다른 계정으로 전환
+    if (!isLoggedIn) saveAccounts(updated);
+
     if (activeAccountId === id) {
       if (updated.length > 0) {
-        switchAccount(updated[0].id);
+        await switchAccount(updated[0].id);
       } else {
         setActiveAccountId(null);
         setPityState({});
         setHistory([]);
       }
     }
-  }, [accounts, activeAccountId, switchAccount]);
+  }, [accounts, activeAccountId, switchAccount, isLoggedIn]);
 
   // 계정 없이 조작 시 프롬프트
   const requireAccount = useCallback((): boolean => {
@@ -619,34 +807,67 @@ export default function ShardCalculator() {
     return false;
   }, [activeAccountId]);
 
-  // 데이터 저장
+  // ── 데이터 자동 저장 (게스트 전용) ─────────────────
   useEffect(() => {
-    if (loaded && activeAccountId) savePity(activeAccountId, pityState);
-  }, [pityState, loaded, activeAccountId]);
+    if (loaded && activeAccountId && !isLoggedIn) savePity(activeAccountId, pityState);
+  }, [pityState, loaded, activeAccountId, isLoggedIn]);
   useEffect(() => {
-    if (loaded && activeAccountId) saveHistory(activeAccountId, history);
-  }, [history, loaded, activeAccountId]);
+    if (loaded && activeAccountId && !isLoggedIn) saveHistory(activeAccountId, history);
+  }, [history, loaded, activeAccountId, isLoggedIn]);
 
+  // ── pity 변경 ─────────────────────────────────────
   const getPity = (key: string) => pityState[key] ?? 0;
   const setPity = useCallback((key: string, val: number) => {
     if (!requireAccount()) return;
-    setPityState((prev) => ({ ...prev, [key]: Math.max(0, val) }));
-  }, [requireAccount]);
+    const clamped = Math.max(0, val);
+    setPityState((prev) => ({ ...prev, [key]: clamped }));
 
-  const handlePull = useCallback((trackKey: string, pulledAt: number, wasCeiling: boolean) => {
+    // Supabase 디바운스 저장 (300ms)
+    if (isLoggedIn && activeAccountId) {
+      if (pityTimerRef.current[key]) clearTimeout(pityTimerRef.current[key]);
+      pityTimerRef.current[key] = setTimeout(() => {
+        dbSavePity(activeAccountId, key, clamped);
+      }, 300);
+    }
+  }, [requireAccount, isLoggedIn, activeAccountId]);
+
+  // ── 획득 기록 ─────────────────────────────────────
+  const handlePull = useCallback(async (trackKey: string, pulledAt: number, wasCeiling: boolean) => {
     if (!requireAccount()) return;
-    setHistory((prev) => [...prev, { trackKey, pulledAt, timestamp: Date.now(), wasCeiling }]);
+
+    const record: PullRecord = { trackKey, pulledAt, timestamp: Date.now(), wasCeiling };
+
+    // pity를 0으로 리셋
     setPityState((prev) => ({ ...prev, [trackKey]: 0 }));
-  }, [requireAccount]);
 
-  const handleDeleteRecord = useCallback((timestamp: number) => {
+    if (isLoggedIn && activeAccountId) {
+      // Supabase: pity 즉시 0으로 저장 + 기록 추가
+      dbSavePity(activeAccountId, trackKey, 0);
+      const dbId = await dbAddHistory(activeAccountId, record);
+      if (dbId) record.dbId = dbId;
+    }
+
+    setHistory((prev) => [...prev, record]);
+  }, [requireAccount, isLoggedIn, activeAccountId]);
+
+  // ── 기록 삭제 ─────────────────────────────────────
+  const handleDeleteRecord = useCallback(async (timestamp: number) => {
+    if (isLoggedIn) {
+      const record = history.find((r) => r.timestamp === timestamp);
+      if (record?.dbId) {
+        await dbDeleteHistory(record.dbId);
+      }
+    }
     setHistory((prev) => prev.filter((r) => r.timestamp !== timestamp));
-  }, []);
+  }, [isLoggedIn, history]);
 
+  // ── 챔피언 이름 업데이트 ──────────────────────────
   const handleUpdateName = useCallback((timestamp: number, name: string) => {
     setHistory((prev) =>
       prev.map((r) => r.timestamp === timestamp ? { ...r, championName: name } : r)
     );
+    // Note: championName is not stored in DB (column not available).
+    // It is kept in local state for the current session.
   }, []);
 
   // 모달에 필요한 트랙 정보 찾기
