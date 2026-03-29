@@ -58,7 +58,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "abyssal",
@@ -128,7 +130,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "acelin-the-stalwart",
@@ -276,7 +280,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "achak-the-wendarin",
@@ -387,7 +393,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "acolyte",
@@ -448,7 +456,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "acolyte-of-the-slither",
@@ -524,7 +534,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "acrizia",
@@ -604,7 +616,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "adjudicator",
@@ -660,7 +674,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "admiral-blacktusk",
@@ -806,7 +822,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "adriel",
@@ -877,7 +895,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aeila-lifebraid",
@@ -962,7 +982,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aeshma",
@@ -1047,7 +1069,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ailil",
@@ -1173,7 +1197,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aina-2",
@@ -1239,7 +1265,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "akemtum",
@@ -1330,7 +1358,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "akoth-the-seared",
@@ -1429,7 +1459,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alaric-the-hooded",
@@ -1494,7 +1526,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alatreon-blademaster",
@@ -1582,7 +1616,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alaz-the-sunbearer-alt",
@@ -1715,7 +1751,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alaz-the-sunbearer",
@@ -1827,7 +1865,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aleksandr-the-sharpshooter",
@@ -1897,7 +1937,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alice-the-wanderer",
@@ -1967,7 +2009,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "alika-2",
@@ -2037,7 +2081,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "alsgor-crimsonhorn",
@@ -2122,7 +2168,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "altan",
@@ -2192,7 +2240,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "alure",
@@ -2261,7 +2311,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "amarantine-skeleton",
@@ -2332,7 +2384,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ambassador-lethelin",
@@ -2402,7 +2456,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "amoch-the-first-satrap",
@@ -2516,7 +2572,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "anax",
@@ -2614,7 +2672,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "anaxia-the-reborn-alt",
@@ -2718,7 +2778,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "anaxia-the-reborn",
@@ -2852,7 +2914,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "anchorite",
@@ -2920,7 +2984,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "androc-the-glorious-alt",
@@ -3019,7 +3085,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "androc-the-glorious",
@@ -3133,7 +3201,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "andryssia",
@@ -3235,7 +3305,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "angar",
@@ -3319,7 +3391,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "anointed",
@@ -3390,7 +3464,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aothar",
@@ -3456,7 +3532,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aox-the-rememberer",
@@ -3540,7 +3618,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aphidus-the-hivelord-alt",
@@ -3666,7 +3746,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aphidus-the-hivelord",
@@ -3786,7 +3868,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "apothecary",
@@ -3847,7 +3931,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "april-oneil",
@@ -3956,7 +4042,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arachoa-moonspinner-alt",
@@ -4150,7 +4238,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arachoa-moonspinner",
@@ -4252,7 +4342,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aragaz-wyldking",
@@ -4349,7 +4441,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arashi-the-riptide",
@@ -4467,7 +4561,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "aratheia-corpseflower",
@@ -4602,7 +4698,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arbais-the-stonethorn-alt",
@@ -4692,7 +4790,9 @@
           }
         ]
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arbais-the-stonethorn",
@@ -4770,7 +4870,9 @@
           }
         ]
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arbalester",
@@ -4826,7 +4928,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arbiter",
@@ -4916,7 +5020,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "arcanist",
@@ -4991,7 +5097,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "archbishop-pinthroy",
@@ -5089,7 +5197,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "archmage-hellmut",
@@ -5182,7 +5292,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arix",
@@ -5275,7 +5387,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "armanz-the-magnificent",
@@ -5350,7 +5464,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "armina",
@@ -5449,7 +5565,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arndulf",
@@ -5528,7 +5646,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arne-the-white-alt",
@@ -5681,7 +5801,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "arne-the-white",
@@ -5806,7 +5928,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "arnorn-the-shining",
@@ -5895,7 +6019,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "artak",
@@ -5997,7 +6123,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "arwydd-quivergrass",
@@ -6072,7 +6200,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ashwalker",
@@ -6138,7 +6268,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ashnar-dragonsoul-alt",
@@ -6267,7 +6399,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ashnar-dragonsoul",
@@ -6405,7 +6539,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "assassin",
@@ -6471,7 +6607,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "astralith",
@@ -6532,7 +6670,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "astralon",
@@ -6659,7 +6799,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "athel",
@@ -6729,7 +6871,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "atur",
@@ -6827,7 +6971,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "authoratrix-lamasu",
@@ -6919,7 +7065,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "avenger",
@@ -6980,7 +7128,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "avir-the-alchemage",
@@ -7059,7 +7209,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "azure-2",
@@ -7143,7 +7295,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ba-satha",
@@ -7266,7 +7420,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bad-el-kazar",
@@ -7337,7 +7493,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "baerdal-fellhammer",
@@ -7412,7 +7570,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "balar-the-lost",
@@ -7528,7 +7688,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "balthus-drauglord",
@@ -7608,7 +7770,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bambus-fourleaf",
@@ -7767,7 +7931,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "banshee",
@@ -7833,7 +7999,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "baron",
@@ -7908,7 +8076,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "baroth-the-bloodsoaked",
@@ -7987,7 +8157,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "basher",
@@ -8053,7 +8225,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "basileus-roanas",
@@ -8136,7 +8310,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "basilisk",
@@ -8207,7 +8383,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "basim-ibn-ishaq",
@@ -8353,7 +8531,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "battlesage",
@@ -8419,7 +8599,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bayek",
@@ -8543,7 +8725,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "beast-wrestler",
@@ -8604,7 +8788,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "belanor",
@@ -8688,7 +8874,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "belletar-mage-slayer",
@@ -8772,7 +8960,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "bellower",
@@ -8847,7 +9037,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "belz-the-reckoner",
@@ -8936,7 +9128,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bergoth-the-malformed",
@@ -9002,7 +9196,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "berserker",
@@ -9063,7 +9259,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "big-un",
@@ -9133,7 +9331,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bivald-of-the-thorn",
@@ -9239,7 +9439,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "black-knight",
@@ -9328,7 +9530,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bladechorister-caldor",
@@ -9509,7 +9713,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bladerider",
@@ -9584,7 +9790,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "blind-seer",
@@ -9654,7 +9862,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "blizaar-the-howler",
@@ -9778,7 +9988,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "blood-marchioness-mina-alt",
@@ -9890,7 +10102,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "blood-marchioness-mina",
@@ -10024,7 +10238,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "bloodbraid",
@@ -10085,7 +10301,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bloodfeather",
@@ -10151,7 +10369,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bloodgorged",
@@ -10212,7 +10432,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bloodhorn",
@@ -10278,7 +10500,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bloodmask",
@@ -10344,7 +10568,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bloodpainter",
@@ -10415,7 +10641,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bogwalker",
@@ -10486,7 +10714,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bolint-freewalker",
@@ -10583,7 +10813,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "boltsmith",
@@ -10653,7 +10885,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bombardier",
@@ -10719,7 +10953,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bone-knight",
@@ -10780,7 +11016,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bonekeeper",
@@ -10846,7 +11084,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "boragar-the-elder",
@@ -10935,7 +11175,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "boughsmith-flannan",
@@ -11029,7 +11271,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bovos-sharphorn",
@@ -11122,7 +11366,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bowf-the-rancid",
@@ -11210,7 +11456,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "brakus-the-shifter",
@@ -11311,7 +11559,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "branch-arm-lasair",
@@ -11382,7 +11632,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "brewguard-jeroboam",
@@ -11519,7 +11771,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "broadmaw",
@@ -11599,7 +11853,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "broodlord",
@@ -11701,7 +11957,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bulwark",
@@ -11767,7 +12025,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "burangiri",
@@ -11860,7 +12120,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "bushi",
@@ -11930,7 +12192,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "bystophus",
@@ -12013,7 +12277,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cagebound",
@@ -12088,7 +12354,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cagebreaker",
@@ -12154,7 +12422,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "candleguard",
@@ -12224,7 +12494,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "candraphon",
@@ -12340,7 +12612,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "canoness",
@@ -12423,7 +12697,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "caoilte-the-asharrow",
@@ -12517,7 +12793,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "captain-temila",
@@ -12588,7 +12866,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cardiel",
@@ -12685,7 +12965,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cardinal",
@@ -12751,7 +13033,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "carlinia",
@@ -12845,7 +13129,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "castigator",
@@ -12911,7 +13197,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "catacomb-councilor",
@@ -12972,7 +13260,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cataphract",
@@ -13042,7 +13332,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cecilia-the-red-hope",
@@ -13135,7 +13427,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ceez",
@@ -13225,7 +13519,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "centurion",
@@ -13286,7 +13582,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chaagur",
@@ -13397,7 +13695,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chalco-the-blind",
@@ -13515,7 +13815,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chancellor-yasmin",
@@ -13576,7 +13878,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chani",
@@ -13670,7 +13974,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "channeler",
@@ -13741,7 +14047,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chaplain",
@@ -13797,7 +14105,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cheshire-cat",
@@ -13919,7 +14229,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chevalier",
@@ -13998,7 +14310,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chonoru",
@@ -14069,7 +14383,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chopper",
@@ -14135,7 +14451,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "chronicler-adelyn",
@@ -14223,7 +14541,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cillian-the-lucky",
@@ -14333,7 +14653,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "claidna",
@@ -14435,7 +14757,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cleopterix",
@@ -14559,7 +14883,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "coffin-smasher",
@@ -14625,7 +14951,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "coldheart",
@@ -14690,7 +15018,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "conellia",
@@ -14772,7 +15102,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "confessor",
@@ -14833,7 +15165,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "conquerer",
@@ -14889,7 +15223,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cormac-the-highpeak",
@@ -14964,7 +15300,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "corpse-collector",
@@ -15040,7 +15378,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "corpulent-cadaver",
@@ -15115,7 +15455,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "corvis-the-corruptor",
@@ -15215,7 +15557,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "countess-lix",
@@ -15323,7 +15667,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "courtier",
@@ -15389,7 +15735,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "craklin-the-blackened",
@@ -15487,7 +15835,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crimson-helm",
@@ -15567,7 +15917,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crimson-pegason",
@@ -15637,7 +15989,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crimson-slayer",
@@ -15698,7 +16052,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "criodan-the-blue",
@@ -15793,7 +16149,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crohnam",
@@ -15891,7 +16249,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "cromax-moonblood",
@@ -15990,7 +16350,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crossbowman",
@@ -16060,7 +16422,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cruetraxa",
@@ -16130,7 +16494,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crypt-witch",
@@ -16200,7 +16566,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "crypt-king-graal",
@@ -16287,7 +16655,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cudgeler",
@@ -16362,7 +16732,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "cupidus",
@@ -16447,7 +16819,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dagger",
@@ -16521,7 +16895,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "danag-skullreap",
@@ -16627,7 +17003,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dark-athel",
@@ -16698,7 +17076,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dark-elhain",
@@ -16810,7 +17190,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dark-kael",
@@ -16912,7 +17294,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dawncaller-sabitha",
@@ -16996,7 +17380,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "daywalker",
@@ -17061,7 +17447,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "deacon-armstrong",
@@ -17122,7 +17510,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "deathchanter",
@@ -17187,7 +17577,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "deathless",
@@ -17266,7 +17658,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "deephook-nagis",
@@ -17368,7 +17762,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "defiled-sinner",
@@ -17434,7 +17830,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "delaaja",
@@ -17523,7 +17921,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "deliana",
@@ -17626,7 +18026,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "delver",
@@ -17701,7 +18103,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "demytha",
@@ -17774,7 +18178,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "denid-the-tusk-knight",
@@ -17850,7 +18256,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dhukk-the-pierced",
@@ -17938,7 +18346,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "diabolist",
@@ -18009,7 +18419,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "diamant-coppercoin",
@@ -18117,7 +18529,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dilgol",
@@ -18188,7 +18602,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dirandil",
@@ -18254,7 +18670,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "djamarsa",
@@ -18337,7 +18755,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "dolor-lorekeeper",
@@ -18412,7 +18832,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "donatello",
@@ -18510,7 +18932,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "doompriest",
@@ -18576,7 +19000,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "doomscreech",
@@ -18652,7 +19078,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dracomorph",
@@ -18722,7 +19150,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "draconis",
@@ -18783,7 +19213,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "drake",
@@ -18848,7 +19280,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "drexthar-bloodtwin",
@@ -18939,7 +19373,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "drokgul-the-gaunt",
@@ -19034,7 +19470,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "drowned-bloatwraith",
@@ -19112,7 +19550,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "duchess-lilitu",
@@ -19209,7 +19649,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "duedan-the-runic",
@@ -19286,7 +19728,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "duhr-the-hungerer",
@@ -19356,7 +19800,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "dune-herald-zaharis",
@@ -19449,7 +19895,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dune-lord-greggor",
@@ -19611,7 +20059,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dunestrider",
@@ -19672,7 +20122,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "dyana-gloompiercer",
@@ -19786,7 +20238,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "edward-kenway",
@@ -19936,7 +20390,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elder",
@@ -20007,7 +20463,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elder-skarg",
@@ -20125,7 +20583,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elegaius",
@@ -20214,7 +20674,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elenaril",
@@ -20289,7 +20751,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elhain",
@@ -20345,7 +20809,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "elva-autumnborn",
@@ -20443,7 +20909,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "embrys-the-anomaly-alt",
@@ -20537,7 +21005,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "embrys-the-anomaly",
@@ -20656,7 +21126,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "emic-trunkheart",
@@ -20770,7 +21242,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "enda-moonbeam",
@@ -20855,7 +21329,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "endalia",
@@ -20926,7 +21402,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "eolfrig",
@@ -21016,7 +21494,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "eostrid-dreamsong",
@@ -21140,7 +21620,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "erinyes",
@@ -21206,7 +21688,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "errol",
@@ -21262,7 +21746,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "esme-the-dancer",
@@ -21355,7 +21841,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ethlen-the-golden",
@@ -21452,7 +21940,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "eviscerator",
@@ -21518,7 +22008,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "excruciator",
@@ -21605,7 +22097,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "executioner",
@@ -21680,7 +22174,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "exemplar",
@@ -21759,7 +22255,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ezio-auditore",
@@ -21925,7 +22423,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "faceless",
@@ -21995,7 +22495,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fahrakin-the-fat",
@@ -22088,7 +22590,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "falmond-mournsword",
@@ -22173,7 +22677,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fanatic",
@@ -22243,7 +22749,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fang-cleric",
@@ -22313,7 +22821,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "fatalis-blademaster",
@@ -22419,7 +22929,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fayne",
@@ -22493,7 +23005,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fellhound",
@@ -22568,7 +23082,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fenax",
@@ -22650,7 +23166,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fencer",
@@ -22725,7 +23243,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fenshi",
@@ -22795,7 +23315,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "firrol-the-barkhorn",
@@ -22888,7 +23410,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "first-ax-tuskkor",
@@ -22971,7 +23495,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fjorad-wolfheart-alt",
@@ -23109,7 +23635,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fjorad-wolfheart",
@@ -23233,7 +23761,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "flailer",
@@ -23304,7 +23834,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "flesh-tearer",
@@ -23363,7 +23895,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "flesheater",
@@ -23429,7 +23963,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fleshmonger",
@@ -23499,7 +24035,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "flinger",
@@ -23560,7 +24098,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fodbor-the-bard",
@@ -23626,7 +24166,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "foli",
@@ -23723,7 +24265,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fortress-goon",
@@ -23789,7 +24333,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fortus",
@@ -23931,7 +24477,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "frenzi-the-cackler",
@@ -24035,7 +24583,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "freyja-fateweaver",
@@ -24138,7 +24688,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "frolni-the-mechanist-alt",
@@ -24253,7 +24805,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "frolni-the-mechanist",
@@ -24337,7 +24891,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "frostbringer",
@@ -24407,7 +24963,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "frozen-banshee",
@@ -24482,7 +25040,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fu-shan",
@@ -24548,7 +25108,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "furystoker",
@@ -24604,7 +25166,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fylja",
@@ -24688,7 +25252,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fyna-blade-of-aravia",
@@ -24776,7 +25342,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "fyr-gun-isbeil",
@@ -24895,7 +25463,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gaellut-son-of-the-pact",
@@ -24988,7 +25558,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gaius-the-gleeful",
@@ -25086,7 +25658,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gala-longbraids",
@@ -25160,7 +25734,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "galapo-the-recluse",
@@ -25249,7 +25825,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "galek",
@@ -25319,7 +25897,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "galkut",
@@ -25385,7 +25965,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "galleus-bloodcrest-alt",
@@ -25524,7 +26106,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "galleus-bloodcrest",
@@ -25640,7 +26224,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gamuran",
@@ -25733,7 +26319,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "gaspard-the-accused",
@@ -25871,7 +26459,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "gator",
@@ -25932,7 +26522,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "geargrinder",
@@ -25993,7 +26585,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "genbo-the-dishonored",
@@ -26095,7 +26689,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "genzin",
@@ -26194,7 +26790,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "geomancer",
@@ -26292,7 +26890,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "georgid-the-breaker",
@@ -26396,7 +26996,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gerhard-the-stone",
@@ -26503,7 +27105,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gharol-bloodmaul-alt",
@@ -26570,7 +27174,9 @@
         ],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gharol-bloodmaul",
@@ -26647,7 +27253,9 @@
         "buffs": [],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ghomm-yellowhand",
@@ -26736,7 +27344,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ghostborn",
@@ -26807,7 +27417,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ghoulish-ranger",
@@ -26882,7 +27494,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ghrush-the-mangler",
@@ -26961,7 +27575,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "giath-the-truthshield",
@@ -27079,7 +27695,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ginro-the-stork",
@@ -27182,7 +27800,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "giscard-the-sigiled",
@@ -27291,7 +27911,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gizmak-the-terrible-alt",
@@ -27419,7 +28041,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gizmak-the-terrible",
@@ -27551,7 +28175,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gladewulf",
@@ -27645,7 +28271,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gladiator",
@@ -27715,7 +28343,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "glaicad-of-the-meltwater",
@@ -27830,7 +28460,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "glensage-cithrel",
@@ -27901,7 +28533,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gliseah-soulguide",
@@ -28017,7 +28651,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gloril-brutebane",
@@ -28083,7 +28719,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "glorious-pallas",
@@ -28177,7 +28815,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "gnarlhorn",
@@ -28248,7 +28888,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gnarox-blackhorn",
@@ -28352,7 +28994,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gnishak-verminlord",
@@ -28462,7 +29106,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gnut",
@@ -28551,7 +29197,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "godseeker-aniri",
@@ -28624,7 +29272,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "goffred-brassclad",
@@ -28736,7 +29386,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "golden-reaper",
@@ -28806,7 +29458,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gomlok-skyhide",
@@ -28899,7 +29553,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "goremask",
@@ -28964,7 +29620,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gorgorab",
@@ -29030,7 +29688,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "gorlos-hellmaw",
@@ -29123,7 +29783,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gory",
@@ -29254,7 +29916,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "graazur-irongut",
@@ -29355,7 +30019,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gracchos-turn-drake",
@@ -29443,7 +30109,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grand-oak-padraig",
@@ -29545,7 +30213,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grandmaster",
@@ -29611,7 +30281,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "granyt-doorkeep",
@@ -29749,7 +30421,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grappler",
@@ -29824,7 +30498,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gravechill-killer",
@@ -29911,7 +30587,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "graybeard",
@@ -29990,7 +30668,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "greathoof-loriaca",
@@ -30080,7 +30760,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "greenwarden-ruarc",
@@ -30178,7 +30860,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gretel-hagbane",
@@ -30257,7 +30941,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grimskin",
@@ -30331,7 +31017,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grinner",
@@ -30397,7 +31085,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "grizzled-jarl",
@@ -30467,7 +31157,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grohak-the-bloodied",
@@ -30538,7 +31230,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gronjarr",
@@ -30657,7 +31351,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grumbler",
@@ -30727,7 +31423,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "grunch-killjoy",
@@ -30822,7 +31520,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "guardian",
@@ -30896,7 +31596,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gurgoh-the-augur",
@@ -30986,7 +31688,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gurptuk-moss-beard",
@@ -31098,7 +31802,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "guurda-bogbrew",
@@ -31195,7 +31901,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gwyndolin-the-silent",
@@ -31295,7 +32003,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "gwynneth",
@@ -31356,7 +32066,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "haarken-greatblade",
@@ -31417,7 +32129,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hakkorhn-smashlord",
@@ -31483,7 +32197,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "halberdier",
@@ -31553,7 +32269,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hansel-witchhunter",
@@ -31649,7 +32367,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "harima",
@@ -31733,7 +32453,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "harrier",
@@ -31808,7 +32530,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "haruspex",
@@ -31879,7 +32603,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "harvest-jack",
@@ -32001,7 +32727,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "harvester",
@@ -32067,7 +32795,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hatchet-slinger",
@@ -32133,7 +32863,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "headsman",
@@ -32194,7 +32926,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hegemon",
@@ -32264,7 +32998,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "heiress",
@@ -32325,7 +33061,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "helicath",
@@ -32440,7 +33178,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "helior",
@@ -32515,7 +33255,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hellborn-sprite",
@@ -32584,7 +33326,9 @@
         },
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hellfang",
@@ -32650,7 +33394,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hellfreak",
@@ -32711,7 +33457,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hellgazer",
@@ -32782,7 +33530,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hephraak",
@@ -32857,7 +33607,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hexia",
@@ -32928,7 +33680,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hexweaver",
@@ -32998,7 +33752,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hidestitcher-boorn",
@@ -33073,7 +33829,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hierophant-lazarius-alt",
@@ -33188,7 +33946,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "hierophant-lazarius",
@@ -33342,7 +34102,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "high-keeper-prysma",
@@ -33472,7 +34234,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "high-khatun",
@@ -33543,7 +34307,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "highmother-maud",
@@ -33640,7 +34406,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "hilda-arnorndottr",
@@ -33725,7 +34493,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hill-nomad",
@@ -33804,7 +34574,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hilvi-the-rime-called",
@@ -33907,7 +34679,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "hoforees-the-tusked",
@@ -33982,7 +34756,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "hollow",
@@ -34048,7 +34824,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "holsring",
@@ -34156,7 +34934,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "honor-guard",
@@ -34222,7 +35002,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hope",
@@ -34291,7 +35073,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hordin",
@@ -34365,7 +35149,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hoskarul",
@@ -34467,7 +35253,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hospitaller",
@@ -34551,7 +35339,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "hotatsu",
@@ -34669,7 +35459,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hound-spawn",
@@ -34745,7 +35537,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "huntress",
@@ -34820,7 +35614,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hurler",
@@ -34881,7 +35677,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hurndig",
@@ -34974,7 +35772,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "husk",
@@ -35040,7 +35840,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "hyria",
@@ -35101,7 +35903,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ifrit",
@@ -35172,7 +35976,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ignatius",
@@ -35243,7 +36049,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ilysinya",
@@ -35337,7 +36145,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "infernal-baroness",
@@ -35403,7 +36213,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ingid-twyst-staff",
@@ -35479,7 +36291,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "inithwe-bloodtwin",
@@ -35554,7 +36368,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "inquisitor-shamael",
@@ -35624,7 +36440,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "interceptor",
@@ -35698,7 +36516,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "iron-brago",
@@ -35810,7 +36630,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ironclad",
@@ -35871,7 +36693,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ishiyama-the-immovable",
@@ -35959,7 +36783,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ithos",
@@ -36020,7 +36846,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "itinerant",
@@ -36091,7 +36919,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "iudex-artor",
@@ -36180,7 +37010,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "jagg-bonesaw",
@@ -36273,7 +37105,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jarang",
@@ -36343,7 +37177,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jareg",
@@ -36418,7 +37254,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jetni-the-giant",
@@ -36520,7 +37358,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jinglehunter",
@@ -36591,7 +37431,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jingwon",
@@ -36742,7 +37584,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jintoro",
@@ -36821,7 +37665,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jizoh",
@@ -36900,7 +37746,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "joan-the-luminant-alt",
@@ -37012,7 +37860,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "joan-the-luminant",
@@ -37115,7 +37965,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "jotunn",
@@ -37186,7 +38038,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "judge",
@@ -37259,7 +38113,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "judicator",
@@ -37320,7 +38176,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "juliana",
@@ -37396,7 +38254,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "jurojin",
@@ -37494,7 +38354,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "justiciar",
@@ -37569,7 +38431,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kael",
@@ -37635,7 +38499,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kaiden",
@@ -37706,7 +38572,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "kaja-the-wry",
@@ -37795,7 +38663,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "kallia",
@@ -37861,7 +38731,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kalvalax",
@@ -37968,7 +38840,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kantra-the-cyclone",
@@ -38050,7 +38924,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "karam",
@@ -38116,7 +38992,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "karato-foxhunter",
@@ -38201,7 +39079,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "karilon-the-ringer",
@@ -38319,7 +39199,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "karnage-the-anarch-alt",
@@ -38421,7 +39303,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "karnage-the-anarch",
@@ -38500,7 +39384,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kassandra",
@@ -38640,7 +39526,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kawn-branchbreaker",
@@ -38751,7 +39639,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "keberon-the-underflame",
@@ -38880,7 +39770,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "keeyra-the-watcher",
@@ -38979,7 +39871,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kellan-the-shrike",
@@ -39068,7 +39962,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kerin-the-harvester",
@@ -39175,7 +40071,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "khafru-the-deathkeeper",
@@ -39254,7 +40152,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "khoronar",
@@ -39391,7 +40291,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kinagashi",
@@ -39457,7 +40359,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "king-gallcobar",
@@ -39576,7 +40480,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "king-garog",
@@ -39661,7 +40567,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "klaazag-keyhulk",
@@ -39762,7 +40670,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "klodd-beastfeeder",
@@ -39851,7 +40761,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "knave-of-hearts",
@@ -39944,7 +40856,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "knight-errant",
@@ -40015,7 +40929,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "komidus-darksmile-alt",
@@ -40144,7 +41060,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "komidus-darksmile",
@@ -40242,7 +41160,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "konstantin-the-dayborn",
@@ -40325,7 +41245,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "korugar-death-bell",
@@ -40417,7 +41339,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "krakarth",
@@ -40501,7 +41425,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kreela-witch-arm",
@@ -40576,7 +41502,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "krisk-the-ageless",
@@ -40687,7 +41615,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "krokmar-the-devourer",
@@ -40771,7 +41701,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kroz-wallbreaker",
@@ -40877,7 +41809,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "krokhad-the-throatripper",
@@ -40970,7 +41904,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kunoichi",
@@ -41065,7 +42001,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kurosa-the-covetous-alt",
@@ -41159,7 +42097,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kurosa-the-covetous",
@@ -41265,7 +42205,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kurzad-deepheart",
@@ -41336,7 +42278,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kyoku",
@@ -41438,7 +42382,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "kytis",
@@ -41499,7 +42445,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-annabelle",
@@ -41591,7 +42539,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-eresh",
@@ -41685,7 +42635,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-etessa",
@@ -41780,7 +42732,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-kimi",
@@ -41878,7 +42832,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-mikage-alt",
@@ -41996,7 +42952,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-mikage",
@@ -42094,7 +43052,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-noelle",
@@ -42192,7 +43152,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "lady-quilen",
@@ -42267,7 +43229,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lady-of-ireth",
@@ -42361,7 +43325,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lamellar",
@@ -42427,7 +43393,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lamibur",
@@ -42493,7 +43461,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lanakis-the-chosen",
@@ -42567,7 +43537,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "legate-teox",
@@ -42659,7 +43631,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "leminisi-the-gold-wing",
@@ -42757,7 +43731,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "leonardo",
@@ -42849,7 +43825,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "leorius-the-proud",
@@ -42933,7 +43911,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "liburga",
@@ -43027,7 +44007,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lich",
@@ -43098,7 +44080,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lifetaker",
@@ -43168,7 +44152,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lightsworn",
@@ -43242,7 +44228,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lightward-siendra",
@@ -43321,7 +44309,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lionsguard-galatea",
@@ -43411,7 +44401,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "little-miss-annie",
@@ -43527,7 +44519,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "locwain",
@@ -43611,7 +44605,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lodric-falconheart",
@@ -43691,7 +44687,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "loki-the-deceiver",
@@ -43835,7 +44833,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lonatharil",
@@ -43929,7 +44929,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "loneblade-riab",
@@ -44016,7 +45018,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "longbeard",
@@ -44086,7 +45090,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "longsword-torrux",
@@ -44167,7 +45173,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lord-champfort",
@@ -44247,7 +45255,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lord-entertainer-fabian",
@@ -44376,7 +45386,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lord-shazar",
@@ -44446,7 +45458,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lordly-legionary",
@@ -44520,7 +45534,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lorn-the-cutter",
@@ -44581,7 +45597,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "losan-kleth",
@@ -44671,7 +45689,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lua",
@@ -44736,7 +45756,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lugan-the-steadfast",
@@ -44811,7 +45833,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lumberer",
@@ -44886,7 +45910,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "luria",
@@ -44961,7 +45987,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "luthiea",
@@ -45032,7 +46060,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lydia-the-deathsiren",
@@ -45174,7 +46204,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "lysanthir-beastbane",
@@ -45272,7 +46304,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "lyssandra",
@@ -45338,7 +46372,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mashalled",
@@ -45436,7 +46472,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mad-hatter",
@@ -45533,7 +46571,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "madame-serris",
@@ -45641,7 +46681,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "maddak-eyes-of-skyiron",
@@ -45729,7 +46771,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "madman",
@@ -45794,7 +46838,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "maeve",
@@ -45872,7 +46918,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "magister",
@@ -45942,7 +46990,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "magmablood",
@@ -46013,7 +47063,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "magnarr",
@@ -46143,7 +47195,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "magus",
@@ -46209,7 +47263,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "maiden",
@@ -46279,7 +47335,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "malbranche",
@@ -46350,7 +47408,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "malkith-bloodflock",
@@ -46411,7 +47471,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "maneater",
@@ -46481,7 +47543,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "maranix",
@@ -46604,7 +47668,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marauder",
@@ -46684,7 +47750,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "margrave-greenhawk",
@@ -46764,7 +47832,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marichka-the-unbreakable",
@@ -46870,7 +47940,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "marius-the-gallant",
@@ -46959,7 +48031,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marked",
@@ -47034,7 +48108,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marksman",
@@ -47100,7 +48176,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marquess",
@@ -47175,7 +48253,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "marquis",
@@ -47250,7 +48330,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "martyr",
@@ -47329,7 +48411,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "masamoto",
@@ -47400,7 +48484,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "masked-fearmonger",
@@ -47523,7 +48609,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "master-butcher",
@@ -47608,7 +48696,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "mathias-blackflail",
@@ -47696,7 +48786,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "matriarch-zarguna",
@@ -47802,7 +48894,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "maulie-tankard",
@@ -47901,7 +48995,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "mausoleum-mage",
@@ -47971,7 +49067,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "meatcarver-tolog",
@@ -48064,7 +49162,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "medicus",
@@ -48134,7 +49234,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "melga-steelgirdle",
@@ -48204,7 +49306,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "merouka",
@@ -48284,7 +49388,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "metalshaper",
@@ -48354,7 +49460,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mezomel-luperfang-alt",
@@ -48405,7 +49513,9 @@
         "buffs": [],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mezomel-luperfang",
@@ -48487,7 +49597,9 @@
         ],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "michelangelo",
@@ -48571,7 +49683,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "michinaki",
@@ -48669,7 +49783,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mighty-ukko",
@@ -48766,7 +49882,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "minaya",
@@ -48859,7 +49977,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "miscreated-monster",
@@ -48971,7 +50091,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "misericord",
@@ -49042,7 +50164,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "missionary",
@@ -49121,7 +50245,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mistress-of-hymns",
@@ -49187,7 +50313,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "mistrider-daithi",
@@ -49261,7 +50389,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mithrala-lifebane",
@@ -49376,7 +50506,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "modo-of-the-peal",
@@ -49478,7 +50610,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "morag-bronzelock",
@@ -49563,7 +50697,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mordecai",
@@ -49639,7 +50775,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "morrigaine",
@@ -49733,7 +50871,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mortu-macaab",
@@ -49826,7 +50966,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mother-cybele",
@@ -49941,7 +51083,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mother-superior",
@@ -50016,7 +51160,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mountain-king",
@@ -50095,7 +51241,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "muckstalker",
@@ -50166,7 +51314,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "myciliac-priest-orn",
@@ -50264,7 +51414,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mycolus",
@@ -50329,7 +51481,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "myrmidon",
@@ -50404,7 +51558,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "mystic-hand",
@@ -50465,7 +51621,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nais-the-shadowthief-alt",
@@ -50571,7 +51729,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "nais-the-shadowthief",
@@ -50678,7 +51838,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nari-the-lucky",
@@ -50763,7 +51925,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "narma-the-returned",
@@ -50837,7 +52001,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nazana",
@@ -50911,7 +52077,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "necrohunter",
@@ -50977,7 +52145,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nekhret-the-great",
@@ -51122,7 +52292,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nekmo-thaar",
@@ -51216,7 +52388,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "neldor-rimeblade",
@@ -51310,7 +52484,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nell-blackteeth-alt",
@@ -51429,7 +52605,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nell-blackteeth",
@@ -51559,7 +52737,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nethril",
@@ -51633,7 +52813,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "niamhe-spear-of-nyresa",
@@ -51739,7 +52921,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "night-queen-krixia-alt",
@@ -51846,7 +53030,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "night-queen-krixia",
@@ -51940,7 +53126,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ninja",
@@ -52043,7 +53231,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nobel",
@@ -52150,7 +53340,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "noct-the-paralyzer",
@@ -52265,7 +53457,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "nogdar-the-headhunter",
@@ -52340,7 +53534,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "nogoryo",
@@ -52440,7 +53636,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "noldua-the-gloaming",
@@ -52535,7 +53733,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "norog",
@@ -52614,7 +53814,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "oathbound",
@@ -52693,7 +53895,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "oboro",
@@ -52803,7 +54007,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "occult-brawler",
@@ -52873,7 +54079,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "odachi",
@@ -52948,7 +54156,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "odin-faefather",
@@ -53032,7 +54242,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "oella",
@@ -53129,7 +54341,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ogryn-jailer",
@@ -53185,7 +54399,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "old-ghrukkus",
@@ -53256,7 +54472,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "old-hermit-jorrg",
@@ -53332,7 +54550,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "onryo-ieyasu",
@@ -53420,7 +54640,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "opardin-clanfather",
@@ -53510,7 +54732,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ordinator",
@@ -53581,7 +54805,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "osgrun-the-defiler",
@@ -53675,7 +54901,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ostrox-boneglaive",
@@ -53759,7 +54987,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ox",
@@ -53830,7 +55060,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "packmaster-shyek",
@@ -53945,7 +55177,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pain-keeper",
@@ -54010,7 +55244,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "painsmith",
@@ -54071,7 +55307,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pann-the-bowhorn",
@@ -54150,7 +55388,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "panthera",
@@ -54215,7 +55455,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "paragon",
@@ -54285,7 +55527,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pathfinder-cait",
@@ -54351,7 +55595,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pelops-the-victor",
@@ -54494,7 +55740,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "penitent",
@@ -54565,7 +55813,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "perforator",
@@ -54631,7 +55881,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pestilus",
@@ -54715,7 +55967,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "petrifya-rockroot",
@@ -54802,7 +56056,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "peydma",
@@ -54868,7 +56124,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pharsalas-gravedirt",
@@ -54981,7 +56239,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pheidi-tealcrest",
@@ -55112,7 +56372,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "phranox",
@@ -55178,7 +56440,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pigsticker",
@@ -55234,7 +56498,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pitiless-one",
@@ -55295,7 +56561,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "polara-fireheart-alt",
@@ -55424,7 +56692,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "polara-fireheart",
@@ -55572,7 +56842,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pontiff-augustin",
@@ -55683,7 +56955,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pounder",
@@ -55753,7 +57027,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "praeva-the-slitherer",
@@ -55866,7 +57142,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "predator",
@@ -55976,7 +57254,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "preserver",
@@ -56055,7 +57335,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "prince-kymar",
@@ -56125,7 +57407,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "prosecutor",
@@ -56191,7 +57475,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "prundar",
@@ -56298,7 +57584,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "psylar",
@@ -56364,7 +57652,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "purgator",
@@ -56425,7 +57715,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "pythion",
@@ -56505,7 +57797,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "pyxniel",
@@ -56629,7 +57923,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "quaestor",
@@ -56690,7 +57986,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "quargan-the-crowned",
@@ -56768,7 +58066,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "queen-eva",
@@ -56824,7 +58124,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "queen-of-hearts",
@@ -56914,7 +58216,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "quintus-the-triumphant",
@@ -57003,7 +58307,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "r-nergigante-archer",
@@ -57126,7 +58432,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rae",
@@ -57192,7 +58500,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "raf-matab",
@@ -57281,7 +58591,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ragash",
@@ -57383,7 +58695,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ragemonger",
@@ -57454,7 +58768,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "raglin",
@@ -57510,7 +58826,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "raider",
@@ -57580,7 +58898,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rakka-viletide",
@@ -57682,7 +59002,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "ramantu-drakesblood",
@@ -57817,7 +59139,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "raphael",
@@ -57924,7 +59248,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rathalos-blademaster",
@@ -58017,7 +59343,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "razelvarg",
@@ -58115,7 +59443,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rearguard-sergeant",
@@ -58190,7 +59520,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rector-drath",
@@ -58300,7 +59632,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "redcloak-taneko",
@@ -58366,7 +59700,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "reinbeast",
@@ -58436,7 +59772,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "relickeeper",
@@ -58502,7 +59840,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "reliquary-tender",
@@ -58568,7 +59908,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "renegade",
@@ -58633,7 +59975,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "renouncer",
@@ -58694,7 +60038,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "retainer",
@@ -58765,7 +60111,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rhazin-scarhide",
@@ -58830,7 +60178,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rian-the-conjurer",
@@ -58905,7 +60255,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "richtoff-the-bold",
@@ -58971,7 +60323,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "riho-bonespear",
@@ -59080,7 +60434,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ripper",
@@ -59136,7 +60492,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ripperfist",
@@ -59202,7 +60560,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "riscarm",
@@ -59277,7 +60637,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "robar",
@@ -59372,7 +60734,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rock-breaker",
@@ -59438,7 +60802,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rockbeast",
@@ -59509,7 +60875,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rocktooth",
@@ -59570,7 +60938,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "romero",
@@ -59659,7 +61029,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ronda",
@@ -59748,7 +61120,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "roric-wyrmbane",
@@ -59847,7 +61221,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "roshcard-the-tower",
@@ -59917,7 +61293,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rotos-the-lost-groom",
@@ -60001,7 +61379,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rotting-mage",
@@ -60090,7 +61470,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rowan",
@@ -60156,7 +61538,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "roxam",
@@ -60329,7 +61713,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "royal-guard",
@@ -60395,7 +61781,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "royal-huntsman",
@@ -60461,7 +61849,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ruel-the-huntmaster",
@@ -60577,7 +61967,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ruella",
@@ -60656,7 +62048,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ruffstone",
@@ -60712,7 +62106,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "rugnor-goldgleam",
@@ -60823,7 +62219,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "runekeeper-dazdurk",
@@ -60894,7 +62292,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "runic-warder",
@@ -60964,7 +62364,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sachi",
@@ -61063,7 +62465,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "saito",
@@ -61151,7 +62555,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "samar-gemcursed",
@@ -61235,7 +62641,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "samson-the-masher",
@@ -61324,7 +62732,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sanctum-protector",
@@ -61395,7 +62805,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sandlashed-survivor",
@@ -61468,7 +62880,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sanguine-maria",
@@ -61552,7 +62966,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "sanguinia",
@@ -61617,7 +63033,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "scabrius",
@@ -61716,7 +63134,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "scion",
@@ -61819,7 +63239,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "scrapper",
@@ -61880,7 +63302,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "scyl-of-the-drakes",
@@ -61970,7 +63394,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "searsha-the-charred",
@@ -62064,7 +63490,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "seducer",
@@ -62162,7 +63590,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "seeker",
@@ -62238,7 +63668,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "seer",
@@ -62313,7 +63745,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "selinia-nightcloak",
@@ -62408,7 +63842,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "seneschal",
@@ -62488,7 +63924,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "senna-amberheart",
@@ -62591,7 +64029,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "sentinel",
@@ -62657,7 +64097,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "septimus",
@@ -62722,7 +64164,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sepulcher-sentinel",
@@ -62792,7 +64236,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sethallia",
@@ -62863,7 +64309,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shadowbow-tirlac",
@@ -62957,7 +64405,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shaman",
@@ -63023,7 +64473,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "shamrock",
@@ -63110,7 +64562,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shatterbones",
@@ -63181,7 +64635,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shemnath",
@@ -63256,7 +64712,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shirimani",
@@ -63332,7 +64790,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shredder",
@@ -63460,7 +64920,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "shu-zhen-the-valorous",
@@ -63567,7 +65029,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sicia-flametongue",
@@ -63685,7 +65149,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "siegebreaker",
@@ -63751,7 +65217,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "siegehulk",
@@ -63840,7 +65308,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "siegfrund-the-nephilim-alt",
@@ -63904,7 +65374,9 @@
         "buffs": [],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "siegfrund-the-nephilim",
@@ -63963,7 +65435,9 @@
         ],
         "debuffs": []
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sigmund-the-highshield",
@@ -64056,7 +65530,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "signy-of-highshield",
@@ -64140,7 +65616,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sikara",
@@ -64220,7 +65698,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "silvain-the-paramour",
@@ -64286,7 +65766,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sinesha",
@@ -64342,7 +65824,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "siphi-the-lost-bride",
@@ -64453,7 +65937,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "sir-artimage",
@@ -64527,7 +66013,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sir-nicholas",
@@ -64606,7 +66094,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skartorsis",
@@ -64685,7 +66175,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skathix",
@@ -64778,7 +66270,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skeletor",
@@ -64878,7 +66372,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skeuramis",
@@ -64963,7 +66459,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skimfos-the-consumed",
@@ -65076,7 +66574,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skink",
@@ -65150,7 +66650,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skirmisher",
@@ -65206,7 +66708,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skorid-the-halfspawn",
@@ -65325,7 +66829,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skraank",
@@ -65429,7 +66935,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skull-lord-var-gall",
@@ -65538,7 +67046,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "skullcrown",
@@ -65618,7 +67128,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "skullcrusher",
@@ -65687,7 +67199,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skullsworn",
@@ -65757,7 +67271,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "skytouched-shaman",
@@ -65827,7 +67343,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "slasher",
@@ -65901,7 +67419,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "slayer",
@@ -65971,7 +67491,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "slitherbrute",
@@ -66032,7 +67554,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "slixus-stripehide",
@@ -66129,7 +67653,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sniktraak",
@@ -66253,7 +67779,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "snorting-thug",
@@ -66309,7 +67837,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "solanar-the-gleaming",
@@ -66397,7 +67927,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "solaris",
@@ -66463,7 +67995,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sorceress",
@@ -66529,7 +68063,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "soulbond-bowyer",
@@ -66585,7 +68121,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "souldrinker",
@@ -66675,7 +68213,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "soulless",
@@ -66755,7 +68295,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "spider",
@@ -66825,7 +68367,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "spikehead",
@@ -66890,7 +68434,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "spirithost",
@@ -66970,7 +68516,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "spymaster",
@@ -67036,7 +68584,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "stag-knight",
@@ -67111,7 +68661,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "staltus-dragonbane",
@@ -67213,7 +68765,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "starsage-galathir-alt",
@@ -67350,7 +68904,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "starsage-galathir",
@@ -67449,7 +69005,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "steadfast-marshal",
@@ -67520,7 +69078,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "steel-bowyer",
@@ -67581,7 +69141,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "steelskull",
@@ -67647,7 +69209,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "stitched-beast",
@@ -67708,7 +69272,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "stokk-the-broken",
@@ -67854,7 +69420,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "storm-herald-hekaton",
@@ -67973,7 +69541,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "stout-axeman",
@@ -68052,7 +69622,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "strategos-islin",
@@ -68158,7 +69730,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "suiren",
@@ -68229,7 +69803,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "sulfuryion",
@@ -68365,7 +69941,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "sun-wukong",
@@ -68445,7 +70023,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "sunken-sentinel",
@@ -68520,7 +70100,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "supreme-athel",
@@ -68652,7 +70234,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "supreme-elhain",
@@ -68740,7 +70324,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "supreme-galek",
@@ -68880,7 +70466,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "supreme-kael",
@@ -68975,7 +70563,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "suwai-firstborn",
@@ -69055,7 +70645,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "suzerain-katonn",
@@ -69138,7 +70730,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "swarmspeaker-zyclic",
@@ -69213,7 +70807,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tagoar",
@@ -69298,7 +70894,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "tainix-hateflower",
@@ -69368,7 +70966,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tallia",
@@ -69448,7 +71048,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "taras-the-fierce",
@@ -69555,7 +71157,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tarshon",
@@ -69650,7 +71254,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tatsu",
@@ -69745,7 +71351,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tatura-rimehide",
@@ -69843,7 +71451,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "taurus",
@@ -69919,7 +71529,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "taya",
@@ -69994,7 +71606,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tayrel",
@@ -70073,7 +71687,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "teela-goremane",
@@ -70152,7 +71768,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "templar",
@@ -70223,7 +71841,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "temptress",
@@ -70293,7 +71913,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "teodor-the-savant",
@@ -70416,7 +72038,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "terrorbeast",
@@ -70482,7 +72106,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "teryx-the-restless",
@@ -70557,7 +72183,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "teshada",
@@ -70623,7 +72251,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "tetsuya-the-deliverer",
@@ -70711,7 +72341,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "teumesia",
@@ -70857,7 +72489,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "the-calamitus-alt",
@@ -70978,7 +72612,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "the-calamitus",
@@ -71088,7 +72724,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "the-incarnate",
@@ -71209,7 +72847,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "thea-the-tomb-angel",
@@ -71299,7 +72939,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "thenasil",
@@ -71365,7 +73007,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "theodosia-the-disgraced-alt",
@@ -71476,7 +73120,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "theodosia-the-disgraced",
@@ -71574,7 +73220,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "theresc",
@@ -71644,7 +73292,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "theurgist",
@@ -71714,7 +73364,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tholin-foulbeard",
@@ -71810,7 +73462,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "thor-faehammer",
@@ -71908,7 +73562,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "thorn-golem",
@@ -72005,7 +73661,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "thylessia",
@@ -72094,7 +73752,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tidemaster-dexikos",
@@ -72183,7 +73843,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "tigersoul",
@@ -72258,7 +73920,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "timit-the-fool",
@@ -72359,7 +74023,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "titus-blackplume",
@@ -72474,7 +74140,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "togron-the-conjoined",
@@ -72558,7 +74226,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tolf-the-maimed",
@@ -72624,7 +74294,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tomb-lord",
@@ -72703,7 +74375,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tomoe",
@@ -72800,7 +74474,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "toragi-the-frog",
@@ -72903,7 +74579,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tormentor",
@@ -72977,7 +74655,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tormin-the-cold",
@@ -73111,7 +74791,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "torturehelm",
@@ -73167,7 +74849,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "toshiro-the-bloody-alt",
@@ -73274,7 +74958,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "toshiro-the-bloody",
@@ -73395,7 +75081,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "totem",
@@ -73466,7 +75154,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "towering-titan",
@@ -73563,7 +75253,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tramaria",
@@ -73718,7 +75410,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "treefeller",
@@ -73793,7 +75487,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "treeshield-knott",
@@ -73864,7 +75560,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "tribuck-colwyn",
@@ -73935,7 +75633,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tribune-herakletes",
@@ -74024,7 +75724,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "truath",
@@ -74112,7 +75814,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "trugorr",
@@ -74178,7 +75882,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "trumborr",
@@ -74266,7 +75972,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "trunda-giltmallet",
@@ -74371,7 +76079,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tuhak-the-wanderer",
@@ -74456,7 +76166,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tuhanarak",
@@ -74563,7 +76275,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "turvold",
@@ -74637,7 +76351,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "twinclaw-disciple",
@@ -74703,7 +76419,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "tyrant-ixlimor",
@@ -74797,7 +76515,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ugir-the-wyrmeater",
@@ -74890,7 +76610,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ultan-of-the-shell",
@@ -75002,7 +76724,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ultimate-deathknight",
@@ -75113,7 +76837,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ultimate-galek",
@@ -75235,7 +76961,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "umbral-enchantress",
@@ -75314,7 +77042,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "umetogi",
@@ -75416,7 +77146,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "underpriest-brogni",
@@ -75540,7 +77272,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "urogrim",
@@ -75611,7 +77345,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "urost-the-soulcage",
@@ -75738,7 +77474,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ursala-the-mourner",
@@ -75813,7 +77551,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "ursine-icecrusher",
@@ -75884,7 +77624,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ursine-ironhide",
@@ -75969,7 +77711,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "ursuga-warcaller",
@@ -76070,7 +77814,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "urticata",
@@ -76164,7 +77910,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "uugo",
@@ -76261,7 +78009,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "uzol-of-the-jade",
@@ -76358,7 +78108,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vagabond",
@@ -76439,7 +78191,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "valerie",
@@ -76512,7 +78266,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "valkanen",
@@ -76718,7 +78474,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "valkyrie",
@@ -76787,7 +78545,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "valla",
@@ -76891,7 +78651,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vanguard",
@@ -76961,7 +78723,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "varl-the-destroyer",
@@ -77049,7 +78813,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vasal-of-the-seals",
@@ -77146,7 +78912,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vault-keeper-wixwell",
@@ -77260,7 +79028,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "venalicia-thrallmother",
@@ -77349,7 +79119,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "venomage",
@@ -77437,7 +79209,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "venus",
@@ -77526,7 +79300,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vergis",
@@ -77617,7 +79393,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vergumkaar",
@@ -77711,7 +79489,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "versulf-the-grim",
@@ -77834,7 +79614,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vestele-riverthorn",
@@ -77936,7 +79718,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "veteran",
@@ -78007,7 +79791,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vildrax",
@@ -78097,7 +79883,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "visionary",
@@ -78185,7 +79973,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "visix-the-unbowed",
@@ -78261,7 +80051,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vitrius-the-anointed",
@@ -78366,7 +80158,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vizier-ovelis",
@@ -78455,7 +80249,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vizug-the-noxious",
@@ -78585,7 +80381,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vlad-the-nightborn",
@@ -78679,7 +80477,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vogoth",
@@ -78771,7 +80571,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vrask",
@@ -78832,7 +80634,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "vulkanos-fumor",
@@ -78971,7 +80775,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wagonbane",
@@ -79042,7 +80848,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "walking-tomb-dreng",
@@ -79122,7 +80930,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wallmaster-othorion",
@@ -79214,7 +81024,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wanderer",
@@ -79280,7 +81092,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "war-mother",
@@ -79360,7 +81174,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warcaster",
@@ -79426,7 +81242,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warchief",
@@ -79492,7 +81310,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warden",
@@ -79568,7 +81388,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warlord",
@@ -79633,7 +81455,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warmaiden",
@@ -79704,7 +81528,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "warpriest",
@@ -79770,7 +81596,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "weregren-suncursed",
@@ -79854,7 +81682,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "whisper",
@@ -79948,7 +81778,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "white-dryad-nia",
@@ -80032,7 +81864,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wight-king-narses",
@@ -80139,7 +81973,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wight-queen-ankora",
@@ -80280,7 +82116,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "witness",
@@ -80350,7 +82188,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "woad-painted",
@@ -80421,7 +82261,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wretch",
@@ -80482,7 +82324,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wuji",
@@ -80562,7 +82406,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wurlim-frostking",
@@ -80663,7 +82509,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wuzgar",
@@ -80747,7 +82595,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wyrennon-the-silken",
@@ -80823,7 +82673,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "wysteri-vineguard",
@@ -80893,7 +82745,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wythir-the-crowned",
@@ -80991,7 +82845,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "wyvernbane",
@@ -81057,7 +82913,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "xena-warrior-princess",
@@ -81137,7 +82995,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "xenomorph",
@@ -81258,7 +83118,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "yaga-the-insatiable",
@@ -81329,7 +83191,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yakarl-the-scourge",
@@ -81449,7 +83313,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yannica",
@@ -81541,7 +83407,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yelagirna",
@@ -81630,7 +83498,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": true,
+    "revive_all": false
   },
   {
     "slug": "yncensa-grail-bearer",
@@ -81733,7 +83603,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yoshi-the-drunkard",
@@ -81840,7 +83712,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yukimasa-demon-of-ice",
@@ -82067,7 +83941,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": true
   },
   {
     "slug": "yumeko",
@@ -82175,7 +84051,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "yuzan-the-marooned",
@@ -82250,7 +84128,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "zargala",
@@ -82316,7 +84196,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "zavia",
@@ -82405,7 +84287,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "zelotah",
@@ -82480,7 +84364,9 @@
         "buff_extend": null,
         "is_passive": false
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "zii-ixchi",
@@ -82572,7 +84458,9 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   },
   {
     "slug": "zinogre-blademaster",
@@ -82666,6 +84554,8 @@
         "buff_extend": null,
         "is_passive": true
       }
-    ]
+    ],
+    "revive_single": false,
+    "revive_all": false
   }
 ]
