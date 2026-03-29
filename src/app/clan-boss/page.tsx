@@ -1594,7 +1594,7 @@ function buildSkillConfigs(champion: Champion): SkillConfig[] {
 }
 
 export default function ClanBossPage() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const isLoggedIn = !!user;
   const [champions, setChampions] = useState<Champion[]>([]);
   const [krNames, setKrNames] = useState<Record<string, string>>({});
@@ -1653,10 +1653,8 @@ export default function ClanBossPage() {
         setKrNames(kr);
         setLoading(false);
 
-        // 프리셋 로드 (비로그인 시 localStorage)
-        if (!user) {
-          setPresets(loadPresets());
-        }
+        // 프리셋 로드 — 로그인한 경우에만 (비로그인은 프리셋 잠금)
+        // (로그인 시 Supabase 로드는 위 useEffect에서 처리)
 
         // URL에서 공유 덱 불러오기 (?d= 또는 #해시)
         const params = new URLSearchParams(window.location.search);
@@ -1883,7 +1881,13 @@ export default function ClanBossPage() {
         {/* 프리셋 드롭다운 */}
         <div ref={presetMenuRef} className="relative flex-shrink-0">
           <button
-            onClick={() => setPresetMenuOpen(!presetMenuOpen)}
+            onClick={() => {
+              if (!isLoggedIn) {
+                setPresetMenuOpen(!presetMenuOpen);
+                return;
+              }
+              setPresetMenuOpen(!presetMenuOpen);
+            }}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-colors cursor-pointer border ${
               presetMenuOpen
                 ? "bg-gold/10 border-gold/50 text-gold"
@@ -1894,8 +1898,13 @@ export default function ClanBossPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
             </svg>
             내 프리셋
-            {presets.length > 0 && (
+            {isLoggedIn && presets.length > 0 && (
               <span className="bg-gold/20 text-gold text-[10px] px-1.5 py-0.5 rounded-full font-bold">{presets.length}</span>
+            )}
+            {!isLoggedIn && (
+              <svg className="w-3 h-3 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
             )}
             <svg className={`w-3 h-3 transition-transform ${presetMenuOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -1903,7 +1912,21 @@ export default function ClanBossPage() {
           </button>
           {presetMenuOpen && (
             <div className="absolute top-full mt-1 right-0 bg-[#12122a] border border-gray-700 rounded-xl shadow-2xl z-50 min-w-[280px] overflow-hidden">
-              {presets.length === 0 ? (
+              {!isLoggedIn ? (
+                <div className="px-4 py-8 text-center">
+                  <svg className="w-10 h-10 mx-auto text-gray-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <p className="text-gray-300 text-sm font-medium mb-1">로그인이 필요합니다</p>
+                  <p className="text-gray-600 text-xs mb-4">프리셋을 저장하고 불러오려면<br/>Google 계정으로 로그인해주세요.</p>
+                  <button
+                    onClick={() => { signInWithGoogle(); setPresetMenuOpen(false); }}
+                    className="bg-gold text-background px-5 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
+                  >
+                    Google로 로그인
+                  </button>
+                </div>
+              ) : presets.length === 0 ? (
                 <div className="px-4 py-8 text-center">
                   <svg className="w-8 h-8 mx-auto text-gray-700 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -2099,19 +2122,33 @@ export default function ClanBossPage() {
             {/* 저장 */}
             <button
               onClick={() => {
+                if (!isLoggedIn) {
+                  showToast("프리셋 저장은 로그인 후 이용 가능합니다.");
+                  return;
+                }
                 if (presets.length >= 10) {
                   showToast("프리셋은 최대 10개까지 저장할 수 있습니다.");
                   return;
                 }
                 setSaveDialogOpen(true);
               }}
-              className="flex items-center gap-1.5 bg-input-bg border border-input-border text-gray-400 hover:border-gold/50 hover:text-gold px-3 py-2.5 rounded-lg text-xs transition-colors cursor-pointer"
-              title="현재 덱을 프리셋으로 저장"
+              className={`flex items-center gap-1.5 bg-input-bg border border-input-border px-3 py-2.5 rounded-lg text-xs transition-colors cursor-pointer ${
+                isLoggedIn
+                  ? "text-gray-400 hover:border-gold/50 hover:text-gold"
+                  : "text-gray-600 hover:border-gray-600"
+              }`}
+              title={isLoggedIn ? "현재 덱을 프리셋으로 저장" : "로그인 후 이용 가능"}
             >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-              </svg>
-              프리셋 저장 ({presets.length}/10)
+              {!isLoggedIn ? (
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              ) : (
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+              )}
+              프리셋 저장 {isLoggedIn ? `(${presets.length}/10)` : "🔒"}
             </button>
           </div>
 

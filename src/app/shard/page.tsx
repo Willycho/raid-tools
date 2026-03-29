@@ -615,7 +615,7 @@ function TrackCard({
 
 // ── 메인 컴포넌트 ────────────────────────────────────
 export default function ShardCalculator() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const isLoggedIn = !!user;
 
   const [is2x, setIs2x] = useState(false);
@@ -900,6 +900,25 @@ export default function ShardCalculator() {
         </button>
       </div>
 
+      {/* 비로그인 경고 배너 */}
+      {!isLoggedIn && (
+        <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl px-4 py-3 mb-4 flex items-center gap-3">
+          <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.832c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <div className="flex-1 min-w-0">
+            <p className="text-amber-400/90 text-xs font-medium">게스트 모드 — 데이터가 브라우저에만 저장됩니다</p>
+            <p className="text-gray-600 text-[10px] mt-0.5">캐시 삭제·브라우저 변경 시 데이터가 유실될 수 있습니다. 로그인하면 서버에 안전하게 보관됩니다.</p>
+          </div>
+          <button
+            onClick={signInWithGoogle}
+            className="flex-shrink-0 bg-gold text-background px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
+          >
+            로그인
+          </button>
+        </div>
+      )}
+
       {/* 계정 선택 */}
       <div className="flex items-center gap-3 mb-6">
         {/* 현재 계정 / 계정 목록 */}
@@ -955,7 +974,19 @@ export default function ShardCalculator() {
         ) : null}
 
         {/* 계정 추가 버튼 / 입력 */}
-        {accounts.length >= 10 ? null : showAccountInput ? (
+        {accounts.length >= (isLoggedIn ? 10 : 1) ? (
+          !isLoggedIn && accounts.length >= 1 ? (
+            <button
+              onClick={signInWithGoogle}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs text-gray-500 border border-dashed border-gray-700 hover:border-gold/40 hover:text-gold transition-colors cursor-pointer"
+            >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              멀티계정은 로그인 필요
+            </button>
+          ) : null
+        ) : showAccountInput ? (
           <div className="flex items-center gap-2">
             <input
               type="text"
