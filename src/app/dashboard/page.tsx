@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
+import { useAuth } from "@/lib/AuthContext";
+import { getSupabase } from "@/lib/supabase";
 
 // ── 타입 ────────────────────────────────────────────
 interface PullRecord {
@@ -39,17 +41,79 @@ const SHARD_GROUPS = [
   { keys: ["primal_0", "primal_1"], label: "태고", color: "#EF4444", image: "/shards/primal.png" },
 ];
 
-// ── localStorage ────────────────────────────────────
-function loadPity(): Record<string, number> {
+// ── localStorage (게스트용) ───────────────────────────
+function loadAccountsLocal(): { id: string; name: string }[] {
+  if (typeof window === "undefined") return [];
+  try { return JSON.parse(localStorage.getItem("rsl_shard_accounts") || "[]"); }
+  catch { return []; }
+}
+function loadActiveAccountIdLocal(): string | null {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem("rsl_shard_active_account");
+}
+function loadPityLocal(accountId: string): Record<string, number> {
   if (typeof window === "undefined") return {};
-  try { return JSON.parse(localStorage.getItem("rsl_shard_pity") || "{}"); }
+  try { return JSON.parse(localStorage.getItem(`rsl_shard_pity_${accountId}`) || "{}"); }
   catch { return {}; }
 }
-
-function loadHistory(): PullRecord[] {
+function loadHistoryLocal(accountId: string): PullRecord[] {
   if (typeof window === "undefined") return [];
-  try { return JSON.parse(localStorage.getItem("rsl_shard_history") || "[]"); }
+  try { return JSON.parse(localStorage.getItem(`rsl_shard_history_${accountId}`) || "[]"); }
   catch { return []; }
+}
+
+// ── Supabase 로드 ──────────────────────────────────
+function toTrackKey(shardType: string, rarity: string): string {
+  if (rarity === "mythical") return `${shardType}_1`;
+  return `${shardType}_0`;
+}
+
+async function dbLoadAllHistory(userId: string): Promise<PullRecord[]> {
+  const sb = getSupabase();
+  // 먼저 유저의 계정 목록 가져오기
+  const { data: accounts } = await sb
+    .from("shard_accounts")
+    .select("id");
+  if (!accounts || accounts.length === 0) return [];
+
+  const accountIds = accounts.map((a: { id: string }) => a.id);
+  const { data: rows } = await sb
+    .from("shard_history")
+    .select("*")
+    .in("account_id", accountIds)
+    .order("pulled_at", { ascending: true });
+  if (!rows) return [];
+
+  return rows.map((r: { shard_type: string; rarity: string; count: number; is_mercy: boolean; pulled_at: string }) => ({
+    trackKey: toTrackKey(r.shard_type, r.rarity),
+    pulledAt: r.count,
+    timestamp: new Date(r.pulled_at).getTime(),
+    wasCeiling: r.is_mercy,
+  }));
+}
+
+async function dbLoadAllPity(userId: string): Promise<Record<string, number>> {
+  const sb = getSupabase();
+  const { data: accounts } = await sb
+    .from("shard_accounts")
+    .select("id");
+  if (!accounts || accounts.length === 0) return {};
+
+  const accountIds = accounts.map((a: { id: string }) => a.id);
+  const { data: rows } = await sb
+    .from("shard_pity")
+    .select("*")
+    .in("account_id", accountIds);
+  if (!rows) return {};
+
+  const result: Record<string, number> = {};
+  for (const r of rows) {
+    const key0 = `${r.shard_type}_0`;
+    const key1 = `${r.shard_type}_1`;
+    result[key0] = (result[key0] || 0) + (r.legendary || 0);
+    result[key1] = (result[key1] || 0) + (r.epic || 0);
+  }
+  return result;
 }
 
 // ── 파편별 체감 확률 추이 차트 ──────────────────────
@@ -295,16 +359,37 @@ function PeriodDropdown({ value, onChange }: { value: number; onChange: (v: numb
 
 // ── 메인 ────────────────────────────────────────────
 export default function Dashboard() {
+  const { user, loading: authLoading, signInWithGoogle } = useAuth();
+  const isLoggedIn = !!user;
   const [pity, setPity] = useState<Record<string, number>>({});
   const [history, setHistory] = useState<PullRecord[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [period, setPeriod] = useState(0); // 0 = 전체
 
   useEffect(() => {
-    setPity(loadPity());
-    setHistory(loadHistory());
-    setLoaded(true);
-  }, []);
+    if (authLoading) return;
+
+    if (user) {
+      // 로그인 → Supabase에서 로드
+      Promise.all([
+        dbLoadAllPity(user.id),
+        dbLoadAllHistory(user.id),
+      ]).then(([p, h]) => {
+        setPity(p);
+        setHistory(h);
+        setLoaded(true);
+      }).catch(() => setLoaded(true));
+    } else {
+      // 비로그인 → localStorage에서 로드 (활성 계정 기준)
+      const accounts = loadAccountsLocal();
+      if (accounts.length > 0) {
+        const activeId = loadActiveAccountIdLocal() || accounts[0].id;
+        setPity(loadPityLocal(activeId));
+        setHistory(loadHistoryLocal(activeId));
+      }
+      setLoaded(true);
+    }
+  }, [user, authLoading]);
 
   // 기간 필터 적용된 히스토리
   const filteredHistory = useMemo(() => {
@@ -359,7 +444,9 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold text-white">대시보드</h1>
           <p className="text-sm text-gray-500 mt-1">
             파편 소모 현황 및 체감 확률 통계
-            <span className="ml-2 text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">내 데이터</span>
+            <span className={`ml-2 text-[10px] px-1.5 py-0.5 rounded ${isLoggedIn ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"}`}>
+              {isLoggedIn ? "서버 데이터" : "내 데이터"}
+            </span>
           </p>
         </div>
         <PeriodDropdown value={period} onChange={setPeriod} />
@@ -449,18 +536,23 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 로그인 유도 */}
-      <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-6 text-center">
-        <p className="text-gray-400 text-sm mb-2">
-          다른 유저들의 데이터와 비교하고 싶다면?
-        </p>
-        <p className="text-gray-600 text-xs mb-4">
-          Google 로그인 후 데이터가 서버에 저장되며, 전체 한국 유저 통계를 확인할 수 있습니다.
-        </p>
-        <button className="bg-gold text-background px-6 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer">
-          Google로 로그인 (준비 중)
-        </button>
-      </div>
+      {/* 로그인 유도 — 비로그인 상태에서만 표시 */}
+      {!isLoggedIn && (
+        <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-6 text-center">
+          <p className="text-gray-400 text-sm mb-2">
+            다른 유저들의 데이터와 비교하고 싶다면?
+          </p>
+          <p className="text-gray-600 text-xs mb-4">
+            Google 로그인 후 데이터가 서버에 저장되며, 전체 유저 통계를 확인할 수 있습니다.
+          </p>
+          <button
+            onClick={signInWithGoogle}
+            className="bg-gold text-background px-6 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
+          >
+            Google로 로그인
+          </button>
+        </div>
+      )}
     </div>
   );
 }
