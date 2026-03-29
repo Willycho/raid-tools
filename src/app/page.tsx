@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const tools = [
+const tools: { title: string; description: string; href: string; icon: React.ReactNode; status: "beta" | "coming" }[] = [
   {
     title: "클랜보스 계산기",
     description:
