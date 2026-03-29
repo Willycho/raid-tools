@@ -284,7 +284,7 @@ function ChampionSearch({
   );
 }
 
-function ChampionSlot({
+const ChampionSlot = React.memo(function ChampionSlot({
   slot,
   index,
   allSlots,
@@ -740,7 +740,7 @@ function ChampionSlot({
       </button>
     </div>
   );
-}
+});
 
 // Lore of Steel(강철의 서사시) True Speed 계산
 // 세트 보너스에 15%를 추가 적용하지만, 게임은 floor 처리하므로 소수점이 숨겨짐
@@ -1719,22 +1719,23 @@ export default function ClanBossPage() {
     clearSimulation();
   };
 
-  const handleUpdateSlot = (index: number, updated: Partial<SlotData>) => {
+  const handleUpdateSlot = useCallback((index: number, updated: Partial<SlotData>) => {
     setSlots((prev) => {
       const next = [...prev];
       next[index] = { ...next[index], ...updated };
       return next;
     });
-  };
+    clearSimulation();
+  }, []);
 
-  const handleRemove = (index: number) => {
+  const handleRemove = useCallback((index: number) => {
     setSlots((prev) => {
       const next = [...prev];
       next[index] = createSlotData();
       return next;
     });
     clearSimulation();
-  };
+  }, []);
 
   if (loading) {
     return (
