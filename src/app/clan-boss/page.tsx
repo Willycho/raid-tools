@@ -1468,6 +1468,14 @@ async function dbCreatePreset(userId: string, name: string, deckData: DeckData):
   return { id: data.id, name: data.name, createdAt: new Date(data.created_at).getTime(), data: data.deck_data as DeckData };
 }
 
+async function dbUpdatePreset(presetId: string, deckData: DeckData): Promise<boolean> {
+  const { error } = await getSupabase()
+    .from("clan_boss_presets")
+    .update({ deck_data: deckData })
+    .eq("id", presetId);
+  return !error;
+}
+
 async function dbDeletePreset(presetId: string): Promise<void> {
   await getSupabase().from("clan_boss_presets").delete().eq("id", presetId);
 }
@@ -1483,13 +1491,74 @@ function slotsToData(slots: SlotData[]): DeckData["slots"] {
   }));
 }
 
+// 공유 링크용 압축 인코딩: 필수 데이터만, 키 축약, 기본값 생략
 function encodeDeck(data: DeckData): string {
-  return btoa(encodeURIComponent(JSON.stringify(data)));
+  const compact: Record<string, unknown> = {};
+  // 슬롯: 챔피언 있는 것만
+  const slots = data.slots
+    .filter((s) => s.slug)
+    .map((s) => {
+      const o: Record<string, unknown> = { s: s.slug, v: s.speed };
+      if (s.speedAura) o.a = s.speedAura;
+      if (s.steelEpic) o.e = 1;
+      if (s.setBonusPct) o.b = s.setBonusPct;
+      // skillConfigs: 전체 저장 (우선순위 포함), 키 축약
+      const sc = s.skillConfigs.map((c) => {
+        const r: Record<string, unknown> = { l: c.label, p: c.priority };
+        if (c.cooldown) r.cd = c.cooldown;
+        if (c.disabled) r.d = 1;
+        if (c.delay > 0) r.w = c.delay;
+        if (c.cdReduceTarget) r.t = c.cdReduceTarget;
+        return r;
+      });
+      if (sc.length > 0) o.c = sc;
+      return o;
+    });
+  compact.s = slots;
+  if (data.bossDifficulty !== "Ultra Nightmare") compact.d = data.bossDifficulty;
+  if (data.bossAffinity !== "Void") compact.f = data.bossAffinity;
+  if (data.regionBonus) { compact.r = 1; compact.rv = data.regionBonusValue; }
+  return btoa(JSON.stringify(compact));
 }
 
+// 압축 해시 디코딩 (새 형식 + 구 형식 모두 지원)
 function decodeDeck(hash: string): DeckData | null {
   try {
-    return JSON.parse(decodeURIComponent(atob(hash)));
+    const raw = atob(hash);
+    // 구 형식: encodeURIComponent된 JSON (slots 키가 있으면 구 형식)
+    if (raw.startsWith("%7B")) {
+      return JSON.parse(decodeURIComponent(raw));
+    }
+    const c = JSON.parse(raw);
+    if (c.slots) return c as DeckData; // 구 형식 (비인코딩)
+    // 새 압축 형식
+    const emptySlot = { slug: null, speed: 0, speedAura: 0, skillConfigs: [], steelEpic: false, setBonusPct: 0 };
+    const slots = Array.from({ length: 5 }, (_, i) => {
+      const src = c.s?.[i];
+      if (!src) return { ...emptySlot };
+      return {
+        slug: src.s,
+        speed: src.v || 0,
+        speedAura: src.a || 0,
+        skillConfigs: (src.c || []).map((sc: Record<string, unknown>) => ({
+          label: sc.l as string,
+          cooldown: (sc.cd as number) || 0,
+          priority: (sc.p as number) ?? 0,
+          disabled: !!sc.d,
+          delay: (sc.w as number) || 0,
+          cdReduceTarget: sc.t as string | undefined,
+        })),
+        steelEpic: !!src.e,
+        setBonusPct: src.b || 0,
+      };
+    });
+    return {
+      slots,
+      bossDifficulty: c.d || "Ultra Nightmare",
+      bossAffinity: c.f || "Void",
+      regionBonus: !!c.r,
+      regionBonusValue: c.rv || 0,
+    };
   } catch { return null; }
 }
 
@@ -1589,9 +1658,26 @@ export default function ClanBossPage() {
           setPresets(loadPresets());
         }
 
-        // URL 해시에서 덱 불러오기
+        // URL에서 공유 덱 불러오기 (?d= 또는 #해시)
+        const params = new URLSearchParams(window.location.search);
+        const shareId = params.get("d");
         const hash = window.location.hash.slice(1);
-        if (hash) {
+        if (shareId) {
+          // Supabase 짧은 코드
+          getSupabase()
+            .from("shared_decks")
+            .select("deck_data")
+            .eq("id", shareId)
+            .single()
+            .then(({ data: row }) => {
+              if (row?.deck_data) {
+                applyDeckData(row.deck_data as DeckData, data);
+                window.history.replaceState(null, "", window.location.pathname);
+                showToast("공유된 덱을 불러왔습니다!");
+              }
+            });
+        } else if (hash) {
+          // 구 해시 방식 (하위 호환)
           const deckData = decodeDeck(hash);
           if (deckData) {
             applyDeckData(deckData, data);
@@ -1613,11 +1699,15 @@ export default function ClanBossPage() {
     const newSlots = data.slots.map((sd) => {
       if (!sd.slug) return createSlotData();
       const champ = list.find((c) => c.slug === sd.slug) || null;
+      // skillConfigs가 비어있으면 챔피언 기본 설정 생성
+      const configs = (champ && sd.skillConfigs.length === 0)
+        ? buildSkillConfigs(champ)
+        : sd.skillConfigs;
       return {
         champion: champ,
         speed: sd.speed,
         speedAura: sd.speedAura,
-        skillConfigs: sd.skillConfigs,
+        skillConfigs: configs,
         steelEpic: sd.steelEpic,
         setBonusPct: sd.setBonusPct,
       } as SlotData;
@@ -1645,11 +1735,30 @@ export default function ClanBossPage() {
   const handleSavePreset = useCallback(async () => {
     const name = savePresetName.trim();
     if (!name) return;
+    const deckData = getCurrentDeckData();
+
+    // 같은 이름의 기존 프리셋이 있으면 덮어쓰기
+    const existing = presets.find((p) => p.name === name);
+    if (existing) {
+      if (!confirm(`"${name}" 프리셋이 이미 존재합니다. 덮어쓰시겠습니까?`)) return;
+      if (isLoggedIn) {
+        await dbUpdatePreset(existing.id, deckData);
+      }
+      const updated = presets.map((p) =>
+        p.id === existing.id ? { ...p, data: deckData, createdAt: Date.now() } : p
+      );
+      setPresets(updated);
+      if (!isLoggedIn) savePresetsLocal(updated);
+      setSaveDialogOpen(false);
+      setSavePresetName("");
+      showToast(`"${name}" 덮어쓰기 완료!`);
+      return;
+    }
+
     if (presets.length >= 10) {
       showToast("프리셋은 최대 10개까지 저장할 수 있습니다.");
       return;
     }
-    const deckData = getCurrentDeckData();
 
     if (isLoggedIn && user) {
       const created = await dbCreatePreset(user.id, name, deckData);
@@ -1682,21 +1791,33 @@ export default function ClanBossPage() {
     if (!isLoggedIn) savePresetsLocal(updated);
   }, [presets, isLoggedIn]);
 
-  // 프리셋 공유 링크 복사
-  const handleSharePreset = useCallback((preset: DeckPreset) => {
-    const hash = encodeDeck(preset.data);
-    const url = `${window.location.origin}${window.location.pathname}#${hash}`;
-    navigator.clipboard.writeText(url).then(() => {
+  // 프리셋 공유 링크 복사 (Supabase 짧은 코드)
+  const handleSharePreset = useCallback(async (preset: DeckPreset) => {
+    showToast("공유 링크 생성 중...");
+    try {
+      const { data, error } = await getSupabase()
+        .from("shared_decks")
+        .insert({ deck_data: preset.data, user_id: user?.id || null })
+        .select("id")
+        .single();
+      if (error || !data) throw error;
+      const url = `${window.location.origin}${window.location.pathname}?d=${data.id}`;
+      await navigator.clipboard.writeText(url).catch(() => {
+        const input = document.createElement("input");
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+      });
       showToast(`"${preset.name}" 공유 링크가 복사되었습니다!`);
-    }).catch(() => {
-      const input = document.createElement("input");
-      input.value = url;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-      showToast(`"${preset.name}" 링크가 복사되었습니다!`);
-    });
+    } catch {
+      // Supabase 실패 시 기존 해시 방식 fallback
+      const hash = encodeDeck(preset.data);
+      const url = `${window.location.origin}${window.location.pathname}#${hash}`;
+      await navigator.clipboard.writeText(url).catch(() => {});
+      showToast(`"${preset.name}" 링크 복사됨 (긴 링크)`);
+    }
   }, [showToast]);
 
   const clearSimulation = () => {
@@ -1814,7 +1935,7 @@ export default function ClanBossPage() {
                             {champNames.join(", ") || "빈 덱"}
                           </div>
                         </button>
-                        <div className="flex px-2 pb-2 gap-1 opacity-0 group-hover:opacity-100 transition-opacity -mt-1">
+                        <div className="flex px-2 pb-2 gap-1 -mt-1">
                           <button
                             onClick={() => handleSharePreset(preset)}
                             className="flex items-center gap-1 px-2 py-1 text-[10px] text-gray-500 hover:text-blue-400 rounded transition-colors cursor-pointer"
