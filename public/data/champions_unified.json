@@ -592,7 +592,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -751,6 +756,10 @@
           {
             "name": "Petrification",
             "turns": null
+          },
+          {
+            "name": "Decrease RES",
+            "turns": 1
           },
           {
             "name": "Decrease SPD",
@@ -2239,6 +2248,10 @@
           {
             "name": "Block Active Skills",
             "turns": 1
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -2382,6 +2395,14 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": 2
+          },
+          {
+            "name": "Pain Link",
+            "turns": 2
+          },
+          {
             "name": "Decrease SPD",
             "turns": 2
           }
@@ -2427,6 +2448,10 @@
           },
           {
             "name": "Block Buffs",
+            "turns": null
+          },
+          {
+            "name": "Heal Reduction",
             "turns": null
           },
           {
@@ -2891,8 +2916,20 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": null
+          },
+          {
             "name": "Weaken",
             "turns": 2
+          },
+          {
+            "name": "Enfeeble",
+            "turns": 2
+          },
+          {
+            "name": "Enfeeble",
+            "turns": null
           }
         ],
         "extra_turn": false,
@@ -3844,7 +3881,16 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Nullify",
+            "turns": 2
+          },
+          {
+            "name": "Seal",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -3876,7 +3922,12 @@
         "type": "Passive",
         "cooldown": 3,
         "booked_cooldown": 2,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Evades",
+            "turns": null
+          }
+        ],
         "debuffs": [],
         "extra_turn": false,
         "tm_fill": [],
@@ -4444,6 +4495,10 @@
         ],
         "debuffs": [
           {
+            "name": "Deathbrand",
+            "turns": 2
+          },
+          {
             "name": "Hex",
             "turns": 2
           }
@@ -4920,6 +4975,10 @@
           }
         ],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
           {
             "name": "Block Buffs",
             "turns": 2
@@ -5623,7 +5682,12 @@
             "turns": 3
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Deathbrand",
+            "turns": 2
+          }
+        ],
         "extra_turn": true,
         "tm_fill": [],
         "cd_reduce": null,
@@ -6052,6 +6116,10 @@
         "buffs": [
           {
             "name": "Increase DEF",
+            "turns": 2
+          },
+          {
+            "name": "Increase C. DMG",
             "turns": 2
           }
         ],
@@ -6712,7 +6780,12 @@
         "type": "Active",
         "cooldown": 6,
         "booked_cooldown": 4,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Intercept",
+            "turns": null
+          }
+        ],
         "debuffs": [],
         "extra_turn": false,
         "tm_fill": [],
@@ -7163,7 +7236,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -7290,6 +7368,10 @@
         ],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": 2
+          },
+          {
             "name": "Poison",
             "turns": 2
           }
@@ -7361,7 +7443,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease C. Rate",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -7488,6 +7575,14 @@
           }
         ],
         "debuffs": [
+          {
+            "name": "Enfeeble",
+            "turns": 2
+          },
+          {
+            "name": "Enfeeble",
+            "turns": null
+          },
           {
             "name": " Decrease ACC",
             "turns": 2
@@ -8115,7 +8210,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Polymorph",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -8240,6 +8340,10 @@
         "debuffs": [
           {
             "name": "Decrease ACC",
+            "turns": 2
+          },
+          {
+            "name": "Decrease RES",
             "turns": 2
           },
           {
@@ -8401,7 +8505,12 @@
         "type": "Basic",
         "cooldown": 0,
         "booked_cooldown": 0,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Increase C. RATE",
+            "turns": 1
+          }
+        ],
         "debuffs": [],
         "extra_turn": false,
         "tm_fill": [],
@@ -9584,6 +9693,10 @@
         ],
         "debuffs": [
           {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
+          {
             "name": "True Fear",
             "turns": 2
           }
@@ -9735,6 +9848,14 @@
           {
             "name": "Strengthen",
             "turns": null
+          },
+          {
+            "name": "Fervor",
+            "turns": null
+          },
+          {
+            "name": "Bone Armor",
+            "turns": null
           }
         ],
         "debuffs": [],
@@ -9800,7 +9921,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -10489,7 +10615,12 @@
         "cooldown": 3,
         "booked_cooldown": 2,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -10502,7 +10633,12 @@
         "type": "Active",
         "cooldown": 4,
         "booked_cooldown": 3,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Increase C. RATE",
+            "turns": 2
+          }
+        ],
         "debuffs": [],
         "extra_turn": false,
         "tm_fill": [],
@@ -10879,7 +11015,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -13376,7 +13517,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 1
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -14316,7 +14462,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -14681,6 +14832,10 @@
         "booked_cooldown": 3,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
           {
             "name": "Decrease ACC",
             "turns": 2
@@ -15088,7 +15243,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -15375,7 +15535,12 @@
         "cooldown": 6,
         "booked_cooldown": 5,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 1
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -16853,7 +17018,12 @@
         "cooldown": 6,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 3
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -17246,7 +17416,16 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          },
+          {
+            "name": "Decrease RES",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -17319,7 +17498,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -17731,6 +17915,10 @@
         "booked_cooldown": 3,
         "buffs": [
           {
+            "name": "Intercept",
+            "turns": null
+          },
+          {
             "name": "Increase RES",
             "turns": 2
           },
@@ -17764,6 +17952,14 @@
           {
             "name": "Increase SPD",
             "turns": null
+          },
+          {
+            "name": "Increase C. RATE",
+            "turns": null
+          },
+          {
+            "name": "Increase C. DMG",
+            "turns": null
           }
         ],
         "debuffs": [
@@ -17777,6 +17973,14 @@
           },
           {
             "name": "Decrease SPD",
+            "turns": null
+          },
+          {
+            "name": "Decrease C. RATE",
+            "turns": null
+          },
+          {
+            "name": "Decrease C. DMG",
             "turns": null
           }
         ],
@@ -19094,6 +19298,10 @@
         "booked_cooldown": 3,
         "buffs": [
           {
+            "name": "Intercept",
+            "turns": null
+          },
+          {
             "name": "Block Debuffs",
             "turns": 2
           },
@@ -19320,7 +19528,12 @@
         "cooldown": 5,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -19563,7 +19776,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Ensnare",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -20093,6 +20311,10 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Necrosis",
+            "turns": null
+          },
+          {
             "name": "Block Revive",
             "turns": null
           }
@@ -20157,7 +20379,12 @@
             "turns": 1
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Necrosis",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -20187,7 +20414,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Necrosis",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -20209,6 +20441,10 @@
           {
             "name": "Decrease ATK",
             "turns": 2
+          },
+          {
+            "name": "Necrosis",
+            "turns": null
           }
         ],
         "extra_turn": false,
@@ -20224,6 +20460,10 @@
         "cooldown": 5,
         "booked_cooldown": 4,
         "buffs": [
+          {
+            "name": "Stoneskin",
+            "turns": null
+          },
           {
             "name": "Block Debuffs",
             "turns": null
@@ -20247,7 +20487,15 @@
             "turns": null
           },
           {
+            "name": "Heal Reduction",
+            "turns": null
+          },
+          {
             "name": "Weaken",
+            "turns": null
+          },
+          {
+            "name": "Necrosis",
             "turns": null
           }
         ],
@@ -20278,7 +20526,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Necrosis",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -21911,6 +22164,10 @@
             "turns": null
           },
           {
+            "name": "Stoneskin",
+            "turns": null
+          },
+          {
             "name": "Increase DEF",
             "turns": null
           },
@@ -23125,7 +23382,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -23311,7 +23573,12 @@
         "cooldown": 5,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -23878,7 +24145,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -24279,6 +24551,14 @@
           {
             "name": "Increase ATK",
             "turns": null
+          },
+          {
+            "name": "Increase C. Rate",
+            "turns": 2
+          },
+          {
+            "name": "Increase C. DMG",
+            "turns": 2
           }
         ],
         "debuffs": [],
@@ -24475,6 +24755,10 @@
           {
             "name": "Shield",
             "turns": null
+          },
+          {
+            "name": "Fortify",
+            "turns": 2
           }
         ],
         "debuffs": [],
@@ -25305,6 +25589,10 @@
         "booked_cooldown": 3,
         "buffs": [
           {
+            "name": "Life Barrier",
+            "turns": null
+          },
+          {
             "name": "Shield",
             "turns": null
           },
@@ -25385,7 +25673,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -26152,6 +26445,10 @@
           {
             "name": "Leech",
             "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -26258,7 +26555,12 @@
         "cooldown": 4,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -26829,7 +27131,16 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Pain Link",
+            "turns": 2
+          },
+          {
+            "name": "Pain Link",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -27305,7 +27616,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -27545,6 +27861,10 @@
         "buffs": [
           {
             "name": "Block Debuffs",
+            "turns": 2
+          },
+          {
+            "name": "Fervor",
             "turns": 2
           }
         ],
@@ -29108,6 +29428,10 @@
         "booked_cooldown": 3,
         "buffs": [
           {
+            "name": "Increase C. DMG",
+            "turns": 2
+          },
+          {
             "name": "Unkillable",
             "turns": null
           },
@@ -29120,7 +29444,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Shatter",
+            "turns": 2
+          }
+        ],
         "extra_turn": true,
         "tm_fill": [],
         "cd_reduce": null,
@@ -29446,7 +29775,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [
           {
@@ -29836,7 +30170,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -30100,7 +30439,12 @@
         "cooldown": 3,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -31555,7 +31899,12 @@
         "cooldown": 3,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -31938,7 +32287,12 @@
         "cooldown": 3,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -32224,6 +32578,10 @@
         "buffs": [
           {
             "name": "Increase ATK",
+            "turns": 3
+          },
+          {
+            "name": "Increase C. RATE",
             "turns": 3
           }
         ],
@@ -32857,6 +33215,10 @@
             "turns": null
           },
           {
+            "name": "Heal Reduction",
+            "turns": null
+          },
+          {
             "name": "Weaken",
             "turns": null
           }
@@ -33076,7 +33438,12 @@
         "cooldown": 5,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -35241,7 +35608,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -36056,6 +36428,10 @@
           {
             "name": "Block Active Skills",
             "turns": 3
+          },
+          {
+            "name": "Decrease C. DMG",
+            "turns": null
           }
         ],
         "extra_turn": false,
@@ -36079,6 +36455,10 @@
         "debuffs": [
           {
             "name": "Decrease ACC",
+            "turns": 2
+          },
+          {
+            "name": "Decrease C. DMG",
             "turns": 2
           }
         ],
@@ -37252,7 +37632,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -37434,6 +37819,10 @@
           },
           {
             "name": "Decrease ACC",
+            "turns": null
+          },
+          {
+            "name": "Heal Reduction",
             "turns": null
           }
         ],
@@ -37861,7 +38250,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Seal",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -37996,7 +38390,16 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Shatter",
+            "turns": 2
+          },
+          {
+            "name": "Shatter",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -38187,7 +38590,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Deathbrand",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [
           {
@@ -39065,6 +39473,10 @@
           {
             "name": "Decrease ACC",
             "turns": 2
+          },
+          {
+            "name": "Decrease RES",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -39279,7 +39691,12 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -40249,7 +40666,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Pain Link",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -40285,7 +40707,12 @@
         "type": "Active",
         "cooldown": 4,
         "booked_cooldown": 3,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Life Barrier",
+            "turns": null
+          }
+        ],
         "debuffs": [
           {
             "name": "Poison Cloud",
@@ -40464,8 +40891,17 @@
         "type": "Active",
         "cooldown": 5,
         "booked_cooldown": 4,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Increase C. RATE",
+            "turns": 3
+          }
+        ],
         "debuffs": [
+          {
+            "name": "Shatter",
+            "turns": 3
+          },
           {
             "name": "True Fear",
             "turns": 1
@@ -40571,6 +41007,10 @@
         "buffs": [
           {
             "name": "Taunt",
+            "turns": 2
+          },
+          {
+            "name": "Fortify",
             "turns": 2
           },
           {
@@ -40813,7 +41253,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -41921,6 +42366,10 @@
         "booked_cooldown": 4,
         "buffs": [
           {
+            "name": "Increase C. RATE",
+            "turns": 2
+          },
+          {
             "name": "Increase ATK",
             "turns": 2
           }
@@ -41985,6 +42434,10 @@
         "buffs": [
           {
             "name": "Increase ATK",
+            "turns": 2
+          },
+          {
+            "name": "Increase C. DMG",
             "turns": 2
           },
           {
@@ -42083,6 +42536,10 @@
         "booked_cooldown": 3,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
           {
             "name": "Block Buffs",
             "turns": 2
@@ -42490,7 +42947,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -42806,7 +43268,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -43797,7 +44264,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -43890,6 +44362,10 @@
         "debuffs": [
           {
             "name": "Leech",
+            "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
             "turns": 2
           }
         ],
@@ -44251,6 +44727,10 @@
             "turns": null
           },
           {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
+          {
             "name": "Decrease SPD",
             "turns": 2
           }
@@ -44581,6 +45061,10 @@
         "booked_cooldown": 0,
         "buffs": [
           {
+            "name": "Life Barrier",
+            "turns": null
+          },
+          {
             "name": "Ally Protection",
             "turns": null
           }
@@ -44734,7 +45218,12 @@
             "turns": 3
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -45249,7 +45738,12 @@
         "cooldown": 5,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -46178,7 +46672,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Enfeeble",
+            "turns": 1
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -46859,6 +47358,10 @@
         "booked_cooldown": 4,
         "buffs": [
           {
+            "name": "Increase C. RATE",
+            "turns": 2
+          },
+          {
             "name": "Increase ATK",
             "turns": 2
           }
@@ -47232,6 +47735,10 @@
           {
             "name": "Block Debuffs",
             "turns": 1
+          },
+          {
+            "name": "Increase C. RATE",
+            "turns": 2
           },
           {
             "name": "Increase DEF",
@@ -48107,7 +48614,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -48409,6 +48921,10 @@
         "booked_cooldown": 3,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
           {
             "name": "Decrease SPD",
             "turns": 2
@@ -48752,7 +49268,12 @@
         "type": "Passive",
         "cooldown": 0,
         "booked_cooldown": 0,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Intercept",
+            "turns": null
+          }
+        ],
         "debuffs": [
           {
             "name": "Stun",
@@ -49009,7 +49530,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -49039,7 +49565,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -50011,6 +50542,10 @@
         "debuffs": [
           {
             "name": "Decrease Accuracy",
+            "turns": 2
+          },
+          {
+            "name": "Decrease Resistance",
             "turns": 2
           }
         ],
@@ -51160,6 +51695,10 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": 2
+          },
+          {
             "name": "Block Buffs",
             "turns": 2
           }
@@ -51726,6 +52265,10 @@
         "booked_cooldown": 0,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Enfeeble",
+            "turns": 2
+          },
           {
             "name": "Weaken",
             "turns": 2
@@ -52514,6 +53057,10 @@
           {
             "name": "Decrease ATK",
             "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -52746,7 +53293,12 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -52911,7 +53463,12 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Shatter",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": {
@@ -53452,7 +54009,12 @@
         "cooldown": 3,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -53543,6 +54105,10 @@
         "booked_cooldown": 4,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
           {
             "name": "Decrease ATK",
             "turns": 2
@@ -54160,7 +54726,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -54437,7 +55008,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -54592,6 +55168,10 @@
         ],
         "debuffs": [
           {
+            "name": "Ensnare",
+            "turns": 2
+          },
+          {
             "name": "Freeze",
             "turns": null
           }
@@ -54608,7 +55188,12 @@
         "type": "Active",
         "cooldown": 4,
         "booked_cooldown": 3,
-        "buffs": [],
+        "buffs": [
+          {
+            "name": "Intercept",
+            "turns": 1
+          }
+        ],
         "debuffs": [
           {
             "name": "Freeze",
@@ -54831,7 +55416,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Ensnared",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -54848,6 +55438,10 @@
           {
             "name": "Increase ACC",
             "turns": 2
+          },
+          {
+            "name": "Intercept",
+            "turns": null
           }
         ],
         "debuffs": [],
@@ -55382,7 +55976,12 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -55974,7 +56573,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -56057,6 +56661,10 @@
         "booked_cooldown": 4,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Deathbrand",
+            "turns": 2
+          },
           {
             "name": "True Fear",
             "turns": 1
@@ -57769,7 +58377,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 1
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -58359,7 +58972,12 @@
         "cooldown": 4,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -58752,7 +59370,12 @@
         "cooldown": 5,
         "booked_cooldown": 3,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -59305,7 +59928,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -60941,6 +61569,10 @@
           {
             "name": "Block Buffs",
             "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -60982,6 +61614,10 @@
         "debuffs": [
           {
             "name": "Block Buffs",
+            "turns": null
+          },
+          {
+            "name": "Heal Reduction",
             "turns": null
           }
         ],
@@ -61803,6 +62439,10 @@
           {
             "name": "Decrease ATK",
             "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -62608,6 +63248,14 @@
         "booked_cooldown": 1,
         "buffs": [
           {
+            "name": "Evade",
+            "turns": null
+          },
+          {
+            "name": "Evade",
+            "turns": 2
+          },
+          {
             "name": "Perfect Veil",
             "turns": 2
           }
@@ -63227,7 +63875,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -63425,6 +64078,10 @@
         "buffs": [
           {
             "name": "Increase ATK",
+            "turns": 2
+          },
+          {
+            "name": "Increase C. RATE",
             "turns": 2
           }
         ],
@@ -64234,6 +64891,10 @@
           {
             "name": "Increase ATK",
             "turns": 2
+          },
+          {
+            "name": "Increase C. DMG",
+            "turns": 2
           }
         ],
         "debuffs": [],
@@ -64292,6 +64953,10 @@
         "debuffs": [
           {
             "name": "Decrease DEF",
+            "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
             "turns": 2
           }
         ],
@@ -64584,7 +65249,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [
           {
@@ -64777,7 +65447,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": null
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -65465,7 +66140,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Fatigue",
+            "turns": 1
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -66391,6 +67071,10 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": null
+          },
+          {
             "name": "Stun",
             "turns": null
           }
@@ -66433,6 +67117,10 @@
           }
         ],
         "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          },
           {
             "name": "Stun",
             "turns": 1
@@ -67024,6 +67712,10 @@
           {
             "name": "Provoke",
             "turns": 1
+          },
+          {
+            "name": "Enfeeble",
+            "turns": 1
           }
         ],
         "extra_turn": false,
@@ -67041,6 +67733,10 @@
         "buffs": [
           {
             "name": "Increase DEF",
+            "turns": null
+          },
+          {
+            "name": "Stormcall",
             "turns": null
           },
           {
@@ -67454,6 +68150,10 @@
           {
             "name": "HP Burn",
             "turns": null
+          },
+          {
+            "name": "Decrease RES",
+            "turns": 1
           }
         ],
         "extra_turn": false,
@@ -68013,7 +68713,12 @@
             "turns": 2
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [
           {
@@ -68195,7 +68900,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -68761,6 +69471,10 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Decrease RES",
+            "turns": 2
+          },
+          {
             "name": "Sleep",
             "turns": 1
           }
@@ -68785,6 +69499,10 @@
         "buffs": [
           {
             "name": "Increase ATK",
+            "turns": 2
+          },
+          {
+            "name": "Increase C. DMG",
             "turns": 2
           }
         ],
@@ -69051,6 +69769,10 @@
           {
             "name": "HP Burn",
             "turns": null
+          },
+          {
+            "name": "Heal Reduction",
+            "turns": 2
           }
         ],
         "extra_turn": false,
@@ -69949,6 +70671,10 @@
         "booked_cooldown": 4,
         "buffs": [
           {
+            "name": "Life Barrier",
+            "turns": null
+          },
+          {
             "name": "Ally Protection",
             "turns": null
           }
@@ -70642,7 +71368,12 @@
         "cooldown": 5,
         "booked_cooldown": 4,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Decrease RES",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -72055,6 +72786,10 @@
         "debuffs": [
           {
             "name": "Block Buffs",
+            "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
             "turns": 2
           },
           {
@@ -73604,7 +74339,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -75598,6 +76338,10 @@
           {
             "name": "Stun",
             "turns": 1
+          },
+          {
+            "name": "Smite",
+            "turns": null
           }
         ],
         "extra_turn": false,
@@ -76091,6 +76835,10 @@
         "booked_cooldown": 3,
         "buffs": [
           {
+            "name": "Intercept",
+            "turns": null
+          },
+          {
             "name": "Increase DEF",
             "turns": 2
           },
@@ -76208,7 +76956,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Pain Link",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [
           {
@@ -76281,6 +77034,10 @@
         "booked_cooldown": 3,
         "buffs": [],
         "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 3
+          },
           {
             "name": "Poison",
             "turns": 2
@@ -76557,6 +77314,10 @@
         "buffs": [],
         "debuffs": [
           {
+            "name": "Heal Reduction",
+            "turns": 2
+          },
+          {
             "name": "Decrease DEF",
             "turns": 2
           }
@@ -76752,7 +77513,12 @@
             "turns": null
           }
         ],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Shatter",
+            "turns": 2
+          }
+        ],
         "extra_turn": true,
         "tm_fill": [
           {
@@ -77272,6 +78038,10 @@
           },
           {
             "name": "Decrease ATK",
+            "turns": 2
+          },
+          {
+            "name": "Heal Reduction",
             "turns": 2
           }
         ],
@@ -79252,7 +80022,12 @@
         "cooldown": 0,
         "booked_cooldown": 0,
         "buffs": [],
-        "debuffs": [],
+        "debuffs": [
+          {
+            "name": "Heal Reduction",
+            "turns": 2
+          }
+        ],
         "extra_turn": false,
         "tm_fill": [],
         "cd_reduce": null,
@@ -80012,8 +80787,16 @@
             "turns": 2
           },
           {
+            "name": "Infest",
+            "turns": 2
+          },
+          {
             "name": "True Fear",
             "turns": 1
+          },
+          {
+            "name": "Infest",
+            "turns": null
           }
         ],
         "extra_turn": false,
