@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import { useAuth } from "@/lib/AuthContext";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 interface BuffDebuff {
   name: string;
@@ -1445,7 +1445,7 @@ function savePresetsLocal(presets: DeckPreset[]) {
 
 // ── Supabase 프리셋 CRUD ──────────────────────────────
 async function dbLoadPresets(userId: string): Promise<DeckPreset[]> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("clan_boss_presets")
     .select("*")
     .order("created_at", { ascending: false });
@@ -1459,7 +1459,7 @@ async function dbLoadPresets(userId: string): Promise<DeckPreset[]> {
 }
 
 async function dbCreatePreset(userId: string, name: string, deckData: DeckData): Promise<DeckPreset | null> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("clan_boss_presets")
     .insert({ user_id: userId, name, deck_data: deckData })
     .select()
@@ -1469,7 +1469,7 @@ async function dbCreatePreset(userId: string, name: string, deckData: DeckData):
 }
 
 async function dbDeletePreset(presetId: string): Promise<void> {
-  await supabase.from("clan_boss_presets").delete().eq("id", presetId);
+  await getSupabase().from("clan_boss_presets").delete().eq("id", presetId);
 }
 
 function slotsToData(slots: SlotData[]): DeckData["slots"] {

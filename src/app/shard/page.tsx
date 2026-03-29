@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useAuth } from "@/lib/AuthContext";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 // ── 타입 & 상수 ─────────────────────────────────────
 type ShardType = "ancient" | "void" | "sacred" | "primal";
@@ -170,7 +170,7 @@ function trackKeyToPityColumn(trackKey: string): "legendary" | "epic" {
 
 // ── Supabase CRUD 헬퍼 ──────────────────────────────
 async function dbLoadAccounts(userId: string): Promise<ShardAccount[]> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("shard_accounts")
     .select("id, name, created_at")
     .order("created_at", { ascending: true });
@@ -183,7 +183,7 @@ async function dbLoadAccounts(userId: string): Promise<ShardAccount[]> {
 }
 
 async function dbCreateAccount(userId: string, name: string): Promise<ShardAccount | null> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("shard_accounts")
     .insert({ user_id: userId, name })
     .select("id, name, created_at")
@@ -193,12 +193,12 @@ async function dbCreateAccount(userId: string, name: string): Promise<ShardAccou
 }
 
 async function dbDeleteAccount(accountId: string): Promise<void> {
-  const { error } = await supabase.from("shard_accounts").delete().eq("id", accountId);
+  const { error } = await getSupabase().from("shard_accounts").delete().eq("id", accountId);
   if (error) console.error("dbDeleteAccount error:", error);
 }
 
 async function dbLoadPity(accountId: string): Promise<Record<string, number>> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("shard_pity")
     .select("shard_type, legendary, epic")
     .eq("account_id", accountId);
@@ -215,7 +215,7 @@ async function dbSavePity(accountId: string, trackKey: string, value: number): P
   const shardType = trackKeyToShardType(trackKey);
   const col = trackKeyToPityColumn(trackKey);
 
-  const { error } = await supabase
+  const { error } = await getSupabase()
     .from("shard_pity")
     .upsert(
       { account_id: accountId, shard_type: shardType, [col]: value },
@@ -225,7 +225,7 @@ async function dbSavePity(accountId: string, trackKey: string, value: number): P
 }
 
 async function dbLoadHistory(accountId: string): Promise<PullRecord[]> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("shard_history")
     .select("id, shard_type, rarity, count, is_mercy, pulled_at")
     .eq("account_id", accountId)
@@ -241,7 +241,7 @@ async function dbLoadHistory(accountId: string): Promise<PullRecord[]> {
 }
 
 async function dbAddHistory(accountId: string, record: PullRecord): Promise<string | null> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("shard_history")
     .insert({
       account_id: accountId,
@@ -258,7 +258,7 @@ async function dbAddHistory(accountId: string, record: PullRecord): Promise<stri
 }
 
 async function dbDeleteHistory(dbId: string): Promise<void> {
-  const { error } = await supabase.from("shard_history").delete().eq("id", dbId);
+  const { error } = await getSupabase().from("shard_history").delete().eq("id", dbId);
   if (error) console.error("dbDeleteHistory error:", error);
 }
 
