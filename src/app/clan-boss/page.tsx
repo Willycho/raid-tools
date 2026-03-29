@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
+import { useAuth } from "@/lib/AuthContext";
+import { supabase } from "@/lib/supabase";
 
 interface BuffDebuff {
   name: string;
@@ -1437,8 +1439,37 @@ function loadPresets(): DeckPreset[] {
   catch { return []; }
 }
 
-function savePresets(presets: DeckPreset[]) {
+function savePresetsLocal(presets: DeckPreset[]) {
   localStorage.setItem(PRESET_STORAGE_KEY, JSON.stringify(presets));
+}
+
+// ── Supabase 프리셋 CRUD ──────────────────────────────
+async function dbLoadPresets(userId: string): Promise<DeckPreset[]> {
+  const { data, error } = await supabase
+    .from("clan_boss_presets")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error || !data) return [];
+  return data.map((row: { id: string; name: string; deck_data: DeckData; created_at: string }) => ({
+    id: row.id,
+    name: row.name,
+    createdAt: new Date(row.created_at).getTime(),
+    data: row.deck_data as DeckData,
+  }));
+}
+
+async function dbCreatePreset(userId: string, name: string, deckData: DeckData): Promise<DeckPreset | null> {
+  const { data, error } = await supabase
+    .from("clan_boss_presets")
+    .insert({ user_id: userId, name, deck_data: deckData })
+    .select()
+    .single();
+  if (error || !data) return null;
+  return { id: data.id, name: data.name, createdAt: new Date(data.created_at).getTime(), data: data.deck_data as DeckData };
+}
+
+async function dbDeletePreset(presetId: string): Promise<void> {
+  await supabase.from("clan_boss_presets").delete().eq("id", presetId);
 }
 
 function slotsToData(slots: SlotData[]): DeckData["slots"] {
@@ -1494,6 +1525,8 @@ function buildSkillConfigs(champion: Champion): SkillConfig[] {
 }
 
 export default function ClanBossPage() {
+  const { user } = useAuth();
+  const isLoggedIn = !!user;
   const [champions, setChampions] = useState<Champion[]>([]);
   const [krNames, setKrNames] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -1524,6 +1557,13 @@ export default function ClanBossPage() {
     setTimeout(() => setToastMsg(""), 2000);
   }, []);
 
+  // 로그인 시 Supabase에서 프리셋 로드
+  useEffect(() => {
+    if (user?.id) {
+      dbLoadPresets(user.id).then((p) => setPresets(p));
+    }
+  }, [user?.id]);
+
   // 프리셋 메뉴 외부 클릭 닫기
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -1544,8 +1584,10 @@ export default function ClanBossPage() {
         setKrNames(kr);
         setLoading(false);
 
-        // 프리셋 로드
-        setPresets(loadPresets());
+        // 프리셋 로드 (비로그인 시 localStorage)
+        if (!user) {
+          setPresets(loadPresets());
+        }
 
         // URL 해시에서 덱 불러오기
         const hash = window.location.hash.slice(1);
@@ -1600,33 +1642,45 @@ export default function ClanBossPage() {
   }), [slots, bossDifficulty, bossAffinity, regionBonus, regionBonusValue]);
 
   // 프리셋 저장 (최대 10개)
-  const handleSavePreset = useCallback(() => {
+  const handleSavePreset = useCallback(async () => {
     const name = savePresetName.trim();
     if (!name) return;
     if (presets.length >= 10) {
       showToast("프리셋은 최대 10개까지 저장할 수 있습니다.");
       return;
     }
-    const newPreset: DeckPreset = {
-      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
-      name,
-      createdAt: Date.now(),
-      data: getCurrentDeckData(),
-    };
-    const updated = [newPreset, ...presets];
-    setPresets(updated);
-    savePresets(updated);
+    const deckData = getCurrentDeckData();
+
+    if (isLoggedIn && user) {
+      const created = await dbCreatePreset(user.id, name, deckData);
+      if (created) {
+        setPresets((prev) => [created, ...prev]);
+      }
+    } else {
+      const newPreset: DeckPreset = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+        name,
+        createdAt: Date.now(),
+        data: deckData,
+      };
+      const updated = [newPreset, ...presets];
+      setPresets(updated);
+      savePresetsLocal(updated);
+    }
     setSaveDialogOpen(false);
     setSavePresetName("");
     showToast(`"${name}" 저장 완료!`);
-  }, [savePresetName, getCurrentDeckData, presets, showToast]);
+  }, [savePresetName, getCurrentDeckData, presets, showToast, isLoggedIn, user]);
 
   // 프리셋 삭제
-  const handleDeletePreset = useCallback((id: string) => {
+  const handleDeletePreset = useCallback(async (id: string) => {
+    if (isLoggedIn) {
+      await dbDeletePreset(id);
+    }
     const updated = presets.filter((p) => p.id !== id);
     setPresets(updated);
-    savePresets(updated);
-  }, [presets]);
+    if (!isLoggedIn) savePresetsLocal(updated);
+  }, [presets, isLoggedIn]);
 
   // 프리셋 공유 링크 복사
   const handleSharePreset = useCallback((preset: DeckPreset) => {
