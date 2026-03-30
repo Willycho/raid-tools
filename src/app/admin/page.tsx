@@ -34,18 +34,22 @@ interface PullRecord {
 
 // ── 대시보드용 상수 ──────────────────────────────
 const TRACKS = [
-  { key: "ancient_0", label: "고대", rarity: "전설", shardName: "고대", image: "/shards/ancient.png", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
-  { key: "void_0", label: "보이드", rarity: "전설", shardName: "보이드", image: "/shards/void.png", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
-  { key: "sacred_0", label: "신성", rarity: "전설", shardName: "신성", image: "/shards/sacred.png", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
-  { key: "primal_0", label: "태고 전설", rarity: "전설", shardName: "태고", image: "/shards/primal.png", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
-  { key: "primal_1", label: "태고 신화", rarity: "신화", shardName: "태고", image: "/shards/primal.png", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
+  { key: "ancient_0", label: "고대", rarity: "전설", shardName: "고대", image: "/shards/ancient.webp", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
+  { key: "void_0", label: "보이드", rarity: "전설", shardName: "보이드", image: "/shards/void.webp", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
+  { key: "sacred_0", label: "신성", rarity: "전설", shardName: "신성", image: "/shards/sacred.webp", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
+  { key: "primal_0", label: "태고 전설", rarity: "전설", shardName: "태고", image: "/shards/primal.webp", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
+  { key: "primal_1", label: "태고 신화", rarity: "신화", shardName: "태고", image: "/shards/primal.webp", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
+  { key: "prism_0", label: "프리즘", rarity: "전설", shardName: "프리즘", image: "/shards/prism.webp", color: "#06B6D4", textColor: "text-cyan-400", bgColor: "bg-cyan-500/10" },
+  { key: "remnant_0", label: "잔유물", rarity: "전설", shardName: "잔유물", image: "/shards/remnant.webp", color: "#14B8A6", textColor: "text-teal-400", bgColor: "bg-teal-500/10" },
 ];
 
 const SHARD_GROUPS = [
-  { keys: ["ancient_0"], label: "고대", color: "#3B82F6", image: "/shards/ancient.png" },
-  { keys: ["void_0"], label: "보이드", color: "#A855F7", image: "/shards/void.png" },
-  { keys: ["sacred_0"], label: "신성", color: "#EAB308", image: "/shards/sacred.png" },
-  { keys: ["primal_0", "primal_1"], label: "태고", color: "#EF4444", image: "/shards/primal.png" },
+  { keys: ["ancient_0"], label: "고대", color: "#3B82F6", image: "/shards/ancient.webp" },
+  { keys: ["void_0"], label: "보이드", color: "#A855F7", image: "/shards/void.webp" },
+  { keys: ["sacred_0"], label: "신성", color: "#EAB308", image: "/shards/sacred.webp" },
+  { keys: ["primal_0", "primal_1"], label: "태고", color: "#EF4444", image: "/shards/primal.webp" },
+  { keys: ["prism_0"], label: "프리즘", color: "#06B6D4", image: "/shards/prism.webp" },
+  { keys: ["remnant_0"], label: "잔유물", color: "#14B8A6", image: "/shards/remnant.webp" },
 ];
 
 function toTrackKey(shardType: string, rarity: string): string {

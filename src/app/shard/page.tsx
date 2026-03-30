@@ -6,7 +6,7 @@ import { useAuth } from "@/lib/AuthContext";
 import { getSupabase } from "@/lib/supabase";
 
 // ── 타입 & 상수 ─────────────────────────────────────
-type ShardType = "ancient" | "void" | "sacred" | "primal";
+type ShardType = "ancient" | "void" | "sacred" | "primal" | "prism" | "remnant";
 
 interface MercyTrack {
   rarity: string;
@@ -39,7 +39,7 @@ interface PullRecord {
 const SHARDS: Record<ShardType, ShardDef> = {
   ancient: {
     name: "고대",
-    image: "/shards/ancient.png",
+    image: "/shards/ancient.webp",
     borderColor: "border-blue-500/60",
     bgGlow: "shadow-blue-500/20",
     mercyTracks: [
@@ -56,7 +56,7 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   void: {
     name: "보이드",
-    image: "/shards/void.png",
+    image: "/shards/void.webp",
     borderColor: "border-purple-500/60",
     bgGlow: "shadow-purple-500/20",
     mercyTracks: [
@@ -73,7 +73,7 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   sacred: {
     name: "신성",
-    image: "/shards/sacred.png",
+    image: "/shards/sacred.webp",
     borderColor: "border-yellow-500/60",
     bgGlow: "shadow-yellow-500/20",
     mercyTracks: [
@@ -90,7 +90,7 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   primal: {
     name: "태고",
-    image: "/shards/primal.png",
+    image: "/shards/primal.webp",
     borderColor: "border-red-500/60",
     bgGlow: "shadow-red-500/20",
     mercyTracks: [
@@ -111,6 +111,40 @@ const SHARDS: Record<ShardType, ShardDef> = {
         base2xRate: 1,
         mercyStart: 200,
         mercyPerPull: 10,
+      },
+    ],
+  },
+  prism: {
+    name: "프리즘",
+    image: "/shards/prism.webp",
+    borderColor: "border-cyan-500/60",
+    bgGlow: "shadow-cyan-500/20",
+    mercyTracks: [
+      {
+        rarity: "전설",
+        color: "text-yellow-400",
+        borderColor: "border-yellow-500/50",
+        baseRate: 6,
+        base2xRate: 6, // 프리즘은 2배 이벤트 없음
+        mercyStart: 20,
+        mercyPerPull: 3,
+      },
+    ],
+  },
+  remnant: {
+    name: "잔유물",
+    image: "/shards/remnant.webp",
+    borderColor: "border-teal-500/60",
+    bgGlow: "shadow-teal-500/20",
+    mercyTracks: [
+      {
+        rarity: "신화",
+        color: "text-red-400",
+        borderColor: "border-red-500/50",
+        baseRate: 2.5,
+        base2xRate: 2.5, // 잔유물은 2배 이벤트 없음
+        mercyStart: 23,
+        mercyPerPull: 1,
       },
     ],
   },
@@ -615,6 +649,127 @@ function TrackCard({
   );
 }
 
+// ── 태고 통합 카드 (전설 + 신화를 하나의 +/- 로 관리) ──
+function PrimalCard({
+  pityLeg, pityMyth, setPity, is2x, onPull, history, onOpenHistory,
+}: {
+  pityLeg: number; pityMyth: number;
+  setPity: (key: string, val: number) => void;
+  is2x: boolean;
+  onPull: (trackKey: string, pulledAt: number, wasCeiling: boolean) => void;
+  history: PullRecord[];
+  onOpenHistory: (trackKey: string) => void;
+}) {
+  const shard = SHARDS.primal;
+  const [legTrack, mythTrack] = shard.mercyTracks;
+  const legRate = currentRate(legTrack, pityLeg, is2x);
+  const mythRate = currentRate(mythTrack, pityMyth, is2x);
+  const legCeiling = getCeiling(legTrack, is2x);
+  const mythCeiling = getCeiling(mythTrack, is2x);
+  const legRemaining = pullsToCeiling(legTrack, pityLeg, is2x);
+  const mythRemaining = pullsToCeiling(mythTrack, pityMyth, is2x);
+  const legIsCeiling = pityLeg >= legCeiling;
+  const mythIsCeiling = pityMyth >= mythCeiling;
+
+  // 천장 자동 트리거
+  useEffect(() => {
+    if (legIsCeiling && pityLeg > 0) onPull("primal_0", pityLeg, true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [legIsCeiling]);
+  useEffect(() => {
+    if (mythIsCeiling && pityMyth > 0) onPull("primal_1", pityMyth, true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mythIsCeiling]);
+
+  // 공통 +/- (두 카운터 동시 조정)
+  const adjust = (delta: number) => {
+    setPity("primal_0", Math.max(0, pityLeg + delta));
+    setPity("primal_1", Math.max(0, pityMyth + delta));
+  };
+
+  const pityMax = Math.max(pityLeg, pityMyth); // 표시용
+
+  const legHistory = history.filter((r) => r.trackKey === "primal_0");
+  const mythHistory = history.filter((r) => r.trackKey === "primal_1");
+  const totalPulls = legHistory.reduce((s, r) => s + r.pulledAt, 0) + pityMax;
+
+  return (
+    <div className={`bg-[#1a1a2e] border ${shard.borderColor} rounded-xl p-4 shadow-lg ${shard.bgGlow} flex flex-col`}>
+      {/* 상단: 이미지 + 두 원형 프로그레스 */}
+      <div className="flex items-center gap-3 mb-3">
+        <Image src={shard.image} alt={shard.name} width={56} height={56} className="drop-shadow-lg flex-shrink-0" />
+        <div className="flex gap-2">
+          <div className="text-center">
+            <CircleProgress value={pityLeg} max={legCeiling} size={60} stroke={4}>
+              <span className="text-white font-bold font-mono text-sm">{pityLeg}</span>
+            </CircleProgress>
+            <div className="text-[9px] text-yellow-400 mt-0.5">전설</div>
+          </div>
+          <div className="text-center">
+            <CircleProgress value={pityMyth} max={mythCeiling} size={60} stroke={4}>
+              <span className="text-white font-bold font-mono text-sm">{pityMyth}</span>
+            </CircleProgress>
+            <div className="text-[9px] text-red-400 mt-0.5">신화</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 공통 +/- 버튼 */}
+      <div className="flex items-center gap-1.5 mb-2">
+        <button onClick={() => adjust(-1)}
+          className="flex-1 h-8 rounded-lg bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-colors cursor-pointer font-mono text-base">-</button>
+        <button onClick={() => adjust(1)}
+          className="flex-1 h-8 rounded-lg bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-colors cursor-pointer font-mono text-base">+</button>
+        <button onClick={() => adjust(10)}
+          className="flex-1 h-8 rounded-lg bg-[#0d0d1a] border border-gray-700 text-amber-600 hover:text-amber-400 hover:border-amber-700 transition-colors cursor-pointer font-mono text-xs font-bold">+10</button>
+      </div>
+
+      {/* 획득 버튼 2개 (전설 / 신화) */}
+      <div className="flex gap-1.5 mb-3">
+        <button onClick={() => { if (pityLeg > 0) onPull("primal_0", pityLeg, false); }} disabled={pityLeg <= 0}
+          className={`flex-1 h-9 rounded-lg font-bold text-xs transition-all cursor-pointer border
+            ${pityLeg > 0 ? "border-yellow-500/50 text-yellow-400 bg-[#0d0d1a] hover:bg-[#1a1a3a] shadow-md" : "border-gray-800 text-gray-600 bg-[#0d0d1a] cursor-not-allowed"}`}>
+          전설 획득! ({pityLeg})
+        </button>
+        <button onClick={() => { if (pityMyth > 0) onPull("primal_1", pityMyth, false); }} disabled={pityMyth <= 0}
+          className={`flex-1 h-9 rounded-lg font-bold text-xs transition-all cursor-pointer border
+            ${pityMyth > 0 ? "border-red-500/50 text-red-400 bg-[#0d0d1a] hover:bg-[#1a1a3a] shadow-md" : "border-gray-800 text-gray-600 bg-[#0d0d1a] cursor-not-allowed"}`}>
+          신화 획득! ({pityMyth})
+        </button>
+      </div>
+
+      {/* 확률 표시 */}
+      <div className="flex gap-2 mb-2">
+        <div className="flex-1 text-center text-xs font-bold text-yellow-400">전설: {legRate.toFixed(1)}%</div>
+        <div className="flex-1 text-center text-xs font-bold text-red-400">신화: {mythRate.toFixed(1)}%</div>
+      </div>
+
+      {/* 세부 정보 */}
+      <div className="grid grid-cols-2 gap-1 text-[10px] text-gray-500">
+        <div>전설 천장: <span className={legRemaining <= 10 ? "text-emerald-400 font-bold" : "text-gray-400"}>{legRemaining}개</span></div>
+        <div className="text-right">신화 천장: <span className={mythRemaining <= 20 ? "text-emerald-400 font-bold" : "text-gray-400"}>{mythRemaining}개</span></div>
+      </div>
+
+      {/* 통계 + 기록 */}
+      <div className="mt-3 pt-3 border-t border-gray-800 flex items-center justify-between">
+        <div className="text-[10px] text-gray-500">
+          총 <span className="font-mono font-bold text-gray-300">{totalPulls}</span>개 소환
+        </div>
+        <div className="flex gap-1">
+          <button onClick={() => onOpenHistory("primal_0")}
+            className="text-[10px] px-2 py-1 rounded-md border border-yellow-500/30 text-yellow-400 hover:bg-white/5 cursor-pointer">
+            전설 ({legHistory.length})
+          </button>
+          <button onClick={() => onOpenHistory("primal_1")}
+            className="text-[10px] px-2 py-1 rounded-md border border-red-500/30 text-red-400 hover:bg-white/5 cursor-pointer">
+            신화 ({mythHistory.length})
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── 메인 컴포넌트 ────────────────────────────────────
 export default function ShardCalculator() {
   const { user, signInWithGoogle } = useAuth();
@@ -1054,7 +1209,7 @@ export default function ShardCalculator() {
         </div>
       )}
 
-      {/* 상단 3개 */}
+      {/* 상단: 고대 / 보이드 / 신성 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {(["ancient", "void", "sacred"] as const).map((type) => (
           <TrackCard
@@ -1072,15 +1227,24 @@ export default function ShardCalculator() {
         ))}
       </div>
 
-      {/* 하단 태고 2개 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {SHARDS.primal.mercyTracks.map((track, idx) => (
+      {/* 중단: 태고(통합) / 프리즘 / 잔유물 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <PrimalCard
+          pityLeg={getPity("primal_0")}
+          pityMyth={getPity("primal_1")}
+          setPity={setPity}
+          is2x={is2x}
+          onPull={handlePull}
+          history={history}
+          onOpenHistory={setModalTrackKey}
+        />
+        {(["prism", "remnant"] as const).map((type) => (
           <TrackCard
-            key={`primal_${idx}`}
-            shardType="primal"
-            track={track}
-            trackKey={`primal_${idx}`}
-            pity={getPity(`primal_${idx}`)}
+            key={`${type}_0`}
+            shardType={type}
+            track={SHARDS[type].mercyTracks[0]}
+            trackKey={`${type}_0`}
+            pity={getPity(`${type}_0`)}
             setPity={setPity}
             is2x={is2x}
             onPull={handlePull}
