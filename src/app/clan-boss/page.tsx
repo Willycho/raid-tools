@@ -1207,11 +1207,12 @@ function runSimulation(
     // 틱 → ≥100 확인 → 행동 → 다시 틱 (추가 턴만 예외로 틱 생략)
     for (const c of champions) {
       let eff = c.speed;
-      const hasIncrSpd = c.activeBuffs.some((b) => b.name === "Increase SPD");
-      const hasDecrSpd = c.activeBuffs.some((b) => b.name === "Decrease SPD") ||
-        c.activeDebuffs.some((b) => b.name === "Decrease SPD");
-      if (hasIncrSpd) eff *= 1.3;
-      if (hasDecrSpd) eff *= 0.85; // Decrease SPD = -15%
+      // 속도 버프/디버프는 합연산 (게임 내 동작: +30% -15% = +15%, 곱연산 아님)
+      let spdMod = 0;
+      if (c.activeBuffs.some((b) => b.name === "Increase SPD")) spdMod += 0.3;
+      if (c.activeBuffs.some((b) => b.name === "Decrease SPD") ||
+          c.activeDebuffs.some((b) => b.name === "Decrease SPD")) spdMod -= 0.15;
+      eff *= (1 + spdMod);
       c.turnMeter += eff * TICK_RATE;
     }
     boss.turnMeter += boss.speed * TICK_RATE;
