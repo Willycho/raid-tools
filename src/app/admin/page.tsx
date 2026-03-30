@@ -155,6 +155,9 @@ export default function AdminPage() {
   // 파편 탭 데이터
   const [allHistory, setAllHistory] = useState<PullRecord[]>([]);
   const [allPity, setAllPity] = useState<Record<string, number>>({});
+  const [shardDateRange, setShardDateRange] = useState<"all" | "7d" | "30d" | "90d" | "custom">("all");
+  const [shardDateFrom, setShardDateFrom] = useState("");
+  const [shardDateTo, setShardDateTo] = useState("");
 
   const isAdmin = user?.email && ADMIN_EMAILS.includes(user.email.toLowerCase());
 
@@ -268,19 +271,35 @@ export default function AdminPage() {
     await loadData();
   };
 
+  // ── 기간 필터링된 히스토리 ──
+  const filteredHistory = useMemo(() => {
+    let from = 0;
+    let to = Infinity;
+    if (shardDateRange === "7d") from = Date.now() - 7 * 86400000;
+    else if (shardDateRange === "30d") from = Date.now() - 30 * 86400000;
+    else if (shardDateRange === "90d") from = Date.now() - 90 * 86400000;
+    else if (shardDateRange === "custom") {
+      if (shardDateFrom) from = new Date(shardDateFrom).getTime();
+      if (shardDateTo) to = new Date(shardDateTo + "T23:59:59").getTime();
+    }
+    if (shardDateRange === "all") return allHistory;
+    return allHistory.filter((r) => r.timestamp >= from && r.timestamp <= to);
+  }, [allHistory, shardDateRange, shardDateFrom, shardDateTo]);
+
   // ── 파편 통계 계산 ──
   const shardStats = useMemo(() => {
+    const isFiltered = shardDateRange !== "all";
     const result: Record<string, { totalPulls: number; pullCount: number; avg: number; rate: string; currentPity: number }> = {};
     for (const track of TRACKS) {
-      const records = allHistory.filter((r) => r.trackKey === track.key);
-      const currentPity = allPity[track.key] ?? 0;
+      const records = filteredHistory.filter((r) => r.trackKey === track.key);
+      const currentPity = isFiltered ? 0 : (allPity[track.key] ?? 0); // 기간 필터 시 pity 제외
       const totalPulls = records.reduce((s, r) => s + r.pulledAt, 0) + currentPity;
       const avg = records.length > 0 ? Math.round(records.reduce((s, r) => s + r.pulledAt, 0) / records.length) : 0;
       const rate = records.length > 0 ? ((1 / avg) * 100).toFixed(2) + "%" : "-";
       result[track.key] = { totalPulls, pullCount: records.length, avg, rate, currentPity };
     }
     return result;
-  }, [allHistory, allPity]);
+  }, [filteredHistory, allPity, shardDateRange]);
 
   const totalShardsUsed = Object.values(shardStats).reduce((s, t) => s + t.totalPulls, 0);
   const totalPullCount = Object.values(shardStats).reduce((s, t) => s + t.pullCount, 0);
@@ -442,10 +461,30 @@ export default function AdminPage() {
       {/* ═══════════ 파편 통계 탭 ═══════════ */}
       {tab === "shards" && (
         <>
-          <p className="text-sm text-gray-500 mb-4">
-            모든 유저의 모든 계정 합산
-            <span className="ml-2 text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">전체 데이터</span>
-          </p>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <p className="text-sm text-gray-500">
+              모든 유저의 모든 계정 합산
+              {shardDateRange !== "all" && (
+                <span className="ml-2 text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">기간 필터 적용중</span>
+              )}
+            </p>
+            <div className="flex gap-1 ml-auto">
+              {([["all", "전체"], ["7d", "7일"], ["30d", "30일"], ["90d", "90일"], ["custom", "직접"]] as const).map(([key, label]) => (
+                <button key={key} onClick={() => setShardDateRange(key)}
+                  className={`px-2.5 py-1 text-[10px] rounded-lg border transition-colors ${shardDateRange === key ? "bg-gold/20 border-gold text-gold" : "bg-[#1a1a2e] border-gray-700 text-gray-400 hover:border-gray-500"}`}
+                >{label}</button>
+              ))}
+            </div>
+            {shardDateRange === "custom" && (
+              <div className="flex items-center gap-2 w-full mt-1">
+                <input type="date" value={shardDateFrom} onChange={(e) => setShardDateFrom(e.target.value)}
+                  className="bg-[#1a1a2e] border border-gray-700 rounded-lg px-2 py-1 text-xs text-white outline-none focus:border-gold" />
+                <span className="text-gray-500 text-xs">~</span>
+                <input type="date" value={shardDateTo} onChange={(e) => setShardDateTo(e.target.value)}
+                  className="bg-[#1a1a2e] border border-gray-700 rounded-lg px-2 py-1 text-xs text-white outline-none focus:border-gold" />
+              </div>
+            )}
+          </div>
 
           {/* 총합 카드 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
@@ -498,7 +537,7 @@ export default function AdminPage() {
           {/* 체감 확률 추이 차트 */}
           <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
             <h2 className="text-sm font-bold text-white mb-4">파편별 체감 확률 추이 (전체 유저)</h2>
-            <RateTrendChart history={allHistory} height={300} />
+            <RateTrendChart history={filteredHistory} height={300} />
           </div>
         </>
       )}
