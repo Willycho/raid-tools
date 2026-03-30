@@ -227,7 +227,7 @@ async function dbSavePity(accountId: string, trackKey: string, value: number): P
 async function dbLoadHistory(accountId: string): Promise<PullRecord[]> {
   const { data, error } = await getSupabase()
     .from("shard_history")
-    .select("id, shard_type, rarity, count, is_mercy, pulled_at")
+    .select("id, shard_type, rarity, count, is_mercy, pulled_at, champion_name")
     .eq("account_id", accountId)
     .order("pulled_at", { ascending: true });
   if (error) { console.error("dbLoadHistory error:", error); return []; }
@@ -236,6 +236,7 @@ async function dbLoadHistory(accountId: string): Promise<PullRecord[]> {
     pulledAt: row.count,
     timestamp: new Date(row.pulled_at).getTime(),
     wasCeiling: row.is_mercy,
+    championName: row.champion_name || undefined,
     dbId: row.id,
   }));
 }
@@ -250,6 +251,7 @@ async function dbAddHistory(accountId: string, record: PullRecord): Promise<stri
       count: record.pulledAt,
       is_mercy: record.wasCeiling,
       pulled_at: new Date(record.timestamp).toISOString(),
+      champion_name: record.championName || null,
     })
     .select("id")
     .single();
@@ -863,12 +865,18 @@ export default function ShardCalculator() {
 
   // ── 챔피언 이름 업데이트 ──────────────────────────
   const handleUpdateName = useCallback((timestamp: number, name: string) => {
-    setHistory((prev) =>
-      prev.map((r) => r.timestamp === timestamp ? { ...r, championName: name } : r)
-    );
-    // Note: championName is not stored in DB (column not available).
-    // It is kept in local state for the current session.
-  }, []);
+    setHistory((prev) => {
+      const updated = prev.map((r) => r.timestamp === timestamp ? { ...r, championName: name } : r);
+      // DB 유저: champion_name 컬럼 업데이트
+      if (isLoggedIn) {
+        const record = updated.find((r) => r.timestamp === timestamp);
+        if (record?.dbId) {
+          getSupabase().from("shard_history").update({ champion_name: name || null }).eq("id", record.dbId).then();
+        }
+      }
+      return updated;
+    });
+  }, [isLoggedIn]);
 
   // 모달에 필요한 트랙 정보 찾기
   const getTrackInfo = (trackKey: string) => {

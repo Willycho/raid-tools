@@ -4,6 +4,12 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 
 // ── 타입 ────────────────────────────────────────────
+interface Cleanse {
+  count: number | "all";
+  target: string;
+  specific?: string;
+}
+
 interface Skill {
   label: string;
   name: string;
@@ -15,6 +21,7 @@ interface Skill {
   extra_turn: boolean;
   tm_fill: { target: string; value: number }[] | null;
   is_passive: boolean;
+  cleanse?: Cleanse | Cleanse[];
 }
 
 interface Champion {
@@ -81,6 +88,18 @@ function normDebuff(name: string): string {
 // 유효한 이름만 (30자 이하, 괄호/특수 패턴 제외)
 function isValidName(n: string): boolean {
   return n.length > 0 && n.length < 30 && !n.includes("[") && !n.includes("While");
+}
+
+// 클렌즈 → 효과 이름 변환
+function cleanseToEffectName(cl: Cleanse): string {
+  if (cl.target === "all_allies") return "Cleanse (All Allies)";
+  if (cl.target === "self") return "Cleanse (Self)";
+  return "Cleanse (Target)"; // target_ally, random_ally 등
+}
+
+function getSkillCleanses(skill: Skill): Cleanse[] {
+  if (!skill.cleanse) return [];
+  return Array.isArray(skill.cleanse) ? skill.cleanse : [skill.cleanse];
 }
 
 // ── 상수 ────────────────────────────────────────────
@@ -208,6 +227,9 @@ const EFFECTS: EffectDef[] = [
   // 유틸리티
   { name: "Revive", kr: "부활", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
   { name: "Revive All", kr: "전체 부활", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
+  { name: "Cleanse (All Allies)", kr: "클렌즈 (전체)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Cleanse (Self)", kr: "클렌즈 (자신)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Cleanse (Target)", kr: "클렌즈 (대상)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
 ];
 
 // ── 컴포넌트 ────────────────────────────────────────
@@ -269,6 +291,10 @@ export default function BuffDebuffSearch() {
             const n = normDebuff(d.name);
             if (isValidName(n)) champEffects.add(n);
           }
+          // 클렌즈 유틸리티
+          for (const cl of getSkillCleanses(skill)) {
+            champEffects.add(cleanseToEffectName(cl));
+          }
         }
         // 부활 유틸리티: "부활"은 단일만, "전체 부활"은 전체만 (중복 제외)
         if (c.revive_single && !c.revive_all) champEffects.add("Revive");
@@ -323,6 +349,14 @@ export default function BuffDebuffSearch() {
         if (seen.has(key)) continue;
         seen.add(key);
         results.push({ name: n, skillLabel: skill.label, turns: d.turns, category: "debuff" });
+      }
+      // 클렌즈
+      for (const cl of getSkillCleanses(skill)) {
+        const n = cleanseToEffectName(cl);
+        const key = `${n}_${skill.label}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        results.push({ name: n, skillLabel: skill.label, turns: null, category: "utility" });
       }
     }
     // 부활 유틸리티: 전체부활 챔프는 단일부활 태그 제외

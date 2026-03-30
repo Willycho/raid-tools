@@ -15,14 +15,20 @@ interface TmFill {
 }
 
 interface CdReduce {
-  target: "all_allies" | "other_allies" | "target_ally";
+  target: "all_allies" | "other_allies" | "target_ally" | "self";
   value: number;
   type: "reduce" | "reset";
+  targetSkillLabel?: string; // 특정 스킬만 쿨감 (예: "A2")
 }
 
 interface BuffExtend {
   target: "all_allies" | "other_allies";
   value: number;
+}
+
+interface Cleanse {
+  count: number | "all";
+  target: string;
 }
 
 interface Skill {
@@ -38,6 +44,7 @@ interface Skill {
   cd_reduce?: CdReduce;
   buff_extend?: BuffExtend;
   booked_cooldown?: number;
+  cleanse?: Cleanse | Cleanse[]; // JSON에서 1개면 객체, 2개 이상이면 배열
 }
 
 interface Champion {
@@ -786,8 +793,22 @@ function calcSimSpeed(
 
 // ==================== 시뮬레이션 엔진 ====================
 
+// 보스 로테이션: 모든 속성 동일 AOE1 → AOE2 → STUN
 const BOSS_ROTATION = ["AOE1", "AOE2", "STUN"] as const;
-type BossSkill = (typeof BOSS_ROTATION)[number];
+type BossSkill = "AOE1" | "AOE2" | "STUN";
+
+// 보스 속성별 디버프: Void=AOE1 후 Poison, 나머지=AOE2 후 속성 디버프
+interface BossAffinityDebuff {
+  name: string;
+  turns: number;
+  afterSkill: BossSkill; // 어떤 스킬 후에 디버프 거는지
+}
+const BOSS_AFFINITY_DEBUFFS: Record<string, BossAffinityDebuff | null> = {
+  Void:   { name: "Poison",       turns: 2, afterSkill: "AOE1" },
+  Spirit: { name: "Decrease SPD", turns: 2, afterSkill: "AOE2" },
+  Force:  { name: "Decrease ATK", turns: 2, afterSkill: "AOE2" },
+  Magic:  { name: "Decrease ACC", turns: 2, afterSkill: "AOE2" },
+};
 
 interface ActiveBuff {
   name: string;
@@ -807,6 +828,7 @@ interface TurnAction {
   skill: string;
   skillName: string;
   activeBuffs: ActiveBuff[];
+  activeDebuffs?: ActiveBuff[]; // 보스가 건 디버프
   tmFillInfo?: string; // 턴미터 채우기 정보 (예: "TM +30%")
   isChampion: boolean;
   tmSnapshot?: TmSnapshot[]; // 행동 시점 전체 TM 스냅샷
@@ -832,6 +854,7 @@ interface SimSkill {
   cdReduce?: CdReduce; // 쿨다운 감소 효과
   cdReduceTarget?: string; // 쿨다운 감소 대상 챔피언 이름
   buffExtend?: BuffExtend; // 버프 연장 효과
+  cleanse?: Cleanse[]; // 디버프 제거 효과
 }
 
 interface SimParticipant {
@@ -843,6 +866,7 @@ interface SimParticipant {
   turnMeter: number;
   skills: SimSkill[];
   activeBuffs: ActiveBuff[];
+  activeDebuffs: ActiveBuff[]; // 보스가 건 디버프 (Decrease SPD 등)
   isChampion: true;
   extraTurnPending: boolean; // Extra Turn 대기 여부
   isExtraTurn: boolean; // 현재 Extra Turn 중인지 (중첩 방지)
@@ -880,7 +904,8 @@ function runSimulation(
   bossSpeed: number,
   speedAuraPct: number,
   regionBonusVal: number,
-  maxTurns: number = 50
+  maxTurns: number = 50,
+  bossAffinity: string = "Void"
 ): SimTurn[] {
   const TICK_RATE = 0.07;
   const results: SimTurn[] = [];
@@ -916,6 +941,11 @@ function runSimulation(
         cdReduce: s.cd_reduce,
         cdReduceTarget: config?.cdReduceTarget,
         buffExtend: s.buff_extend,
+        cleanse: (() => {
+          const raw = (s as Skill).cleanse;
+          if (!raw) return undefined;
+          return Array.isArray(raw) ? raw : [raw];
+        })(),
       };
     });
 
@@ -931,6 +961,7 @@ function runSimulation(
       turnMeter: 0,
       skills,
       activeBuffs: [],
+      activeDebuffs: [],
       isChampion: true,
       extraTurnPending: false,
       isExtraTurn: false,
@@ -949,7 +980,7 @@ function runSimulation(
   let safetyCounter = 0;
   const MAX_ITERATIONS = 10000;
 
-  // 턴 끝 처리: 버프 감소 + 쿨다운/딜레이 감소
+  // 턴 끝 처리: 버프/디버프 감소 + 쿨다운/딜레이 감소
   function finalizeChampionTurn(c: SimParticipant, usedSkill: SimSkill) {
     // 버프 지속턴 감소: justApplied(시전자 본인)는 스킵, 나머지 -1
     c.activeBuffs = c.activeBuffs
@@ -958,6 +989,14 @@ function runSimulation(
         return { ...b, remainingTurns: b.remainingTurns - 1 };
       })
       .filter((b) => b.remainingTurns > 0);
+
+    // 디버프 지속턴 감소 (보스가 건 디버프)
+    c.activeDebuffs = c.activeDebuffs
+      .map((d) => {
+        if (d.justApplied) return { ...d, justApplied: false };
+        return { ...d, remainingTurns: d.remainingTurns - 1 };
+      })
+      .filter((d) => d.remainingTurns > 0);
 
     for (const skill of c.skills) {
       if (skill.delayRemaining > 0) {
@@ -1017,6 +1056,27 @@ function runSimulation(
       }
     }
 
+    // 클렌즈 효과: 디버프 제거
+    if (chosenSkill.cleanse && chosenSkill.cleanse.length > 0) {
+      for (const cl of chosenSkill.cleanse) {
+        const targets =
+          cl.target === "all_allies" ? champions :
+          cl.target === "self" ? [c] :
+          cl.target === "other_allies" ? champions.filter((a) => a !== c) :
+          champions; // fallback
+        for (const ally of targets) {
+          if (ally.activeDebuffs.length === 0) continue;
+          if (cl.count === "all") {
+            ally.activeDebuffs = [];
+          } else {
+            // N개 랜덤 제거 (시뮬에서는 앞에서부터 제거)
+            const removeCount = typeof cl.count === "number" ? cl.count : 1;
+            ally.activeDebuffs.splice(0, removeCount);
+          }
+        }
+      }
+    }
+
     // 쿨다운 설정
     if (chosenSkill.cooldownMax > 0) {
       chosenSkill.cooldownCurrent = chosenSkill.cooldownMax;
@@ -1046,6 +1106,7 @@ function runSimulation(
       skill: chosenSkill.label,
       skillName: chosenSkill.name,
       activeBuffs: c.activeBuffs.map((b) => ({ ...b })),
+      activeDebuffs: c.activeDebuffs.map((d) => ({ ...d })),
       tmFillInfo: tmInfo,
       isChampion: true,
       tmSnapshot: champions.map((ch) => ({
@@ -1074,6 +1135,8 @@ function runSimulation(
       const cdR = chosenSkill.cdReduce;
       const reduceSkills = (target: SimParticipant) => {
         for (const sk of target.skills) {
+          // targetSkillLabel이 있으면 해당 스킬만 쿨감 (예: 닌자 A3→A2만)
+          if (cdR.targetSkillLabel && sk.label !== cdR.targetSkillLabel) continue;
           if (cdR.type === "reset") {
             sk.cooldownCurrent = 0;
           } else {
@@ -1082,7 +1145,9 @@ function runSimulation(
         }
       };
 
-      if (cdR.target === "all_allies") {
+      if (cdR.target === "self") {
+        reduceSkills(c);
+      } else if (cdR.target === "all_allies") {
         for (const ally of champions) {
           reduceSkills(ally);
         }
@@ -1143,9 +1208,10 @@ function runSimulation(
     for (const c of champions) {
       let eff = c.speed;
       const hasIncrSpd = c.activeBuffs.some((b) => b.name === "Increase SPD");
-      const hasDecrSpd = c.activeBuffs.some((b) => b.name === "Decrease SPD");
+      const hasDecrSpd = c.activeBuffs.some((b) => b.name === "Decrease SPD") ||
+        c.activeDebuffs.some((b) => b.name === "Decrease SPD");
       if (hasIncrSpd) eff *= 1.3;
-      if (hasDecrSpd) eff *= 0.7;
+      if (hasDecrSpd) eff *= 0.85; // Decrease SPD = -15%
       c.turnMeter += eff * TICK_RATE;
     }
     boss.turnMeter += boss.speed * TICK_RATE;
@@ -1179,8 +1245,8 @@ function runSimulation(
       const c = actor.ref as SimParticipant;
       championTakeTurn(c);
     } else {
-      // 보스 턴
-      const bossSkill = BOSS_ROTATION[boss.rotationIndex % 3];
+      // 보스 턴 — 로테이션은 모든 속성 동일: AOE1 → AOE2 → STUN
+      const bossSkill = BOSS_ROTATION[boss.rotationIndex % 3] as BossSkill;
       boss.rotationIndex++;
 
       const currentTurnNum = bossActionCount;
@@ -1190,11 +1256,39 @@ function runSimulation(
       ) {
         results.push({ turnNumber: currentTurnNum, actions: [] });
       }
+
+      // 보스 속성별 디버프 적용 (afterSkill과 일치하는 스킬에서만)
+      const affinityDebuff = BOSS_AFFINITY_DEBUFFS[bossAffinity];
+      const debuffApplied = affinityDebuff && bossSkill === affinityDebuff.afterSkill;
+      if (debuffApplied && affinityDebuff) {
+        for (const c of champions) {
+          // Block Debuffs가 있으면 디버프 무효화
+          const hasBlockDebuffs = c.activeBuffs.some((b) => b.name === "Block Debuffs");
+          if (!hasBlockDebuffs) {
+            // Poison은 스피드튠에 영향 없으므로 스킵 (데미지 계산기에서만 처리)
+            if (affinityDebuff.name === "Poison") continue;
+            // 디버프 적용 (동일 디버프 갱신)
+            const existing = c.activeDebuffs.findIndex((d) => d.name === affinityDebuff.name);
+            if (existing >= 0) {
+              c.activeDebuffs[existing].remainingTurns = affinityDebuff.turns;
+              c.activeDebuffs[existing].justApplied = true;
+            } else {
+              c.activeDebuffs.push({
+                name: affinityDebuff.name,
+                remainingTurns: affinityDebuff.turns,
+                sourceSkill: bossSkill,
+                justApplied: true,
+              });
+            }
+          }
+        }
+      }
+
       // 행동 기록 (행동 전 TM 스냅샷 — 리셋 전 값)
       results[results.length - 1].actions.push({
         actor: "Clanboss",
         skill: bossSkill,
-        skillName: bossSkill,
+        skillName: `${bossSkill}${debuffApplied && affinityDebuff ? ` [${affinityDebuff.name}]` : ""}`,
         activeBuffs: [],
         isChampion: false,
         tmSnapshot: champions.map((ch) => ({
@@ -1370,6 +1464,20 @@ const SimulationResults = React.memo(function SimulationResults({ results }: { r
                     </span>
                   );
                 })}
+                {action.activeDebuffs?.map((debuff, i) => {
+                  const display = DEBUFF_DISPLAY[debuff.name];
+                  return (
+                    <span
+                      key={`d-${i}`}
+                      className={`text-[9px] px-1 py-0.5 rounded ${
+                        display?.color || "bg-red-600/20 text-red-400"
+                      }`}
+                      title={`${debuff.name} (${debuff.remainingTurns}턴) ⚠️ 디버프`}
+                    >
+                      {display?.short || debuff.name}
+                    </span>
+                  );
+                })}
                 {action.tmFillInfo && (
                   <span className="text-[9px] px-1 py-0.5 rounded bg-sky-500/20 text-sky-300">
                     {action.tmFillInfo}
@@ -1388,6 +1496,11 @@ const SimulationResults = React.memo(function SimulationResults({ results }: { r
                 >
                   {action.skill}
                 </span>
+                {!action.isChampion && action.skillName !== action.skill && (
+                  <span className="text-[9px] text-red-400/70">
+                    {action.skillName.replace(action.skill, "").trim()}
+                  </span>
+                )}
               </div>
 
               {/* Turn number (보스 행동에만) */}
@@ -2093,7 +2206,7 @@ export default function ClanBossPage() {
                 const bossSpd = BOSS_SPEEDS[bossDifficulty] || 190;
                 const aura = slots[0].speedAura || 0;
                 const rb = regionBonus ? regionBonusValue : 0;
-                const results = runSimulation(slots, bossSpd, aura, rb, 50);
+                const results = runSimulation(slots, bossSpd, aura, rb, 50, bossAffinity);
                 setSimResults(results);
                 setSimRunning(true);
                 const speeds: { name: string; speed: number }[] = [];
