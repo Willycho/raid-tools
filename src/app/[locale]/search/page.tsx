@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 
 // ── 타입 ────────────────────────────────────────────
 interface Cleanse {
@@ -110,6 +111,12 @@ const RARITY_KR: Record<string, string> = {
   Epic: "에픽",
   Rare: "레어",
 };
+const RARITY_EN: Record<string, string> = {
+  Legendary: "Legendary",
+  Mythical: "Mythical",
+  Epic: "Epic",
+  Rare: "Rare",
+};
 const RARITY_COLOR: Record<string, string> = {
   Legendary: "text-yellow-400 border-yellow-500/40 bg-yellow-500/10",
   Mythical: "text-red-400 border-red-500/40 bg-red-500/10",
@@ -142,6 +149,24 @@ const FACTION_KR: Record<string, string> = {
   "Sylvan Watchers": "실반 와처",
   "Argonites": "아르고나이트",
 };
+const FACTION_EN: Record<string, string> = {
+  "bannerloards": "Banner Lords",
+  "The Sacred order": "The Sacred Order",
+  "High elves": "High Elves",
+  "Dark Elves": "Dark Elves",
+  "Barbarians": "Barbarians",
+  "Ogryn Tribes": "Ogryn Tribes",
+  "Lizardmen": "Lizardmen",
+  "Skinwalkers": "Skinwalkers",
+  "Orcs": "Orcs",
+  "Demonspawn": "Demonspawn",
+  "Undead Hordes": "Undead Hordes",
+  "Knight Revenant": "Knight Revenant",
+  "Dwarves": "Dwarves",
+  "Shadowkin": "Shadowkin",
+  "Sylvan Watchers": "Sylvan Watchers",
+  "Argonites": "Argonites",
+};
 
 // ── 버프/디버프/유틸 한글 + 카테고리 ──────────────────
 type EffectCategory = "buff" | "debuff" | "utility";
@@ -149,91 +174,97 @@ type EffectCategory = "buff" | "debuff" | "utility";
 interface EffectDef {
   name: string;
   kr: string;
+  en: string;
   category: EffectCategory;
   color: string;
 }
 
 const EFFECTS: EffectDef[] = [
   // 버프
-  { name: "Increase ATK", kr: "공격력 증가", category: "buff", color: "bg-red-500/20 text-red-300" },
-  { name: "Increase DEF", kr: "방어력 증가", category: "buff", color: "bg-green-500/20 text-green-300" },
-  { name: "Increase SPD", kr: "속도 증가", category: "buff", color: "bg-sky-500/20 text-sky-300" },
-  { name: "Increase C.RATE", kr: "치확 증가", category: "buff", color: "bg-orange-500/20 text-orange-300" },
-  { name: "Increase C.DMG", kr: "치뎀 증가", category: "buff", color: "bg-orange-500/20 text-orange-300" },
-  { name: "Increase ACC", kr: "정확도 증가", category: "buff", color: "bg-teal-500/20 text-teal-300" },
-  { name: "Increase RES", kr: "저항 증가", category: "buff", color: "bg-indigo-500/20 text-indigo-300" },
-  { name: "Strengthen", kr: "강화", category: "buff", color: "bg-lime-500/20 text-lime-300" },
-  { name: "Shield", kr: "쉴드", category: "buff", color: "bg-blue-500/20 text-blue-300" },
-  { name: "Continuous Heal", kr: "지속 회복", category: "buff", color: "bg-green-500/20 text-green-300" },
-  { name: "Counterattack", kr: "반격", category: "buff", color: "bg-amber-500/20 text-amber-300" },
-  { name: "Ally Protection", kr: "아군 보호", category: "buff", color: "bg-blue-500/20 text-blue-300" },
-  { name: "Block Damage", kr: "피해 차단", category: "buff", color: "bg-emerald-500/20 text-emerald-300" },
-  { name: "Block Debuffs", kr: "디버프 차단", category: "buff", color: "bg-cyan-500/20 text-cyan-300" },
-  { name: "Unkillable", kr: "불사", category: "buff", color: "bg-yellow-500/20 text-yellow-300" },
-  { name: "Revive On Death", kr: "죽음시 부활", category: "buff", color: "bg-purple-500/20 text-purple-300" },
-  { name: "Reflect Damage", kr: "피해 반사", category: "buff", color: "bg-pink-500/20 text-pink-300" },
-  { name: "Perfect Veil", kr: "완전 은신", category: "buff", color: "bg-violet-500/20 text-violet-300" },
-  { name: "Veil", kr: "은신", category: "buff", color: "bg-violet-500/20 text-violet-300" },
-  { name: "Stone Skin", kr: "석화 피부", category: "buff", color: "bg-gray-500/20 text-gray-300" },
-  { name: "Taunt", kr: "도발", category: "buff", color: "bg-rose-500/20 text-rose-300" },
-  { name: "Life Barrier", kr: "생명 장벽", category: "buff", color: "bg-emerald-500/20 text-emerald-300" },
-  { name: "Intercept", kr: "요격", category: "buff", color: "bg-sky-500/20 text-sky-300" },
-  { name: "Fervor", kr: "열광", category: "buff", color: "bg-amber-500/20 text-amber-300" },
-  { name: "Stormcall", kr: "폭풍 소환", category: "buff", color: "bg-blue-500/20 text-blue-300" },
-  { name: "Fortify", kr: "요새화", category: "buff", color: "bg-green-500/20 text-green-300" },
-  { name: "Evade", kr: "회피", category: "buff", color: "bg-violet-500/20 text-violet-300" },
-  { name: "Bone Armor", kr: "뼈 갑옷", category: "buff", color: "bg-gray-500/20 text-gray-300" },
-  { name: "Magma Shield", kr: "마그마 방패", category: "buff", color: "bg-orange-500/20 text-orange-300" },
+  { name: "Increase ATK", kr: "공격력 증가", en: "Increase ATK", category: "buff", color: "bg-red-500/20 text-red-300" },
+  { name: "Increase DEF", kr: "방어력 증가", en: "Increase DEF", category: "buff", color: "bg-green-500/20 text-green-300" },
+  { name: "Increase SPD", kr: "속도 증가", en: "Increase SPD", category: "buff", color: "bg-sky-500/20 text-sky-300" },
+  { name: "Increase C.RATE", kr: "치확 증가", en: "Increase C.RATE", category: "buff", color: "bg-orange-500/20 text-orange-300" },
+  { name: "Increase C.DMG", kr: "치뎀 증가", en: "Increase C.DMG", category: "buff", color: "bg-orange-500/20 text-orange-300" },
+  { name: "Increase ACC", kr: "정확도 증가", en: "Increase ACC", category: "buff", color: "bg-teal-500/20 text-teal-300" },
+  { name: "Increase RES", kr: "저항 증가", en: "Increase RES", category: "buff", color: "bg-indigo-500/20 text-indigo-300" },
+  { name: "Strengthen", kr: "강화", en: "Strengthen", category: "buff", color: "bg-lime-500/20 text-lime-300" },
+  { name: "Shield", kr: "쉴드", en: "Shield", category: "buff", color: "bg-blue-500/20 text-blue-300" },
+  { name: "Continuous Heal", kr: "지속 회복", en: "Continuous Heal", category: "buff", color: "bg-green-500/20 text-green-300" },
+  { name: "Counterattack", kr: "반격", en: "Counterattack", category: "buff", color: "bg-amber-500/20 text-amber-300" },
+  { name: "Ally Protection", kr: "아군 보호", en: "Ally Protection", category: "buff", color: "bg-blue-500/20 text-blue-300" },
+  { name: "Block Damage", kr: "피해 차단", en: "Block Damage", category: "buff", color: "bg-emerald-500/20 text-emerald-300" },
+  { name: "Block Debuffs", kr: "디버프 차단", en: "Block Debuffs", category: "buff", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Unkillable", kr: "불사", en: "Unkillable", category: "buff", color: "bg-yellow-500/20 text-yellow-300" },
+  { name: "Revive On Death", kr: "죽음시 부활", en: "Revive On Death", category: "buff", color: "bg-purple-500/20 text-purple-300" },
+  { name: "Reflect Damage", kr: "피해 반사", en: "Reflect Damage", category: "buff", color: "bg-pink-500/20 text-pink-300" },
+  { name: "Perfect Veil", kr: "완전 은신", en: "Perfect Veil", category: "buff", color: "bg-violet-500/20 text-violet-300" },
+  { name: "Veil", kr: "은신", en: "Veil", category: "buff", color: "bg-violet-500/20 text-violet-300" },
+  { name: "Stone Skin", kr: "석화 피부", en: "Stone Skin", category: "buff", color: "bg-gray-500/20 text-gray-300" },
+  { name: "Taunt", kr: "도발", en: "Taunt", category: "buff", color: "bg-rose-500/20 text-rose-300" },
+  { name: "Life Barrier", kr: "생명 장벽", en: "Life Barrier", category: "buff", color: "bg-emerald-500/20 text-emerald-300" },
+  { name: "Intercept", kr: "요격", en: "Intercept", category: "buff", color: "bg-sky-500/20 text-sky-300" },
+  { name: "Fervor", kr: "열광", en: "Fervor", category: "buff", color: "bg-amber-500/20 text-amber-300" },
+  { name: "Stormcall", kr: "폭풍 소환", en: "Stormcall", category: "buff", color: "bg-blue-500/20 text-blue-300" },
+  { name: "Fortify", kr: "요새화", en: "Fortify", category: "buff", color: "bg-green-500/20 text-green-300" },
+  { name: "Evade", kr: "회피", en: "Evade", category: "buff", color: "bg-violet-500/20 text-violet-300" },
+  { name: "Bone Armor", kr: "뼈 갑옷", en: "Bone Armor", category: "buff", color: "bg-gray-500/20 text-gray-300" },
+  { name: "Magma Shield", kr: "마그마 방패", en: "Magma Shield", category: "buff", color: "bg-orange-500/20 text-orange-300" },
   // 디버프
-  { name: "Decrease DEF", kr: "방어력 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease ATK", kr: "공격력 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease SPD", kr: "속도 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease ACC", kr: "정확도 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease C.RATE", kr: "치확 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease C.DMG", kr: "치뎀 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Weaken", kr: "약화", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Poison", kr: "독", category: "debuff", color: "bg-green-600/20 text-green-400" },
-  { name: "Poison Sensitivity", kr: "독 감수성", category: "debuff", color: "bg-green-600/20 text-green-400" },
-  { name: "HP Burn", kr: "화상", category: "debuff", color: "bg-orange-600/20 text-orange-400" },
-  { name: "Bomb", kr: "폭탄", category: "debuff", color: "bg-orange-600/20 text-orange-400" },
-  { name: "Stun", kr: "기절", category: "debuff", color: "bg-yellow-600/20 text-yellow-400" },
-  { name: "Freeze", kr: "빙결", category: "debuff", color: "bg-cyan-600/20 text-cyan-400" },
-  { name: "Sleep", kr: "수면", category: "debuff", color: "bg-indigo-600/20 text-indigo-400" },
-  { name: "Provoke", kr: "도발", category: "debuff", color: "bg-rose-600/20 text-rose-400" },
-  { name: "Fear", kr: "공포", category: "debuff", color: "bg-purple-600/20 text-purple-400" },
-  { name: "True Fear", kr: "진공포", category: "debuff", color: "bg-purple-600/20 text-purple-400" },
-  { name: "Petrification", kr: "석화", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
-  { name: "Block Buffs", kr: "버프 차단", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
-  { name: "Block Active Skills", kr: "스킬 봉인", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
-  { name: "Block Passive Skills", kr: "패시브 봉인", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
-  { name: "Block Cooldown Skills", kr: "쿨다운 봉인", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
-  { name: "Block Revive", kr: "부활 차단", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
-  { name: "Hex", kr: "저주", category: "debuff", color: "bg-fuchsia-600/20 text-fuchsia-400" },
-  { name: "Leech", kr: "흡혈", category: "debuff", color: "bg-lime-600/20 text-lime-400" },
-  { name: "Heal Reduction", kr: "치유 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Decrease RES", kr: "저항 감소", category: "debuff", color: "bg-red-600/20 text-red-400" },
-  { name: "Enfeeble", kr: "쇠약", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
-  { name: "Necrosis", kr: "괴사", category: "debuff", color: "bg-emerald-600/20 text-emerald-400" },
-  { name: "Pain Link", kr: "고통 연결", category: "debuff", color: "bg-rose-600/20 text-rose-400" },
-  { name: "Seal", kr: "봉인", category: "debuff", color: "bg-amber-600/20 text-amber-400" },
-  { name: "Polymorph", kr: "변이", category: "debuff", color: "bg-violet-600/20 text-violet-400" },
-  { name: "Fatigue", kr: "피로", category: "debuff", color: "bg-blue-600/20 text-blue-400" },
-  { name: "Shatter", kr: "분쇄", category: "debuff", color: "bg-cyan-600/20 text-cyan-400" },
-  { name: "Smite", kr: "강타", category: "debuff", color: "bg-yellow-600/20 text-yellow-400" },
-  { name: "Deathbrand", kr: "죽음의 낙인", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
-  { name: "Infest", kr: "감염", category: "debuff", color: "bg-green-600/20 text-green-400" },
-  { name: "Ensnare", kr: "속박", category: "debuff", color: "bg-teal-600/20 text-teal-400" },
-  { name: "Nullify", kr: "무효화", category: "debuff", color: "bg-indigo-600/20 text-indigo-400" },
+  { name: "Decrease DEF", kr: "방어력 감소", en: "Decrease DEF", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease ATK", kr: "공격력 감소", en: "Decrease ATK", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease SPD", kr: "속도 감소", en: "Decrease SPD", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease ACC", kr: "정확도 감소", en: "Decrease ACC", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease C.RATE", kr: "치확 감소", en: "Decrease C.RATE", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease C.DMG", kr: "치뎀 감소", en: "Decrease C.DMG", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Weaken", kr: "약화", en: "Weaken", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Poison", kr: "독", en: "Poison", category: "debuff", color: "bg-green-600/20 text-green-400" },
+  { name: "Poison Sensitivity", kr: "독 감수성", en: "Poison Sensitivity", category: "debuff", color: "bg-green-600/20 text-green-400" },
+  { name: "HP Burn", kr: "화상", en: "HP Burn", category: "debuff", color: "bg-orange-600/20 text-orange-400" },
+  { name: "Bomb", kr: "폭탄", en: "Bomb", category: "debuff", color: "bg-orange-600/20 text-orange-400" },
+  { name: "Stun", kr: "기절", en: "Stun", category: "debuff", color: "bg-yellow-600/20 text-yellow-400" },
+  { name: "Freeze", kr: "빙결", en: "Freeze", category: "debuff", color: "bg-cyan-600/20 text-cyan-400" },
+  { name: "Sleep", kr: "수면", en: "Sleep", category: "debuff", color: "bg-indigo-600/20 text-indigo-400" },
+  { name: "Provoke", kr: "도발", en: "Provoke", category: "debuff", color: "bg-rose-600/20 text-rose-400" },
+  { name: "Fear", kr: "공포", en: "Fear", category: "debuff", color: "bg-purple-600/20 text-purple-400" },
+  { name: "True Fear", kr: "진공포", en: "True Fear", category: "debuff", color: "bg-purple-600/20 text-purple-400" },
+  { name: "Petrification", kr: "석화", en: "Petrification", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
+  { name: "Block Buffs", kr: "버프 차단", en: "Block Buffs", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
+  { name: "Block Active Skills", kr: "스킬 봉인", en: "Block Active Skills", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
+  { name: "Block Passive Skills", kr: "패시브 봉인", en: "Block Passive Skills", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
+  { name: "Block Cooldown Skills", kr: "쿨다운 봉인", en: "Block Cooldown Skills", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
+  { name: "Block Revive", kr: "부활 차단", en: "Block Revive", category: "debuff", color: "bg-pink-600/20 text-pink-400" },
+  { name: "Hex", kr: "저주", en: "Hex", category: "debuff", color: "bg-fuchsia-600/20 text-fuchsia-400" },
+  { name: "Leech", kr: "흡혈", en: "Leech", category: "debuff", color: "bg-lime-600/20 text-lime-400" },
+  { name: "Heal Reduction", kr: "치유 감소", en: "Heal Reduction", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Decrease RES", kr: "저항 감소", en: "Decrease RES", category: "debuff", color: "bg-red-600/20 text-red-400" },
+  { name: "Enfeeble", kr: "쇠약", en: "Enfeeble", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
+  { name: "Necrosis", kr: "괴사", en: "Necrosis", category: "debuff", color: "bg-emerald-600/20 text-emerald-400" },
+  { name: "Pain Link", kr: "고통 연결", en: "Pain Link", category: "debuff", color: "bg-rose-600/20 text-rose-400" },
+  { name: "Seal", kr: "봉인", en: "Seal", category: "debuff", color: "bg-amber-600/20 text-amber-400" },
+  { name: "Polymorph", kr: "변이", en: "Polymorph", category: "debuff", color: "bg-violet-600/20 text-violet-400" },
+  { name: "Fatigue", kr: "피로", en: "Fatigue", category: "debuff", color: "bg-blue-600/20 text-blue-400" },
+  { name: "Shatter", kr: "분쇄", en: "Shatter", category: "debuff", color: "bg-cyan-600/20 text-cyan-400" },
+  { name: "Smite", kr: "강타", en: "Smite", category: "debuff", color: "bg-yellow-600/20 text-yellow-400" },
+  { name: "Deathbrand", kr: "죽음의 낙인", en: "Deathbrand", category: "debuff", color: "bg-gray-600/20 text-gray-400" },
+  { name: "Infest", kr: "감염", en: "Infest", category: "debuff", color: "bg-green-600/20 text-green-400" },
+  { name: "Ensnare", kr: "속박", en: "Ensnare", category: "debuff", color: "bg-teal-600/20 text-teal-400" },
+  { name: "Nullify", kr: "무효화", en: "Nullify", category: "debuff", color: "bg-indigo-600/20 text-indigo-400" },
   // 유틸리티
-  { name: "Revive", kr: "부활", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
-  { name: "Revive All", kr: "전체 부활", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
-  { name: "Cleanse (All Allies)", kr: "클렌즈 (전체)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
-  { name: "Cleanse (Self)", kr: "클렌즈 (자신)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
-  { name: "Cleanse (Target)", kr: "클렌즈 (대상)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Revive", kr: "부활", en: "Revive", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
+  { name: "Revive All", kr: "전체 부활", en: "Revive All", category: "utility", color: "bg-emerald-500/20 text-emerald-300" },
+  { name: "Cleanse (All Allies)", kr: "클렌즈 (전체)", en: "Cleanse (All)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Cleanse (Self)", kr: "클렌즈 (자신)", en: "Cleanse (Self)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
+  { name: "Cleanse (Target)", kr: "클렌즈 (대상)", en: "Cleanse (Target)", category: "utility", color: "bg-cyan-500/20 text-cyan-300" },
 ];
 
 // ── 컴포넌트 ────────────────────────────────────────
 export default function BuffDebuffSearch() {
+  const t = useTranslations("search");
+  const locale = useLocale();
+  const effectLabel = (e: EffectDef) => locale === "ko" ? e.kr : e.en;
+  const rarityLabel = (r: string) => locale === "ko" ? (RARITY_KR[r] || r) : (RARITY_EN[r] || r);
+  const factionLabel = (f: string) => locale === "ko" ? (FACTION_KR[f] || f) : (FACTION_EN[f] || f);
   const [champions, setChampions] = useState<Champion[]>([]);
   const [krNames, setKrNames] = useState<Record<string, string>>({});
   const [selectedEffects, setSelectedEffects] = useState<string[]>([]);
@@ -372,14 +403,14 @@ export default function BuffDebuffSearch() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* 헤더 */}
-      <h1 className="text-2xl font-bold text-white mb-1">버프 / 디버프 검색</h1>
-      <p className="text-sm text-gray-500 mb-6">필요한 버프나 디버프를 가진 챔피언을 찾아보세요</p>
+      <h1 className="text-2xl font-bold text-white mb-1">{t("title")}</h1>
+      <p className="text-sm text-gray-500 mb-6">{t("subtitle")}</p>
 
       {/* 이름 검색 */}
       <div className="mb-4">
         <input
           type="text"
-          placeholder="챔피언 이름 검색..."
+          placeholder={t("searchPlaceholder")}
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
           className="w-full md:w-80 bg-[#1a1a2e] border border-gray-700 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 outline-none focus:border-gold transition-colors text-sm"
@@ -388,7 +419,7 @@ export default function BuffDebuffSearch() {
 
       {/* 버프 선택 */}
       <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-3">
-        <h2 className="text-xs font-semibold text-emerald-400 mb-2">버프</h2>
+        <h2 className="text-xs font-semibold text-emerald-400 mb-2">{t("buffs")}</h2>
         <div className="flex flex-wrap gap-1.5">
           {buffs.map((e) => {
             const active = selectedEffects.includes(e.name);
@@ -401,7 +432,7 @@ export default function BuffDebuffSearch() {
                     ? `${e.color} border-current font-bold shadow-sm`
                     : "bg-[#0d0d1a] border-gray-700 text-gray-500 hover:text-gray-300 hover:border-gray-600"}`}
               >
-                {e.kr}
+                {effectLabel(e)}
               </button>
             );
           })}
@@ -410,7 +441,7 @@ export default function BuffDebuffSearch() {
 
       {/* 디버프 선택 */}
       <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-4">
-        <h2 className="text-xs font-semibold text-red-400 mb-2">디버프</h2>
+        <h2 className="text-xs font-semibold text-red-400 mb-2">{t("debuffs")}</h2>
         <div className="flex flex-wrap gap-1.5">
           {debuffs.map((e) => {
             const active = selectedEffects.includes(e.name);
@@ -423,7 +454,7 @@ export default function BuffDebuffSearch() {
                     ? `${e.color} border-current font-bold shadow-sm`
                     : "bg-[#0d0d1a] border-gray-700 text-gray-500 hover:text-gray-300 hover:border-gray-600"}`}
               >
-                {e.kr}
+                {effectLabel(e)}
               </button>
             );
           })}
@@ -432,7 +463,7 @@ export default function BuffDebuffSearch() {
 
       {/* 유틸리티 선택 */}
       <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-4">
-        <h2 className="text-xs font-semibold text-emerald-400 mb-2">유틸리티</h2>
+        <h2 className="text-xs font-semibold text-emerald-400 mb-2">{t("utility")}</h2>
         <div className="flex flex-wrap gap-1.5">
           {utilities.map((e) => {
             const active = selectedEffects.includes(e.name);
@@ -445,7 +476,7 @@ export default function BuffDebuffSearch() {
                     ? `${e.color} border-current font-bold shadow-sm`
                     : "bg-[#0d0d1a] border-gray-700 text-gray-500 hover:text-gray-300 hover:border-gray-600"}`}
               >
-                {e.kr}
+                {effectLabel(e)}
               </button>
             );
           })}
@@ -456,7 +487,7 @@ export default function BuffDebuffSearch() {
       <div className="flex flex-wrap gap-4 mb-6">
         {/* 레어리티 */}
         <div className="flex items-center gap-1.5">
-          <span className="text-[10px] text-gray-500 mr-1">등급:</span>
+          <span className="text-[10px] text-gray-500 mr-1">{t("rarity")}:</span>
           {RARITIES.map((r) => {
             const active = selectedRarities.includes(r);
             return (
@@ -468,7 +499,7 @@ export default function BuffDebuffSearch() {
                     ? RARITY_COLOR[r] + " border-current font-bold"
                     : "bg-[#0d0d1a] border-gray-800 text-gray-600 hover:text-gray-400"}`}
               >
-                {RARITY_KR[r]}
+                {rarityLabel(r)}
               </button>
             );
           })}
@@ -479,12 +510,14 @@ export default function BuffDebuffSearch() {
           factions={factions}
           selected={selectedFactions}
           onToggle={toggleFaction}
+          locale={locale}
+          t={t}
         />
 
         {/* 검색 모드 */}
         {selectedEffects.length > 1 && (
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-gray-500 mr-1">조건:</span>
+            <span className="text-[10px] text-gray-500 mr-1">{t("condition")}:</span>
             <button
               onClick={() => setSearchMode("any")}
               className={`px-2 py-0.5 rounded text-[11px] transition-all cursor-pointer border
@@ -492,7 +525,7 @@ export default function BuffDebuffSearch() {
                   ? "border-amber-500/50 text-amber-400 bg-amber-500/10 font-bold"
                   : "bg-[#0d0d1a] border-gray-800 text-gray-600 hover:text-gray-400"}`}
             >
-              하나라도
+              {t("anyMatch")}
             </button>
             <button
               onClick={() => setSearchMode("all")}
@@ -501,7 +534,7 @@ export default function BuffDebuffSearch() {
                   ? "border-amber-500/50 text-amber-400 bg-amber-500/10 font-bold"
                   : "bg-[#0d0d1a] border-gray-800 text-gray-600 hover:text-gray-400"}`}
             >
-              모두 보유
+              {t("allMatch")}
             </button>
           </div>
         )}
@@ -510,7 +543,7 @@ export default function BuffDebuffSearch() {
       {/* 선택된 효과 표시 */}
       {selectedEffects.length > 0 && (
         <div className="flex flex-wrap items-center gap-1.5 mb-4">
-          <span className="text-[10px] text-gray-500">선택:</span>
+          <span className="text-[10px] text-gray-500">{t("selected")}:</span>
           {selectedEffects.map((eName) => {
             const eDef = EFFECTS.find((e) => e.name === eName);
             return (
@@ -519,7 +552,7 @@ export default function BuffDebuffSearch() {
                 className={`px-2 py-0.5 rounded text-[11px] font-semibold ${eDef?.color || "bg-gray-600/20 text-gray-400"} cursor-pointer`}
                 onClick={() => toggleEffect(eName)}
               >
-                {eDef?.kr || eName} ✕
+                {eDef ? effectLabel(eDef) : eName} ✕
               </span>
             );
           })}
@@ -527,7 +560,7 @@ export default function BuffDebuffSearch() {
             onClick={() => setSelectedEffects([])}
             className="text-[10px] text-gray-600 hover:text-red-400 cursor-pointer ml-1"
           >
-            전체 해제
+            {t("clearAll")}
           </button>
         </div>
       )}
@@ -535,7 +568,7 @@ export default function BuffDebuffSearch() {
       {/* 결과 */}
       {(selectedEffects.length > 0 || nameFilter.length > 0) && (
         <div className="text-xs text-gray-500 mb-3">
-          검색 결과: <span className="text-white font-bold">{filtered.length}</span>명
+          {t("searchResult", { count: filtered.length })}
         </div>
       )}
 
@@ -561,10 +594,10 @@ export default function BuffDebuffSearch() {
                   </div>
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <span className={`text-[10px] px-1.5 py-0.5 rounded ${RARITY_COLOR[c.rarity]}`}>
-                      {RARITY_KR[c.rarity]}
+                      {rarityLabel(c.rarity)}
                     </span>
                     <span className="text-[10px] text-gray-500 truncate">
-                      {FACTION_KR[c.faction] || c.faction}
+                      {factionLabel(c.faction)}
                     </span>
                   </div>
                 </div>
@@ -584,7 +617,7 @@ export default function BuffDebuffSearch() {
                           : "bg-gray-800/50 text-gray-500"
                       }`}
                     >
-                      {eDef?.kr || e.name}
+                      {eDef ? effectLabel(eDef) : e.name}
                       <span className="text-gray-600 ml-0.5">{e.skillLabel}</span>
                       {e.turns && <span className="text-gray-600 ml-0.5">{e.turns}t</span>}
                     </span>
@@ -598,13 +631,13 @@ export default function BuffDebuffSearch() {
 
       {filtered.length > 60 && (
         <div className="text-center text-sm text-gray-500 mt-4">
-          ... 외 {filtered.length - 60}명 (필터를 좁혀주세요)
+          {t("moreResults", { count: filtered.length - 60 })}
         </div>
       )}
 
       {selectedEffects.length === 0 && nameFilter.length === 0 && (
         <div className="text-center text-gray-600 py-16">
-          위에서 버프나 디버프를 선택하면 해당 효과를 가진 챔피언이 표시됩니다
+          {t("emptyState")}
         </div>
       )}
     </div>
@@ -616,11 +649,16 @@ function FactionDropdown({
   factions,
   selected,
   onToggle,
+  locale,
+  t,
 }: {
   factions: string[];
   selected: string[];
   onToggle: (f: string) => void;
+  locale: string;
+  t: ReturnType<typeof useTranslations>;
 }) {
+  const fl = (f: string) => locale === "ko" ? (FACTION_KR[f] || f) : (FACTION_EN[f] || f);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -641,7 +679,7 @@ function FactionDropdown({
             ? "border-amber-500/50 text-amber-400 bg-amber-500/10"
             : "bg-[#0d0d1a] border-gray-800 text-gray-500 hover:text-gray-400"}`}
       >
-        세력 {selected.length > 0 ? `(${selected.length})` : "전체"} ▾
+        {t("faction")} {selected.length > 0 ? `(${selected.length})` : t("factionAll")} ▾
       </button>
       {open && (
         <div className="absolute top-full left-0 mt-1 bg-[#12122a] border border-gray-700 rounded-xl p-2 z-50 w-48 max-h-72 overflow-y-auto shadow-2xl">
@@ -650,7 +688,7 @@ function FactionDropdown({
               onClick={() => { for (const f of selected) onToggle(f); }}
               className="w-full text-left text-[10px] text-gray-500 hover:text-red-400 px-2 py-1 cursor-pointer mb-1"
             >
-              전체 해제
+              {t("clearAll")}
             </button>
           )}
           {factions.map((f) => {
@@ -662,7 +700,7 @@ function FactionDropdown({
                 className={`w-full text-left px-2 py-1.5 rounded text-xs cursor-pointer transition-colors
                   ${active ? "text-amber-400 bg-amber-500/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
               >
-                {active ? "✓ " : ""}{FACTION_KR[f] || f}
+                {active ? "✓ " : ""}{fl(f)}
               </button>
             );
           })}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 import { useAuth } from "@/lib/AuthContext";
 import { getSupabase } from "@/lib/supabase";
 
@@ -17,8 +18,11 @@ interface PullRecord {
 interface TrackDef {
   key: string;
   label: string;
+  labelEn: string;
   rarity: string;
+  rarityEn: string;
   shardName: string;
+  shardNameEn: string;
   image: string;
   color: string;
   textColor: string;
@@ -26,19 +30,19 @@ interface TrackDef {
 }
 
 const TRACKS: TrackDef[] = [
-  { key: "ancient_0", label: "고대", rarity: "전설", shardName: "고대", image: "/shards/ancient.png", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
-  { key: "void_0", label: "보이드", rarity: "전설", shardName: "보이드", image: "/shards/void.png", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
-  { key: "sacred_0", label: "신성", rarity: "전설", shardName: "신성", image: "/shards/sacred.png", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
-  { key: "primal_0", label: "태고 전설", rarity: "전설", shardName: "태고", image: "/shards/primal.png", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
-  { key: "primal_1", label: "태고 신화", rarity: "신화", shardName: "태고", image: "/shards/primal.png", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
+  { key: "ancient_0", label: "고대", labelEn: "Ancient", rarity: "전설", rarityEn: "Legendary", shardName: "고대", shardNameEn: "Ancient", image: "/shards/ancient.png", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
+  { key: "void_0", label: "보이드", labelEn: "Void", rarity: "전설", rarityEn: "Legendary", shardName: "보이드", shardNameEn: "Void", image: "/shards/void.png", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
+  { key: "sacred_0", label: "신성", labelEn: "Sacred", rarity: "전설", rarityEn: "Legendary", shardName: "신성", shardNameEn: "Sacred", image: "/shards/sacred.png", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
+  { key: "primal_0", label: "태고 전설", labelEn: "Primal Lego", rarity: "전설", rarityEn: "Legendary", shardName: "태고", shardNameEn: "Primal", image: "/shards/primal.png", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
+  { key: "primal_1", label: "태고 신화", labelEn: "Primal Myth", rarity: "신화", rarityEn: "Mythical", shardName: "태고", shardNameEn: "Primal", image: "/shards/primal.png", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
 ];
 
 // 꺾은선 차트에 쓸 파편 그룹 (고대/보이드/신성/태고 4개)
 const SHARD_GROUPS = [
-  { keys: ["ancient_0"], label: "고대", color: "#3B82F6", image: "/shards/ancient.png" },
-  { keys: ["void_0"], label: "보이드", color: "#A855F7", image: "/shards/void.png" },
-  { keys: ["sacred_0"], label: "신성", color: "#EAB308", image: "/shards/sacred.png" },
-  { keys: ["primal_0", "primal_1"], label: "태고", color: "#EF4444", image: "/shards/primal.png" },
+  { keys: ["ancient_0"], label: "고대", labelEn: "Ancient", color: "#3B82F6", image: "/shards/ancient.png" },
+  { keys: ["void_0"], label: "보이드", labelEn: "Void", color: "#A855F7", image: "/shards/void.png" },
+  { keys: ["sacred_0"], label: "신성", labelEn: "Sacred", color: "#EAB308", image: "/shards/sacred.png" },
+  { keys: ["primal_0", "primal_1"], label: "태고", labelEn: "Primal", color: "#EF4444", image: "/shards/primal.png" },
 ];
 
 // ── localStorage (게스트용) ───────────────────────────
@@ -117,9 +121,11 @@ async function dbLoadAllPity(userId: string): Promise<Record<string, number>> {
 }
 
 // ── 파편별 체감 확률 추이 차트 ──────────────────────
-function RateTrendChart({ history, height = 300 }: {
+function RateTrendChart({ history, height = 300, locale, t }: {
   history: PullRecord[];
   height?: number;
+  locale?: string;
+  t?: ReturnType<typeof useTranslations>;
 }) {
   const chartData = useMemo(() => {
     if (history.length === 0) return null;
@@ -174,7 +180,7 @@ function RateTrendChart({ history, height = 300 }: {
   if (!chartData || chartData.lines.length === 0) {
     return (
       <div className="flex items-center justify-center text-gray-600 text-xs" style={{ height }}>
-        획득 기록이 없습니다. <a href="/shard" className="text-gold ml-1 hover:underline">파편 계산기</a>에서 기록을 입력하세요.
+        {t ? t("chartEmpty") : "No records."} <a href="/shard" className="text-gold ml-1 hover:underline">{t ? t("shardCalculator") : "Shard Calculator"}</a>{t ? t("chartEmptySuffix") : ""}
       </div>
     );
   }
@@ -287,8 +293,8 @@ function RateTrendChart({ history, height = 300 }: {
         {SHARD_GROUPS.map((g) => (
           <div key={g.label} className="flex items-center gap-1.5">
             <div className="w-4 h-[2.5px] rounded" style={{ backgroundColor: g.color }} />
-            <Image src={g.image} alt={g.label} width={16} height={16} />
-            <span className="text-[10px] text-gray-400">{g.label}</span>
+            <Image src={g.image} alt={locale === "ko" ? g.label : g.labelEn} width={16} height={16} />
+            <span className="text-[10px] text-gray-400">{locale === "ko" ? g.label : g.labelEn}</span>
           </div>
         ))}
       </div>
@@ -309,17 +315,18 @@ function StatCard({ label, value, sub, color }: { label: string; value: string |
 
 // ── 기간 필터 드롭다운 ──────────────────────────────
 const PERIOD_OPTIONS = [
-  { label: "전체 기간", value: 0 },
-  { label: "오늘", value: 1 },
-  { label: "최근 7일", value: 7 },
-  { label: "최근 30일", value: 30 },
-  { label: "최근 90일", value: 90 },
+  { label: "전체 기간", labelEn: "All Time", value: 0 },
+  { label: "오늘", labelEn: "Today", value: 1 },
+  { label: "최근 7일", labelEn: "Last 7 Days", value: 7 },
+  { label: "최근 30일", labelEn: "Last 30 Days", value: 30 },
+  { label: "최근 90일", labelEn: "Last 90 Days", value: 90 },
 ];
 
-function PeriodDropdown({ value, onChange }: { value: number; onChange: (v: number) => void }) {
+function PeriodDropdown({ value, onChange, locale }: { value: number; onChange: (v: number) => void; locale?: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const selected = PERIOD_OPTIONS.find((o) => o.value === value) || PERIOD_OPTIONS[0];
+  const pl = (opt: typeof PERIOD_OPTIONS[number]) => locale === "ko" ? opt.label : opt.labelEn;
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -335,7 +342,7 @@ function PeriodDropdown({ value, onChange }: { value: number; onChange: (v: numb
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 text-xs bg-[#1a1a2e] border border-gray-700 hover:border-gold/50 text-gray-300 px-3 py-1.5 rounded-lg transition-colors"
       >
-        {selected.label}
+        {pl(selected)}
         <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
@@ -348,7 +355,7 @@ function PeriodDropdown({ value, onChange }: { value: number; onChange: (v: numb
               onClick={() => { onChange(opt.value); setOpen(false); }}
               className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${opt.value === value ? "text-gold font-bold" : "text-gray-400"}`}
             >
-              {opt.label}
+              {pl(opt)}
             </button>
           ))}
         </div>
@@ -360,6 +367,10 @@ function PeriodDropdown({ value, onChange }: { value: number; onChange: (v: numb
 // ── 메인 ────────────────────────────────────────────
 export default function Dashboard() {
   const { user, loading: authLoading, signInWithGoogle } = useAuth();
+  const t = useTranslations("dashboard");
+  const locale = useLocale();
+  const tl = (track: TrackDef) => locale === "ko" ? track.label : track.labelEn;
+  const tn = (track: TrackDef) => locale === "ko" ? track.shardName : track.shardNameEn;
   const isLoggedIn = !!user;
   const [pity, setPity] = useState<Record<string, number>>({});
   const [history, setHistory] = useState<PullRecord[]>([]);
@@ -441,42 +452,42 @@ export default function Dashboard() {
       {/* 헤더 */}
       <div className="mb-8 flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">대시보드</h1>
+          <h1 className="text-2xl font-bold text-white">{t("title")}</h1>
           <p className="text-sm text-gray-500 mt-1">
-            파편 소모 현황 및 체감 확률 통계
+            {t("subtitle")}
             <span className={`ml-2 text-[10px] px-1.5 py-0.5 rounded ${isLoggedIn ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"}`}>
-              {isLoggedIn ? "서버 데이터" : "내 데이터"}
+              {isLoggedIn ? t("serverData") : t("myData")}
             </span>
           </p>
         </div>
-        <PeriodDropdown value={period} onChange={setPeriod} />
+        <PeriodDropdown value={period} onChange={setPeriod} locale={locale} />
       </div>
 
       {/* 총합 스탯 카드 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-        <StatCard label="총 파편 소모" value={totalShardsUsed} sub="모든 파편 합산" color="text-gold" />
-        <StatCard label="총 획득 횟수" value={totalPulls} sub="전설 + 신화" color="text-emerald-400" />
+        <StatCard label={t("totalShardsUsed")} value={totalShardsUsed} sub={t("allShardsSum")} color="text-gold" />
+        <StatCard label={t("totalPullCount")} value={totalPulls} sub={t("legendaryMythical")} color="text-emerald-400" />
         <StatCard
-          label="전체 체감 확률"
+          label={t("overallFeltRate")}
           value={totalPulls > 0 && totalShardsUsed > 0 ? ((totalPulls / totalShardsUsed) * 100).toFixed(2) + "%" : "-"}
-          sub="획득 / 소모"
+          sub={t("pullsOverUsed")}
           color="text-amber-400"
         />
         <StatCard
-          label="가장 많이 깐 파편"
+          label={t("mostOpenedShard")}
           value={(() => {
-            const max = TRACKS.reduce((best, t) => {
-              const s = stats[t.key];
-              return s && s.totalPulls > (best?.totalPulls || 0) ? { ...s, name: t.shardName } : best;
+            const max = TRACKS.reduce((best, tr) => {
+              const s = stats[tr.key];
+              return s && s.totalPulls > (best?.totalPulls || 0) ? { ...s, name: tn(tr) } : best;
             }, null as (typeof stats[string] & { name: string }) | null);
             return max?.name || "-";
           })()}
           sub={(() => {
-            const max = TRACKS.reduce((best, t) => {
-              const s = stats[t.key];
+            const max = TRACKS.reduce((best, tr) => {
+              const s = stats[tr.key];
               return s && s.totalPulls > (best?.totalPulls || 0) ? s : best;
             }, null as typeof stats[string] | null);
-            return max ? `${max.totalPulls}개` : "";
+            return max ? (locale === "ko" ? `${max.totalPulls}개` : `${max.totalPulls}`) : "";
           })()}
         />
       </div>
@@ -488,28 +499,28 @@ export default function Dashboard() {
           return (
             <div key={track.key} className={`bg-[#1a1a2e] border border-gray-800 rounded-xl p-3 ${track.bgColor}`}>
               <div className="flex items-center gap-2 mb-2">
-                <Image src={track.image} alt={track.shardName} width={28} height={28} className="drop-shadow" />
-                <div className={`text-xs font-bold ${track.textColor}`}>{track.label}</div>
+                <Image src={track.image} alt={tn(track)} width={28} height={28} className="drop-shadow" />
+                <div className={`text-xs font-bold ${track.textColor}`}>{tl(track)}</div>
               </div>
               <div className="space-y-1 text-[10px]">
                 <div className="flex justify-between">
-                  <span className="text-gray-500">총 소환</span>
+                  <span className="text-gray-500">{t("totalSummon")}</span>
                   <span className="text-white font-mono font-bold">{s?.totalPulls || 0}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">획득</span>
-                  <span className="text-emerald-400 font-mono font-bold">{s?.pullCount || 0}회</span>
+                  <span className="text-gray-500">{t("pulled")}</span>
+                  <span className="text-emerald-400 font-mono font-bold">{s?.pullCount || 0}{locale === "ko" ? "회" : "x"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">평균</span>
-                  <span className="text-gray-300 font-mono">{s?.avg || "-"}개</span>
+                  <span className="text-gray-500">{t("avg")}</span>
+                  <span className="text-gray-300 font-mono">{s?.avg || "-"}{locale === "ko" ? "개" : ""}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">체감</span>
+                  <span className="text-gray-500">{t("felt")}</span>
                   <span className={`font-mono font-bold ${track.textColor}`}>{s?.rate || "-"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">현재 pity</span>
+                  <span className="text-gray-500">{t("currentPity")}</span>
                   <span className="text-gray-400 font-mono">{s?.currentPity || 0}</span>
                 </div>
               </div>
@@ -520,19 +531,19 @@ export default function Dashboard() {
 
       {/* 그래프: 파편별 체감 확률 추이 */}
       <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-8">
-        <h2 className="text-sm font-bold text-white mb-4">파편별 체감 확률 추이</h2>
-        <RateTrendChart history={filteredHistory} height={300} />
+        <h2 className="text-sm font-bold text-white mb-4">{t("chartTitle")}</h2>
+        <RateTrendChart history={filteredHistory} height={300} locale={locale} t={t} />
       </div>
 
       {/* 안내 */}
       {totalShardsUsed === 0 && period === 0 && (
         <div className="text-center text-gray-600 text-sm py-8">
-          아직 데이터가 없습니다. <a href="/shard" className="text-gold hover:underline">파편 계산기</a>에서 소환 기록을 입력해보세요!
+          {t("noDataYet")} <a href="/shard" className="text-gold hover:underline">{t("shardCalculator")}</a>{t("noDataSuffix")}
         </div>
       )}
       {totalShardsUsed === 0 && period > 0 && (
         <div className="text-center text-gray-600 text-sm py-8">
-          선택한 기간에 데이터가 없습니다.
+          {t("noDataInPeriod")}
         </div>
       )}
 
@@ -540,16 +551,16 @@ export default function Dashboard() {
       {!isLoggedIn && (
         <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-6 text-center">
           <p className="text-gray-400 text-sm mb-2">
-            다른 유저들의 데이터와 비교하고 싶다면?
+            {t("loginCta")}
           </p>
           <p className="text-gray-600 text-xs mb-4">
-            Google 로그인 후 데이터가 서버에 저장되며, 전체 유저 통계를 확인할 수 있습니다.
+            {t("loginCtaDetail")}
           </p>
           <button
             onClick={signInWithGoogle}
             className="bg-gold text-background px-6 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
           >
-            Google로 로그인
+            {t("googleLogin")}
           </button>
         </div>
       )}

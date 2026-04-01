@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import { getSupabase } from "@/lib/supabase";
+import { useTranslations } from "next-intl";
 
 interface BuffDebuff {
   name: string;
@@ -158,6 +159,7 @@ function ChampionSearch({
   onClose: () => void;
   krNames: Record<string, string>;
 }) {
+  const t = useTranslations("cb");
   const [query, setQuery] = useState("");
   const [filterRarity, setFilterRarity] = useState<string>("all");
   const [filterFaction, setFilterFaction] = useState<string>("all");
@@ -189,7 +191,7 @@ function ChampionSearch({
         {/* Header */}
         <div className="p-4 border-b border-card-border">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-gold font-semibold">챔피언 선택</h3>
+            <h3 className="text-gold font-semibold">{t("selectChampion")}</h3>
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-white"
@@ -200,7 +202,7 @@ function ChampionSearch({
           <input
             ref={inputRef}
             type="text"
-            placeholder="챔피언 이름 검색..."
+            placeholder={t("searchPlaceholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full bg-input-bg border border-input-border rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-gold"
@@ -211,18 +213,18 @@ function ChampionSearch({
               onChange={(e) => setFilterRarity(e.target.value)}
               className="bg-input-bg border border-input-border rounded px-2 py-1 text-xs text-gray-300 outline-none"
             >
-              <option value="all">전체 등급</option>
-              <option value="Mythical">신화</option>
-              <option value="Legendary">전설</option>
-              <option value="Epic">에픽</option>
-              <option value="Rare">레어</option>
+              <option value="all">{t("allRarities")}</option>
+              <option value="Mythical">{t("mythical")}</option>
+              <option value="Legendary">{t("legendary")}</option>
+              <option value="Epic">{t("epic")}</option>
+              <option value="Rare">{t("rare")}</option>
             </select>
             <select
               value={filterFaction}
               onChange={(e) => setFilterFaction(e.target.value)}
               className="bg-input-bg border border-input-border rounded px-2 py-1 text-xs text-gray-300 outline-none flex-1"
             >
-              <option value="all">전체 세력</option>
+              <option value="all">{t("allFactions")}</option>
               {factions.map((f) => (
                 <option key={f} value={f}>
                   {f}
@@ -236,7 +238,7 @@ function ChampionSearch({
         <div className="overflow-y-auto flex-1 p-2">
           {filtered.length === 0 ? (
             <p className="text-center text-gray-500 py-8 text-sm">
-              검색 결과가 없습니다
+              {t("noResults")}
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-1">
@@ -280,7 +282,7 @@ function ChampionSearch({
               ))}
               {filtered.length > 100 && (
                 <p className="text-center text-gray-500 text-xs py-2">
-                  +{filtered.length - 100}개 더...
+                  {t("moreResults", { count: filtered.length - 100 })}
                 </p>
               )}
             </div>
@@ -306,6 +308,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
   onUpdate: (updated: Partial<SlotData>) => void;
   onRemove: () => void;
 }) {
+  const t = useTranslations("cb");
   const champ = slot.champion;
   const isLeader = index === 0;
 
@@ -331,9 +334,9 @@ const ChampionSlot = React.memo(function ChampionSlot({
           </svg>
         </div>
         <p className="text-sm text-gray-500">
-          {isLeader ? "리더" : `슬롯 ${index + 1}`}
+          {isLeader ? t("leader") : t("slot", { num: index + 1 })}
         </p>
-        <p className="text-xs text-gray-600 mt-1">클릭하여 챔피언 선택</p>
+        <p className="text-xs text-gray-600 mt-1">{t("clickToSelect")}</p>
       </div>
     );
   }
@@ -431,7 +434,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
         <button
           onClick={onRemove}
           className="text-gray-600 hover:text-red-400 transition-colors p-1"
-          title="제거"
+          title={t("remove")}
         >
           <svg
             className="w-4 h-4"
@@ -451,12 +454,12 @@ const ChampionSlot = React.memo(function ChampionSlot({
 
       {/* Speed Input */}
       <div className="mb-3">
-        <label className="text-[11px] text-gray-500 block mb-1">스피드</label>
+        <label className="text-[11px] text-gray-500 block mb-1">{t("speed")}</label>
         <input
           type="number"
           value={slot.speed || ""}
           onChange={(e) => onUpdate({ speed: Number(e.target.value) })}
-          placeholder="예: 171"
+          placeholder={t("speedPlaceholder")}
           className="w-full bg-input-bg border border-input-border rounded-lg px-3 py-1.5 text-sm text-white placeholder-gray-600 outline-none focus:border-gold"
         />
       </div>
@@ -465,13 +468,13 @@ const ChampionSlot = React.memo(function ChampionSlot({
       {isLeader && (
         <div className="mb-3">
           <label className="text-[11px] text-gold block mb-1">
-            스피드 오라 (%)
+            {t("speedAura")}
           </label>
           <input
             type="number"
             value={slot.speedAura || ""}
             onChange={(e) => onUpdate({ speedAura: Number(e.target.value) })}
-            placeholder="예: 19"
+            placeholder={t("speedAuraPlaceholder")}
             className="w-full bg-input-bg border border-gold/30 rounded-lg px-3 py-1.5 text-sm text-gold placeholder-gray-600 outline-none focus:border-gold"
           />
         </div>
@@ -481,7 +484,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
       <div className="mb-3">
         <div className="flex items-center justify-between">
           <label className="text-[11px] text-gray-400">
-            강철의 서사시 (Lore of Steel)
+            {t("loreOfSteel")}
           </label>
           <button
             onClick={() => onUpdate({ steelEpic: !slot.steelEpic })}
@@ -500,7 +503,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
           <div className="mt-1.5 space-y-1.5">
             {/* 기본 스피드 */}
             <div className="bg-gold/10 border border-gold/20 rounded-lg px-3 py-1.5 flex items-center justify-between">
-              <span className="text-[11px] text-gold/70">기본 스피드</span>
+              <span className="text-[11px] text-gold/70">{t("baseSpeed")}</span>
               <span className="text-sm font-mono text-gold font-semibold">
                 {champ.base_speed}
               </span>
@@ -509,7 +512,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
             {/* 세트 스피드 보너스 % 입력 */}
             <div>
               <label className="text-[10px] text-gray-500 block mb-1">
-                세트 스피드 보너스 총 %
+                {t("setBonusPct")}
               </label>
               <input
                 type="number"
@@ -517,7 +520,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
                 onChange={(e) =>
                   onUpdate({ setBonusPct: Number(e.target.value) })
                 }
-                placeholder="예: 12 (Speed 1세트)"
+                placeholder={t("setBonusPlaceholder")}
                 className="w-full bg-input-bg border border-gold/20 rounded-lg px-3 py-1.5 text-sm text-white placeholder-gray-600 outline-none focus:border-gold"
               />
             </div>
@@ -539,14 +542,11 @@ const ChampionSlot = React.memo(function ChampionSlot({
                   </span>
                 </div>
                 <p className="text-[9px] text-gray-500 mt-1">
-                  세트 보너스 {slot.setBonusPct}% x 1.15 ={" "}
-                  {(slot.setBonusPct * 1.15).toFixed(2)}% | 추가 스피드:{" "}
-                  +
-                  {(
-                    champ.base_speed *
-                    (slot.setBonusPct / 100) *
-                    0.15
-                  ).toFixed(3)}
+                  {t("setBonusCalc", {
+                    pct: slot.setBonusPct,
+                    result: (slot.setBonusPct * 1.15).toFixed(2),
+                    extra: (champ.base_speed * (slot.setBonusPct / 100) * 0.15).toFixed(3),
+                  })}
                 </p>
               </div>
             )}
@@ -558,13 +558,13 @@ const ChampionSlot = React.memo(function ChampionSlot({
       <div className="mb-2">
         <div className="flex items-center justify-between mb-1.5">
           <label className="text-[11px] text-gray-500">
-            스킬 (우선순위 순)
+            {t("skillsPriority")}
           </label>
           <button
             onClick={handleResetSkills}
             className="text-[10px] text-gray-600 hover:text-gold transition-colors cursor-pointer"
           >
-            초기화
+            {t("reset")}
           </button>
         </div>
         <div className="space-y-2">
@@ -616,7 +616,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
                           ? "bg-gray-700 text-gray-400 hover:text-white"
                           : "text-gray-600 hover:text-red-400 hover:bg-red-500/10"
                       }`}
-                      title={isDisabled ? "스킬 활성화" : "스킬 사용 안 함"}
+                      title={isDisabled ? t("enableSkill") : t("disableSkill")}
                     >
                       {isDisabled ? "↩" : "✕"}
                     </button>
@@ -652,7 +652,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
                 {/* Delay Control (A2+ only) */}
                 {!isA1 && config && (
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[10px] text-gray-500">딜레이:</span>
+                    <span className="text-[10px] text-gray-500">{t("delay")}</span>
                     <button
                       onClick={() =>
                         handleDelayChange(skill.label, config.delay - 1)
@@ -678,7 +678,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
                 {/* CD Reduce Target (쿨다운 감소 스킬에만 표시) */}
                 {skill.cd_reduce && skill.cd_reduce.target === "target_ally" && config && (
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[10px] text-yellow-400">타겟:</span>
+                    <span className="text-[10px] text-yellow-400">{t("target")}</span>
                     <select
                       value={config.cdReduceTarget ?? ""}
                       onChange={(e) => {
@@ -691,7 +691,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
                       }}
                       className="bg-input-bg border border-input-border rounded px-1.5 py-0.5 text-[10px] text-gray-300 outline-none flex-1"
                     >
-                      <option value="">자동 (최저 HP)</option>
+                      <option value="">{t("autoTarget")}</option>
                       {allSlots
                         .filter((s) => s.champion && s.champion.slug !== champ?.slug)
                         .map((s) => (
@@ -743,7 +743,7 @@ const ChampionSlot = React.memo(function ChampionSlot({
         onClick={onOpenSearch}
         className="w-full mt-2 text-[11px] text-gray-500 hover:text-gold py-1 transition-colors cursor-pointer"
       >
-        챔피언 변경
+        {t("changeChampion")}
       </button>
     </div>
   );
@@ -1094,9 +1094,10 @@ function runSimulation(
     let tmInfo: string | undefined;
     if (chosenSkill.tmFill.length > 0) {
       const fill = chosenSkill.tmFill[0];
+      // Store as parseable format: "team:30" or "self:30"
       tmInfo = fill.target === "all_allies"
-        ? `팀 TM+${fill.value}%`
-        : `TM+${fill.value}%`;
+        ? `team:${fill.value}`
+        : `self:${fill.value}`;
     }
 
     // 행동 기록 (행동 전 TM 스냅샷 — 리셋 전 값)
@@ -1400,6 +1401,9 @@ function TmSnapshotRow({ snapshot, bossTm }: { snapshot: { name: string; tm: num
 
 // 시뮬레이션 결과 컴포넌트
 const SimulationResults = React.memo(function SimulationResults({ results }: { results: SimTurn[] }) {
+  const t = useTranslations("cb");
+  const tBuffs = useTranslations("buffs");
+  const tDebuffs = useTranslations("debuffs");
   const [showTm, setShowTm] = useState(false);
   if (results.length === 0) return null;
 
@@ -1413,7 +1417,7 @@ const SimulationResults = React.memo(function SimulationResults({ results }: { r
             onChange={(e) => setShowTm(e.target.checked)}
             className="accent-gold"
           />
-          TM 디버그
+          {t("tmDebug")}
         </label>
       </div>
       {results.map((turn) => (
@@ -1459,9 +1463,9 @@ const SimulationResults = React.memo(function SimulationResults({ results }: { r
                       className={`text-[9px] px-1 py-0.5 rounded ${
                         display?.color || "bg-green-500/20 text-green-400"
                       }`}
-                      title={`${buff.name} (${buff.remainingTurns}턴)`}
+                      title={`${buff.name} (${buff.remainingTurns}t)`}
                     >
-                      {display?.short || buff.name}
+                      {tBuffs.has(buff.name.replace(/\./g, "_")) ? tBuffs(buff.name.replace(/\./g, "_")) : (display?.short || buff.name)}
                     </span>
                   );
                 })}
@@ -1473,17 +1477,20 @@ const SimulationResults = React.memo(function SimulationResults({ results }: { r
                       className={`text-[9px] px-1 py-0.5 rounded ${
                         display?.color || "bg-red-600/20 text-red-400"
                       }`}
-                      title={`${debuff.name} (${debuff.remainingTurns}턴) ⚠️ 디버프`}
+                      title={`${debuff.name} (${debuff.remainingTurns}t)`}
                     >
-                      {display?.short || debuff.name}
+                      {tDebuffs.has(debuff.name.replace(/\./g, "_")) ? tDebuffs(debuff.name.replace(/\./g, "_")) : (display?.short || debuff.name)}
                     </span>
                   );
                 })}
-                {action.tmFillInfo && (
-                  <span className="text-[9px] px-1 py-0.5 rounded bg-sky-500/20 text-sky-300">
-                    {action.tmFillInfo}
-                  </span>
-                )}
+                {action.tmFillInfo && (() => {
+                  const [type, val] = action.tmFillInfo.split(":");
+                  return (
+                    <span className="text-[9px] px-1 py-0.5 rounded bg-sky-500/20 text-sky-300">
+                      {type === "team" ? t("tmFillTeam", { value: val }) : t("tmFillSelf", { value: val })}
+                    </span>
+                  );
+                })()}
               </div>
 
               {/* Skill */}
@@ -1708,6 +1715,7 @@ function buildSkillConfigs(champion: Champion): SkillConfig[] {
 }
 
 export default function ClanBossPage() {
+  const t = useTranslations("cb");
   const { user, signInWithGoogle } = useAuth();
   const isLoggedIn = !!user;
   const [champions, setChampions] = useState<Champion[]>([]);
@@ -1785,7 +1793,7 @@ export default function ClanBossPage() {
               if (row?.deck_data) {
                 applyDeckData(row.deck_data as DeckData, data);
                 window.history.replaceState(null, "", window.location.pathname);
-                showToast("공유된 덱을 불러왔습니다!");
+                showToast(t("sharedDeckLoaded"));
               }
             });
         } else if (hash) {
@@ -1794,7 +1802,7 @@ export default function ClanBossPage() {
           if (deckData) {
             applyDeckData(deckData, data);
             window.history.replaceState(null, "", window.location.pathname);
-            showToast("공유된 덱을 불러왔습니다!");
+            showToast(t("sharedDeckLoaded"));
           }
         }
       })
@@ -1852,7 +1860,7 @@ export default function ClanBossPage() {
     // 같은 이름의 기존 프리셋이 있으면 덮어쓰기
     const existing = presets.find((p) => p.name === name);
     if (existing) {
-      if (!confirm(`"${name}" 프리셋이 이미 존재합니다. 덮어쓰시겠습니까?`)) return;
+      if (!confirm(t("presetExists", { name }))) return;
       if (isLoggedIn) {
         await dbUpdatePreset(existing.id, deckData);
       }
@@ -1863,12 +1871,12 @@ export default function ClanBossPage() {
       if (!isLoggedIn) savePresetsLocal(updated);
       setSaveDialogOpen(false);
       setSavePresetName("");
-      showToast(`"${name}" 덮어쓰기 완료!`);
+      showToast(t("overwriteDone", { name }));
       return;
     }
 
     if (presets.length >= 10) {
-      showToast("프리셋은 최대 10개까지 저장할 수 있습니다.");
+      showToast(t("presetMaxReached"));
       return;
     }
 
@@ -1890,8 +1898,8 @@ export default function ClanBossPage() {
     }
     setSaveDialogOpen(false);
     setSavePresetName("");
-    showToast(`"${name}" 저장 완료!`);
-  }, [savePresetName, getCurrentDeckData, presets, showToast, isLoggedIn, user]);
+    showToast(t("savedDone", { name }));
+  }, [savePresetName, getCurrentDeckData, presets, showToast, isLoggedIn, user, t]);
 
   // 프리셋 삭제
   const handleDeletePreset = useCallback(async (id: string) => {
@@ -1905,7 +1913,7 @@ export default function ClanBossPage() {
 
   // 프리셋 공유 링크 복사 (Supabase 짧은 코드)
   const handleSharePreset = useCallback(async (preset: DeckPreset) => {
-    showToast("공유 링크 생성 중...");
+    showToast(t("generatingLink"));
     try {
       const { data, error } = await getSupabase()
         .from("shared_decks")
@@ -1922,15 +1930,15 @@ export default function ClanBossPage() {
         document.execCommand("copy");
         document.body.removeChild(input);
       });
-      showToast(`"${preset.name}" 공유 링크가 복사되었습니다!`);
+      showToast(t("shareLinkCopied", { name: preset.name }));
     } catch {
       // Supabase 실패 시 기존 해시 방식 fallback
       const hash = encodeDeck(preset.data);
       const url = `${window.location.origin}${window.location.pathname}#${hash}`;
       await navigator.clipboard.writeText(url).catch(() => {});
-      showToast(`"${preset.name}" 링크 복사됨 (긴 링크)`);
+      showToast(t("shareLinkFallback", { name: preset.name }));
     }
-  }, [showToast]);
+  }, [showToast, t]);
 
   const clearSimulation = () => {
     setSimResults([]);
@@ -1973,7 +1981,7 @@ export default function ClanBossPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-gold animate-pulse">데이터 로딩 중...</div>
+        <div className="text-gold animate-pulse">{t("loading")}</div>
       </div>
     );
   }
@@ -1985,10 +1993,9 @@ export default function ClanBossPage() {
       {/* Header */}
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gold">클랜보스 계산기</h1>
+          <h1 className="text-2xl font-bold text-gold">{t("title")}</h1>
           <p className="text-sm text-gray-500 mt-1">
-            5명의 챔피언을 선택하고 스피드를 입력하여 턴별 버프 유지 여부를
-            시뮬레이션합니다.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -2011,7 +2018,7 @@ export default function ClanBossPage() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
             </svg>
-            내 프리셋
+            {t("myPresets")}
             {isLoggedIn && presets.length > 0 && (
               <span className="bg-gold/20 text-gold text-[10px] px-1.5 py-0.5 rounded-full font-bold">{presets.length}</span>
             )}
@@ -2031,13 +2038,13 @@ export default function ClanBossPage() {
                   <svg className="w-10 h-10 mx-auto text-gray-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
-                  <p className="text-gray-300 text-sm font-medium mb-1">로그인이 필요합니다</p>
-                  <p className="text-gray-600 text-xs mb-4">프리셋을 저장하고 불러오려면<br/>Google 계정으로 로그인해주세요.</p>
+                  <p className="text-gray-300 text-sm font-medium mb-1">{t("loginRequired")}</p>
+                  <p className="text-gray-600 text-xs mb-4">{t("loginForPresets")}</p>
                   <button
                     onClick={() => { signInWithGoogle(); setPresetMenuOpen(false); }}
                     className="bg-gold text-background px-5 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer"
                   >
-                    Google로 로그인
+                    {t("googleLogin")}
                   </button>
                 </div>
               ) : presets.length === 0 ? (
@@ -2045,8 +2052,8 @@ export default function ClanBossPage() {
                   <svg className="w-8 h-8 mx-auto text-gray-700 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                   </svg>
-                  <p className="text-gray-600 text-xs">저장된 프리셋이 없습니다</p>
-                  <p className="text-gray-700 text-[10px] mt-1">챔피언을 세팅한 후 저장해보세요</p>
+                  <p className="text-gray-600 text-xs">{t("noPresets")}</p>
+                  <p className="text-gray-700 text-[10px] mt-1">{t("noPresetsHint")}</p>
                 </div>
               ) : (
                 <div className="max-h-[350px] overflow-y-auto">
@@ -2063,13 +2070,13 @@ export default function ClanBossPage() {
                           onClick={() => {
                             applyDeckData(preset.data);
                             setPresetMenuOpen(false);
-                            showToast(`"${preset.name}" 불러옴!`);
+                            showToast(t("loaded", { name: preset.name }));
                           }}
                           className="w-full text-left px-4 py-3 cursor-pointer"
                         >
                           <div className="text-sm text-white font-medium">{preset.name}</div>
                           <div className="text-[10px] text-gray-500 mt-0.5 truncate">
-                            {champNames.join(", ") || "빈 덱"}
+                            {champNames.join(", ") || t("emptyDeck")}
                           </div>
                         </button>
                         <div className="flex px-2 pb-2 gap-1 -mt-1">
@@ -2080,7 +2087,7 @@ export default function ClanBossPage() {
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                             </svg>
-                            공유
+                            {t("share")}
                           </button>
                           <button
                             onClick={() => handleDeletePreset(preset.id)}
@@ -2089,7 +2096,7 @@ export default function ClanBossPage() {
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
-                            삭제
+                            {t("delete")}
                           </button>
                         </div>
                       </div>
@@ -2108,7 +2115,7 @@ export default function ClanBossPage() {
           {/* 난이도 */}
           <div className="flex-1">
             <label className="text-sm text-gray-400 block mb-2">
-              클랜보스 난이도
+              {t("bossDifficulty")}
             </label>
             <div className="flex flex-wrap gap-2">
               {Object.entries(BOSS_SPEEDS).map(([name, speed]) => (
@@ -2131,7 +2138,7 @@ export default function ClanBossPage() {
           {/* 보스 속성 */}
           <div className="flex-shrink-0">
             <label className="text-sm text-gray-400 block mb-2">
-              보스 속성
+              {t("bossAffinity")}
             </label>
             <select
               value={bossAffinity}
@@ -2169,7 +2176,7 @@ export default function ClanBossPage() {
             {/* 지역보너스 */}
             <div className="flex items-center gap-2">
               <label className="text-xs text-gray-400 whitespace-nowrap">
-                지역보너스
+                {t("regionBonus")}
               </label>
               <button
                 onClick={() => setRegionBonus(!regionBonus)}
@@ -2230,18 +2237,18 @@ export default function ClanBossPage() {
               }}
               className="bg-gold text-background px-8 py-3 rounded-xl font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
             >
-              시뮬레이션 시작
+              {t("startSim")}
             </button>
 
             {/* 저장 */}
             <button
               onClick={() => {
                 if (!isLoggedIn) {
-                  showToast("프리셋 저장은 로그인 후 이용 가능합니다.");
+                  showToast(t("presetLoginRequired"));
                   return;
                 }
                 if (presets.length >= 10) {
-                  showToast("프리셋은 최대 10개까지 저장할 수 있습니다.");
+                  showToast(t("presetMaxReached"));
                   return;
                 }
                 setSaveDialogOpen(true);
@@ -2251,7 +2258,7 @@ export default function ClanBossPage() {
                   ? "text-gray-400 hover:border-gold/50 hover:text-gold"
                   : "text-gray-600 hover:border-gray-600"
               }`}
-              title={isLoggedIn ? "현재 덱을 프리셋으로 저장" : "로그인 후 이용 가능"}
+              title={isLoggedIn ? t("savePresetTitle") : t("presetLoginRequired")}
             >
               {!isLoggedIn ? (
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -2262,17 +2269,17 @@ export default function ClanBossPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
                 </svg>
               )}
-              프리셋 저장 {isLoggedIn ? `(${presets.length}/10)` : "🔒"}
+              {t("savePreset")} {isLoggedIn ? `(${presets.length}/10)` : "🔒"}
             </button>
           </div>
 
           <p className="text-xs text-gray-500 mt-2 text-center">
-            {activeSlots.length}/5 챔피언 선택됨
+            {t("champSelected", { count: activeSlots.length })}
             {slots[0].speedAura > 0 &&
-              ` · 스피드 오라: ${slots[0].speedAura}%`}
+              t("speedAuraLabel", { value: slots[0].speedAura })}
             {regionBonus &&
               regionBonusValue > 0 &&
-              ` · 지역보너스: +${regionBonusValue}`}
+              t("regionBonusLabel", { value: regionBonusValue })}
           </p>
         </div>
       )}
@@ -2281,17 +2288,17 @@ export default function ClanBossPage() {
       {saveDialogOpen && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setSaveDialogOpen(false)}>
           <div className="bg-[#1a1a2e] border border-gray-700 rounded-xl p-6 w-full max-w-sm shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-white font-bold mb-4">덱 프리셋 저장</h3>
+            <h3 className="text-white font-bold mb-4">{t("saveDialogTitle")}</h3>
             <div className="mb-2">
               <div className="text-[10px] text-gray-500 mb-2">
-                {slots.filter((s) => s.champion).map((s) => s.champion!.display_name).join(", ") || "챔피언 없음"}
+                {slots.filter((s) => s.champion).map((s) => s.champion!.display_name).join(", ") || t("noChampions")}
               </div>
               <input
                 type="text"
                 value={savePresetName}
                 onChange={(e) => setSavePresetName(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") handleSavePreset(); }}
-                placeholder="프리셋 이름 (예: 불사덱 기본)"
+                placeholder={t("presetNamePlaceholder")}
                 className="w-full bg-input-bg border border-input-border rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 outline-none focus:border-gold"
                 autoFocus
               />
@@ -2301,14 +2308,14 @@ export default function ClanBossPage() {
                 onClick={() => { setSaveDialogOpen(false); setSavePresetName(""); }}
                 className="px-4 py-2 text-gray-400 text-sm hover:text-white transition-colors cursor-pointer"
               >
-                취소
+                {t("cancel")}
               </button>
               <button
                 onClick={handleSavePreset}
                 disabled={!savePresetName.trim()}
                 className="px-4 py-2 bg-gold text-background rounded-lg text-sm font-semibold hover:bg-gold-dark transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                저장
+                {t("save")}
               </button>
             </div>
           </div>
@@ -2325,7 +2332,7 @@ export default function ClanBossPage() {
       {/* Simulation Results */}
       <div className="bg-card border border-card-border rounded-xl p-4">
         <h2 className="text-lg font-semibold text-white mb-4">
-          시뮬레이션 결과
+          {t("simResults")}
         </h2>
         {simRunning && simResults.length > 0 ? (
           <>
@@ -2358,13 +2365,11 @@ export default function ClanBossPage() {
                 d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <p className="text-sm">
-              챔피언을 선택하고 스피드를 입력한 뒤
-              <br />
-              시뮬레이션을 시작하세요.
+            <p className="text-sm whitespace-pre-line">
+              {t("simPlaceholder")}
             </p>
             <p className="text-xs text-gray-600 mt-2">
-              각 턴마다 보스가 공격하기 전 버프 유지 여부를 확인합니다.
+              {t("simPlaceholderHint")}
             </p>
           </div>
         )}

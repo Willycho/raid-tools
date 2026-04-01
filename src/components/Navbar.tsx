@@ -3,14 +3,19 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/lib/AuthContext";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { user, loading, signInWithGoogle, signOut } = useAuth();
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // 유저 메뉴 외부 클릭 시 닫기
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (
@@ -24,46 +29,64 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  const switchLocale = () => {
+    const newLocale = locale === "ko" ? "en" : "ko";
+    // 쿠키에 선택 저장
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=${60 * 60 * 24 * 365}`;
+    // 현재 경로에서 locale 부분만 교체
+    const pathWithoutLocale = pathname.replace(/^\/(ko|en)/, "");
+    router.push(`/${newLocale}${pathWithoutLocale}`);
+  };
+
   const avatarUrl = user?.user_metadata?.avatar_url;
   const displayName =
-    user?.user_metadata?.full_name || user?.email || "사용자";
+    user?.user_metadata?.full_name || user?.email || t("user");
 
   return (
     <nav className="bg-card border-b border-card-border sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-gold font-bold text-lg tracking-wide">
+        <Link href={`/${locale}`} className="text-gold font-bold text-lg tracking-wide">
           RSL Tools
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 text-sm">
           <Link
-            href="/dashboard"
+            href={`/${locale}/dashboard`}
             className="text-gray-400 hover:text-gold transition-colors"
           >
-            대시보드
+            {t("dashboard")}
           </Link>
           <Link
-            href="/clan-boss"
+            href={`/${locale}/clan-boss`}
             className="text-gray-400 hover:text-gold transition-colors"
           >
-            클랜보스 계산기
+            {t("clanBoss")}
           </Link>
           <Link
-            href="/shard"
+            href={`/${locale}/shard`}
             className="text-gray-400 hover:text-gold transition-colors"
           >
-            파편 확률 계산기
+            {t("shard")}
           </Link>
           <Link
-            href="/search"
+            href={`/${locale}/search`}
             className="text-gray-400 hover:text-gold transition-colors"
           >
-            버프/디버프 검색
+            {t("search")}
           </Link>
 
-          {/* 로그인/유저 영역 */}
+          {/* Language Switch */}
+          <button
+            onClick={switchLocale}
+            className="text-gray-500 hover:text-gold transition-colors text-xs font-mono border border-card-border rounded px-2 py-1 cursor-pointer"
+            title={locale === "ko" ? "Switch to English" : "한국어로 전환"}
+          >
+            {locale === "ko" ? "EN" : "KO"}
+          </button>
+
+          {/* Login/User */}
           {loading ? (
             <div className="w-8 h-8 rounded-full bg-card-border animate-pulse" />
           ) : user ? (
@@ -75,7 +98,7 @@ export default function Navbar() {
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
-                    alt="프로필"
+                    alt={t("profile")}
                     className="w-8 h-8 rounded-full border border-card-border"
                     referrerPolicy="no-referrer"
                   />
@@ -102,7 +125,7 @@ export default function Navbar() {
                     }}
                     className="w-full text-left px-4 py-2.5 text-sm text-gray-400 hover:text-red-400 hover:bg-card-border/50 transition-colors"
                   >
-                    로그아웃
+                    {t("logout")}
                   </button>
                 </div>
               )}
@@ -112,7 +135,7 @@ export default function Navbar() {
               onClick={signInWithGoogle}
               className="bg-gold text-background px-4 py-1.5 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors"
             >
-              Google 로그인
+              {t("googleLogin")}
             </button>
           )}
         </div>
@@ -151,42 +174,50 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden border-t border-card-border px-4 py-3 flex flex-col gap-3 text-sm">
           <Link
-            href="/dashboard"
+            href={`/${locale}/dashboard`}
             className="text-gray-400 hover:text-gold transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            대시보드
+            {t("dashboard")}
           </Link>
           <Link
-            href="/clan-boss"
+            href={`/${locale}/clan-boss`}
             className="text-gray-400 hover:text-gold transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            클랜보스 계산기
+            {t("clanBoss")}
           </Link>
           <Link
-            href="/shard"
+            href={`/${locale}/shard`}
             className="text-gray-400 hover:text-gold transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            파편 확률 계산기
+            {t("shard")}
           </Link>
           <Link
-            href="/search"
+            href={`/${locale}/search`}
             className="text-gray-400 hover:text-gold transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            버프/디버프 검색
+            {t("search")}
           </Link>
 
-          {/* 모바일 로그인/유저 */}
+          {/* Language Switch (Mobile) */}
+          <button
+            onClick={() => { switchLocale(); setMenuOpen(false); }}
+            className="text-gray-500 hover:text-gold transition-colors text-xs font-mono border border-card-border rounded px-2 py-1 w-fit cursor-pointer"
+          >
+            {locale === "ko" ? "English" : "한국어"}
+          </button>
+
+          {/* Mobile Login/User */}
           {loading ? null : user ? (
             <div className="border-t border-card-border pt-3 mt-1">
               <div className="flex items-center gap-3 mb-3">
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
-                    alt="프로필"
+                    alt={t("profile")}
                     className="w-8 h-8 rounded-full border border-card-border"
                     referrerPolicy="no-referrer"
                   />
@@ -211,7 +242,7 @@ export default function Navbar() {
                 }}
                 className="text-red-400 hover:text-red-300 transition-colors"
               >
-                로그아웃
+                {t("logout")}
               </button>
             </div>
           ) : (
@@ -222,7 +253,7 @@ export default function Navbar() {
               }}
               className="bg-gold text-background px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors w-full"
             >
-              Google 로그인
+              {t("googleLogin")}
             </button>
           )}
         </div>

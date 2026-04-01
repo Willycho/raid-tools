@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useAuth } from "@/lib/AuthContext";
 import { getSupabase } from "@/lib/supabase";
 
@@ -10,6 +12,7 @@ type ShardType = "ancient" | "void" | "sacred" | "primal" | "prism" | "remnant";
 
 interface MercyTrack {
   rarity: string;
+  rarityEn: string;
   color: string;
   borderColor: string;
   baseRate: number;
@@ -20,6 +23,7 @@ interface MercyTrack {
 
 interface ShardDef {
   name: string;
+  nameEn: string;
   image: string;
   borderColor: string;
   bgGlow: string;
@@ -39,12 +43,14 @@ interface PullRecord {
 const SHARDS: Record<ShardType, ShardDef> = {
   ancient: {
     name: "고대",
+    nameEn: "Ancient",
     image: "/shards/ancient.webp",
     borderColor: "border-blue-500/60",
     bgGlow: "shadow-blue-500/20",
     mercyTracks: [
       {
         rarity: "전설",
+        rarityEn: "Legendary",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/50",
         baseRate: 0.5,
@@ -56,12 +62,14 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   void: {
     name: "보이드",
+    nameEn: "Void",
     image: "/shards/void.webp",
     borderColor: "border-purple-500/60",
     bgGlow: "shadow-purple-500/20",
     mercyTracks: [
       {
         rarity: "전설",
+        rarityEn: "Legendary",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/50",
         baseRate: 0.5,
@@ -73,12 +81,14 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   sacred: {
     name: "신성",
+    nameEn: "Sacred",
     image: "/shards/sacred.webp",
     borderColor: "border-yellow-500/60",
     bgGlow: "shadow-yellow-500/20",
     mercyTracks: [
       {
         rarity: "전설",
+        rarityEn: "Legendary",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/50",
         baseRate: 6,
@@ -90,12 +100,14 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   primal: {
     name: "태고",
+    nameEn: "Primal",
     image: "/shards/primal.webp",
     borderColor: "border-red-500/60",
     bgGlow: "shadow-red-500/20",
     mercyTracks: [
       {
         rarity: "전설",
+        rarityEn: "Legendary",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/50",
         baseRate: 0.5,
@@ -105,6 +117,7 @@ const SHARDS: Record<ShardType, ShardDef> = {
       },
       {
         rarity: "신화",
+        rarityEn: "Mythical",
         color: "text-red-400",
         borderColor: "border-red-500/50",
         baseRate: 0.5,
@@ -116,12 +129,14 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   prism: {
     name: "프리즘",
+    nameEn: "Prism",
     image: "/shards/prism.webp",
     borderColor: "border-cyan-500/60",
     bgGlow: "shadow-cyan-500/20",
     mercyTracks: [
       {
         rarity: "전설",
+        rarityEn: "Legendary",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/50",
         baseRate: 6,
@@ -133,12 +148,14 @@ const SHARDS: Record<ShardType, ShardDef> = {
   },
   remnant: {
     name: "잔유물",
+    nameEn: "Remnant",
     image: "/shards/remnant.webp",
     borderColor: "border-teal-500/60",
     bgGlow: "shadow-teal-500/20",
     mercyTracks: [
       {
         rarity: "신화",
+        rarityEn: "Mythical",
         color: "text-red-400",
         borderColor: "border-red-500/50",
         baseRate: 2.5,
@@ -404,6 +421,8 @@ function HistoryModal({
   onClose,
   onDelete,
   onUpdateName,
+  t,
+  locale,
 }: {
   trackKey: string;
   track: MercyTrack;
@@ -412,6 +431,8 @@ function HistoryModal({
   onClose: () => void;
   onDelete: (timestamp: number) => void;
   onUpdateName: (timestamp: number, name: string) => void;
+  t: ReturnType<typeof useTranslations>;
+  locale: string;
 }) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const trackRecords = records.filter((r) => r.trackKey === trackKey);
@@ -432,12 +453,12 @@ function HistoryModal({
           <div className="flex items-center gap-3">
             <Image src={shard.image} alt={shard.name} width={32} height={32} className="drop-shadow" />
             <div>
-              <h3 className={`font-bold ${track.color}`}>{shard.name} - {track.rarity} 획득 기록</h3>
+              <h3 className={`font-bold ${track.color}`}>{locale === "ko" ? shard.name : shard.nameEn} - {locale === "ko" ? track.rarity : track.rarityEn} {t("pullHistory")}</h3>
               <div className="text-[11px] text-gray-500">
-                총 {trackRecords.length}회
-                {avg !== null && <span className="ml-2">평균 {avg}개</span>}
+                {t("totalCount", { count: trackRecords.length })}
+                {avg !== null && <span className="ml-2">{t("avgCount", { count: avg })}</span>}
                 {avgPullRate(trackRecords, track) !== null && (
-                  <span className="ml-2">체감 확률 <span className={track.color}>{avgPullRate(trackRecords, track)}</span></span>
+                  <span className="ml-2">{t("feltRate")} <span className={track.color}>{avgPullRate(trackRecords, track)}</span></span>
                 )}
               </div>
             </div>
@@ -448,7 +469,7 @@ function HistoryModal({
         {/* 기록 목록 */}
         <div className="flex-1 overflow-y-auto p-4">
           {trackRecords.length === 0 ? (
-            <div className="text-center text-gray-600 py-8">아직 획득 기록이 없습니다</div>
+            <div className="text-center text-gray-600 py-8">{t("noHistoryYet")}</div>
           ) : (
             <div className="space-y-2">
               {trackRecords.slice().reverse().map((r, i) => (
@@ -459,23 +480,23 @@ function HistoryModal({
                         #{trackRecords.length - i}
                       </span>
                       <span className="text-xs text-gray-400">
-                        {r.pulledAt}번째 소환
+                        {t("nthSummon", { n: r.pulledAt })}
                       </span>
                       {r.wasCeiling && (
-                        <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">천장</span>
+                        <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">{t("ceiling")}</span>
                       )}
                     </div>
                     <button
                       onClick={() => onDelete(r.timestamp)}
                       className="text-gray-600 hover:text-red-400 text-xs cursor-pointer"
                     >
-                      삭제
+                      {t("delete")}
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
                     <input
                       type="text"
-                      placeholder="획득한 챔피언 이름 입력..."
+                      placeholder={t("enterChampionName")}
                       defaultValue={r.championName || ""}
                       onBlur={(e) => onUpdateName(r.timestamp, e.target.value)}
                       onKeyDown={(e) => {
@@ -506,6 +527,8 @@ function TrackCard({
   onPull,
   history,
   onOpenHistory,
+  t,
+  locale,
 }: {
   shardType: ShardType;
   track: MercyTrack;
@@ -516,6 +539,8 @@ function TrackCard({
   onPull: (trackKey: string, pulledAt: number, wasCeiling: boolean) => void;
   history: PullRecord[];
   onOpenHistory: (trackKey: string) => void;
+  t: ReturnType<typeof useTranslations>;
+  locale: string;
 }) {
   const shard = SHARDS[shardType];
   const rate = currentRate(track, pity, is2x);
@@ -552,7 +577,7 @@ function TrackCard({
     <div className={`bg-[#1a1a2e] border ${track.borderColor} rounded-xl p-4 shadow-lg ${shard.bgGlow} flex flex-col`}>
       {/* 상단: 이미지 + 원형 진행률 */}
       <div className="flex items-center gap-3 mb-3">
-        <Image src={shard.image} alt={shard.name} width={56} height={56} className="drop-shadow-lg flex-shrink-0" />
+        <Image src={shard.image} alt={locale === "ko" ? shard.name : shard.nameEn} width={56} height={56} className="drop-shadow-lg flex-shrink-0" />
         <CircleProgress value={pity} max={ceiling} size={72} stroke={5}>
           <span className="text-white font-bold font-mono text-lg">{pity}</span>
         </CircleProgress>
@@ -583,7 +608,7 @@ function TrackCard({
             ? `${track.borderColor} ${track.color} bg-[#0d0d1a] hover:bg-[#1a1a3a] shadow-md`
             : "border-gray-800 text-gray-600 bg-[#0d0d1a] cursor-not-allowed"}`}
       >
-        {track.rarity} 획득! ({pity}번째)
+        {t("pullButton", { rarity: locale === "ko" ? track.rarity : track.rarityEn, n: pity })}
       </button>
 
       {/* 진행 바 */}
@@ -599,22 +624,22 @@ function TrackCard({
 
       {/* 확률 */}
       <div className={`text-center text-sm font-bold ${track.color}`}>
-        {track.rarity} chance: {rate.toFixed(1)}%
+        {locale === "ko" ? track.rarity : track.rarityEn} chance: {rate.toFixed(1)}%
         {isBoosted && <span className="text-emerald-400 text-[10px] ml-1">▲</span>}
       </div>
 
       {/* 세부 정보 */}
       <div className="mt-2 grid grid-cols-2 gap-1 text-[10px] text-gray-500">
         <div>
-          보정: <span className={isMercyActive ? "text-emerald-400" : "text-gray-400"}>
+          {t("mercy")}: <span className={isMercyActive ? "text-emerald-400" : "text-gray-400"}>
             {isMercyActive ? "ON" : `${pity}/${track.mercyStart}`}
           </span>
         </div>
         <div className="text-right">
-          천장까지: <span className={remaining <= 10 ? "text-emerald-400 font-bold" : "text-gray-400"}>{remaining}개</span>
+          {t("toCeiling")}: <span className={remaining <= 10 ? "text-emerald-400 font-bold" : "text-gray-400"}>{t("countUnit", { count: remaining })}</span>
         </div>
-        <div>기본: {base}%</div>
-        <div className="text-right">+{track.mercyPerPull}%/개</div>
+        <div>{t("base")}: {base}%</div>
+        <div className="text-right">+{track.mercyPerPull}%/{t("perUnit")}</div>
       </div>
 
       {/* 통계 + 기록 버튼 */}
@@ -623,16 +648,16 @@ function TrackCard({
           {trackHistory.length > 0 ? (
             <>
               <div>
-                평균 <span className={`font-mono font-bold ${track.color}`}>{avg}</span>개
+                {t("avg")} <span className={`font-mono font-bold ${track.color}`}>{avg}</span>{t("countUnit", { count: "" }).trim()}
                 <span className="mx-1">|</span>
-                체감 <span className={`font-mono font-bold ${track.color}`}>{pullRate}</span>
+                {t("felt")} <span className={`font-mono font-bold ${track.color}`}>{pullRate}</span>
               </div>
               <div>
-                총 <span className="font-mono font-bold text-gray-300">{totalPulls}</span>개 소환
+                {t("total")} <span className="font-mono font-bold text-gray-300">{totalPulls}</span>{t("countUnit", { count: "" }).trim()} {t("summon")}
               </div>
             </>
           ) : (
-            <span className="text-gray-600">총 <span className="font-mono text-gray-400">{totalPulls}</span>개 소환</span>
+            <span className="text-gray-600">{t("total")} <span className="font-mono text-gray-400">{totalPulls}</span>{t("countUnit", { count: "" }).trim()} {t("summon")}</span>
           )}
         </div>
         <button
@@ -642,7 +667,7 @@ function TrackCard({
               ? `${track.borderColor} ${track.color} hover:bg-white/5`
               : "border-gray-800 text-gray-600 hover:text-gray-400"}`}
         >
-          획득 기록 ({trackHistory.length})
+          {t("pullHistory")} ({trackHistory.length})
         </button>
       </div>
     </div>
@@ -651,7 +676,7 @@ function TrackCard({
 
 // ── 태고 통합 카드 (전설 + 신화를 하나의 +/- 로 관리) ──
 function PrimalCard({
-  pityLeg, pityMyth, setPity, is2x, onPull, history, onOpenHistory,
+  pityLeg, pityMyth, setPity, is2x, onPull, history, onOpenHistory, t, locale,
 }: {
   pityLeg: number; pityMyth: number;
   setPity: (key: string, val: number) => void;
@@ -659,6 +684,8 @@ function PrimalCard({
   onPull: (trackKey: string, pulledAt: number, wasCeiling: boolean) => void;
   history: PullRecord[];
   onOpenHistory: (trackKey: string) => void;
+  t: ReturnType<typeof useTranslations>;
+  locale: string;
 }) {
   const shard = SHARDS.primal;
   const [legTrack, mythTrack] = shard.mercyTracks;
@@ -697,19 +724,19 @@ function PrimalCard({
     <div className={`bg-[#1a1a2e] border ${shard.borderColor} rounded-xl p-4 shadow-lg ${shard.bgGlow} flex flex-col`}>
       {/* 상단: 이미지 + 두 원형 프로그레스 */}
       <div className="flex items-center gap-3 mb-3">
-        <Image src={shard.image} alt={shard.name} width={56} height={56} className="drop-shadow-lg flex-shrink-0" />
+        <Image src={shard.image} alt={locale === "ko" ? shard.name : shard.nameEn} width={56} height={56} className="drop-shadow-lg flex-shrink-0" />
         <div className="flex gap-2">
           <div className="text-center">
             <CircleProgress value={pityLeg} max={legCeiling} size={60} stroke={4}>
               <span className="text-white font-bold font-mono text-sm">{pityLeg}</span>
             </CircleProgress>
-            <div className="text-[9px] text-yellow-400 mt-0.5">전설</div>
+            <div className="text-[9px] text-yellow-400 mt-0.5">{locale === "ko" ? "전설" : "Lego"}</div>
           </div>
           <div className="text-center">
             <CircleProgress value={pityMyth} max={mythCeiling} size={60} stroke={4}>
               <span className="text-white font-bold font-mono text-sm">{pityMyth}</span>
             </CircleProgress>
-            <div className="text-[9px] text-red-400 mt-0.5">신화</div>
+            <div className="text-[9px] text-red-400 mt-0.5">{locale === "ko" ? "신화" : "Myth"}</div>
           </div>
         </div>
       </div>
@@ -729,40 +756,40 @@ function PrimalCard({
         <button onClick={() => { if (pityLeg > 0) onPull("primal_0", pityLeg, false); }} disabled={pityLeg <= 0}
           className={`flex-1 h-9 rounded-lg font-bold text-xs transition-all cursor-pointer border
             ${pityLeg > 0 ? "border-yellow-500/50 text-yellow-400 bg-[#0d0d1a] hover:bg-[#1a1a3a] shadow-md" : "border-gray-800 text-gray-600 bg-[#0d0d1a] cursor-not-allowed"}`}>
-          전설 획득! ({pityLeg})
+          {t("pullButton", { rarity: locale === "ko" ? "전설" : "Lego", n: pityLeg })}
         </button>
         <button onClick={() => { if (pityMyth > 0) onPull("primal_1", pityMyth, false); }} disabled={pityMyth <= 0}
           className={`flex-1 h-9 rounded-lg font-bold text-xs transition-all cursor-pointer border
             ${pityMyth > 0 ? "border-red-500/50 text-red-400 bg-[#0d0d1a] hover:bg-[#1a1a3a] shadow-md" : "border-gray-800 text-gray-600 bg-[#0d0d1a] cursor-not-allowed"}`}>
-          신화 획득! ({pityMyth})
+          {t("pullButton", { rarity: locale === "ko" ? "신화" : "Myth", n: pityMyth })}
         </button>
       </div>
 
       {/* 확률 표시 */}
       <div className="flex gap-2 mb-2">
-        <div className="flex-1 text-center text-xs font-bold text-yellow-400">전설: {legRate.toFixed(1)}%</div>
-        <div className="flex-1 text-center text-xs font-bold text-red-400">신화: {mythRate.toFixed(1)}%</div>
+        <div className="flex-1 text-center text-xs font-bold text-yellow-400">{locale === "ko" ? "전설" : "Lego"}: {legRate.toFixed(1)}%</div>
+        <div className="flex-1 text-center text-xs font-bold text-red-400">{locale === "ko" ? "신화" : "Myth"}: {mythRate.toFixed(1)}%</div>
       </div>
 
       {/* 세부 정보 */}
       <div className="grid grid-cols-2 gap-1 text-[10px] text-gray-500">
-        <div>전설 천장: <span className={legRemaining <= 10 ? "text-emerald-400 font-bold" : "text-gray-400"}>{legRemaining}개</span></div>
-        <div className="text-right">신화 천장: <span className={mythRemaining <= 20 ? "text-emerald-400 font-bold" : "text-gray-400"}>{mythRemaining}개</span></div>
+        <div>{locale === "ko" ? "전설" : "Lego"} {t("ceiling")}: <span className={legRemaining <= 10 ? "text-emerald-400 font-bold" : "text-gray-400"}>{t("countUnit", { count: legRemaining })}</span></div>
+        <div className="text-right">{locale === "ko" ? "신화" : "Myth"} {t("ceiling")}: <span className={mythRemaining <= 20 ? "text-emerald-400 font-bold" : "text-gray-400"}>{t("countUnit", { count: mythRemaining })}</span></div>
       </div>
 
       {/* 통계 + 기록 */}
       <div className="mt-3 pt-3 border-t border-gray-800 flex items-center justify-between">
         <div className="text-[10px] text-gray-500">
-          총 <span className="font-mono font-bold text-gray-300">{totalPulls}</span>개 소환
+          {t("total")} <span className="font-mono font-bold text-gray-300">{totalPulls}</span>{t("countUnit", { count: "" }).trim()} {t("summon")}
         </div>
         <div className="flex gap-1">
           <button onClick={() => onOpenHistory("primal_0")}
             className="text-[10px] px-2 py-1 rounded-md border border-yellow-500/30 text-yellow-400 hover:bg-white/5 cursor-pointer">
-            전설 ({legHistory.length})
+            {locale === "ko" ? "전설" : "Lego"} ({legHistory.length})
           </button>
           <button onClick={() => onOpenHistory("primal_1")}
             className="text-[10px] px-2 py-1 rounded-md border border-red-500/30 text-red-400 hover:bg-white/5 cursor-pointer">
-            신화 ({mythHistory.length})
+            {locale === "ko" ? "신화" : "Myth"} ({mythHistory.length})
           </button>
         </div>
       </div>
@@ -773,6 +800,8 @@ function PrimalCard({
 // ── 메인 컴포넌트 ────────────────────────────────────
 export default function ShardCalculator() {
   const { user, signInWithGoogle } = useAuth();
+  const t = useTranslations("shard");
+  const locale = useLocale();
   const isLoggedIn = !!user;
 
   const [is2x, setIs2x] = useState(false);
@@ -843,7 +872,7 @@ export default function ShardCalculator() {
         } else {
           const hasOldData = !!(localStorage.getItem("rsl_shard_pity") || localStorage.getItem("rsl_shard_history"));
           if (hasOldData) {
-            const defaultAcc: ShardAccount = { id: "default", name: "기본 계정", createdAt: Date.now() };
+            const defaultAcc: ShardAccount = { id: "default", name: locale === "ko" ? "기본 계정" : "Default Account", createdAt: Date.now() };
             migrateOldData(defaultAcc.id);
             setAccounts([defaultAcc]);
             saveAccounts([defaultAcc]);
@@ -1049,8 +1078,8 @@ export default function ShardCalculator() {
       {/* 헤더 */}
       <div className="flex items-end justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-white">파편 확률 계산기</h1>
-          <p className="text-sm text-gray-500 mt-1">보정(자비) 시스템 추적</p>
+          <h1 className="text-2xl font-bold text-white">{t("title")}</h1>
+          <p className="text-sm text-gray-500 mt-1">{t("subtitle")}</p>
         </div>
         <button
           onClick={() => setIs2x(!is2x)}
@@ -1059,7 +1088,7 @@ export default function ShardCalculator() {
               ? "border-amber-500 text-amber-400 bg-amber-500/10 shadow-lg shadow-amber-500/20"
               : "border-gray-700 text-gray-500 bg-[#1a1a2e] hover:border-gray-600"}`}
         >
-          2x 이벤트 {is2x ? "ON" : "OFF"}
+          {t("event2x")} {is2x ? "ON" : "OFF"}
         </button>
       </div>
 
@@ -1070,14 +1099,14 @@ export default function ShardCalculator() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.832c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
           <div className="flex-1 min-w-0">
-            <p className="text-amber-400/90 text-xs font-medium">게스트 모드 — 데이터가 브라우저에만 저장됩니다</p>
-            <p className="text-gray-600 text-[10px] mt-0.5">캐시 삭제·브라우저 변경 시 데이터가 유실될 수 있습니다. 로그인하면 서버에 안전하게 보관됩니다.</p>
+            <p className="text-amber-400/90 text-xs font-medium">{t("guestWarning")}</p>
+            <p className="text-gray-600 text-[10px] mt-0.5">{t("guestWarningDetail")}</p>
           </div>
           <button
             onClick={signInWithGoogle}
             className="flex-shrink-0 bg-gold text-background px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
           >
-            로그인
+            {t("login")}
           </button>
         </div>
       )}
@@ -1098,7 +1127,7 @@ export default function ShardCalculator() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              {accounts.find(a => a.id === activeAccountId)?.name || "계정 선택"}
+              {accounts.find(a => a.id === activeAccountId)?.name || t("selectAccount")}
               <svg className={`w-3 h-3 transition-transform ${accountMenuOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -1114,7 +1143,7 @@ export default function ShardCalculator() {
                       <div className={`text-sm ${acc.id === activeAccountId ? "text-gold font-bold" : "text-gray-300"}`}>
                         {acc.name}
                         {acc.id === activeAccountId && (
-                          <span className="ml-1.5 text-[9px] bg-gold/20 text-gold px-1.5 py-0.5 rounded">현재</span>
+                          <span className="ml-1.5 text-[9px] bg-gold/20 text-gold px-1.5 py-0.5 rounded">{t("current")}</span>
                         )}
                       </div>
                     </button>
@@ -1122,7 +1151,7 @@ export default function ShardCalculator() {
                       <button
                         onClick={() => handleDeleteAccount(acc.id)}
                         className="px-3 py-2.5 text-gray-700 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
-                        title="계정 삭제"
+                        title={t("deleteAccount")}
                       >
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -1146,7 +1175,7 @@ export default function ShardCalculator() {
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              멀티계정은 로그인 필요
+              {t("multiAccountLogin")}
             </button>
           ) : null
         ) : showAccountInput ? (
@@ -1156,7 +1185,7 @@ export default function ShardCalculator() {
               value={newAccountName}
               onChange={(e) => setNewAccountName(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") handleAddAccount(); if (e.key === "Escape") { setShowAccountInput(false); setNewAccountName(""); } }}
-              placeholder="계정 이름"
+              placeholder={t("accountName")}
               className="bg-input-bg border border-input-border rounded-lg px-3 py-1.5 text-sm text-white placeholder-gray-600 outline-none focus:border-gold w-36"
               autoFocus
             />
@@ -1165,13 +1194,13 @@ export default function ShardCalculator() {
               disabled={!newAccountName.trim()}
               className="px-3 py-1.5 bg-gold text-background rounded-lg text-sm font-semibold hover:bg-gold-dark transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              저장
+              {t("save")}
             </button>
             <button
               onClick={() => { setShowAccountInput(false); setNewAccountName(""); }}
               className="text-gray-500 hover:text-white text-sm cursor-pointer"
             >
-              취소
+              {t("cancel")}
             </button>
           </div>
         ) : (
@@ -1182,7 +1211,7 @@ export default function ShardCalculator() {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-            계정 추가
+            {t("addAccount")}
           </button>
         )}
       </div>
@@ -1194,8 +1223,8 @@ export default function ShardCalculator() {
             <svg className="w-10 h-10 mx-auto text-gold mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <p className="text-white font-medium mb-1">계정을 먼저 추가해주세요</p>
-            <p className="text-gray-500 text-xs mb-4">데이터를 저장하려면 계정이 필요합니다</p>
+            <p className="text-white font-medium mb-1">{t("addAccountFirst")}</p>
+            <p className="text-gray-500 text-xs mb-4">{t("needAccountToSave")}</p>
             <button
               onClick={() => {
                 setShowAccountPrompt(false);
@@ -1203,7 +1232,7 @@ export default function ShardCalculator() {
               }}
               className="w-full px-4 py-2.5 bg-gold text-background rounded-lg text-sm font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
             >
-              확인
+              {t("confirm")}
             </button>
           </div>
         </div>
@@ -1223,6 +1252,8 @@ export default function ShardCalculator() {
             onPull={handlePull}
             history={history}
             onOpenHistory={setModalTrackKey}
+            t={t}
+            locale={locale}
           />
         ))}
       </div>
@@ -1237,6 +1268,8 @@ export default function ShardCalculator() {
           onPull={handlePull}
           history={history}
           onOpenHistory={setModalTrackKey}
+          t={t}
+          locale={locale}
         />
         {(["prism", "remnant"] as const).map((type) => (
           <TrackCard
@@ -1250,6 +1283,8 @@ export default function ShardCalculator() {
             onPull={handlePull}
             history={history}
             onOpenHistory={setModalTrackKey}
+            t={t}
+            locale={locale}
           />
         ))}
       </div>
@@ -1266,6 +1301,8 @@ export default function ShardCalculator() {
             onClose={() => setModalTrackKey(null)}
             onDelete={handleDeleteRecord}
             onUpdateName={handleUpdateName}
+            t={t}
+            locale={locale}
           />
         );
       })()}

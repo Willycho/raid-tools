@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 import { useAuth } from "@/lib/AuthContext";
 import { getSupabase } from "@/lib/supabase";
 
@@ -34,22 +35,22 @@ interface PullRecord {
 
 // ── 대시보드용 상수 ──────────────────────────────
 const TRACKS = [
-  { key: "ancient_0", label: "고대", rarity: "전설", shardName: "고대", image: "/shards/ancient.webp", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
-  { key: "void_0", label: "보이드", rarity: "전설", shardName: "보이드", image: "/shards/void.webp", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
-  { key: "sacred_0", label: "신성", rarity: "전설", shardName: "신성", image: "/shards/sacred.webp", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
-  { key: "primal_0", label: "태고 전설", rarity: "전설", shardName: "태고", image: "/shards/primal.webp", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
-  { key: "primal_1", label: "태고 신화", rarity: "신화", shardName: "태고", image: "/shards/primal.webp", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
-  { key: "prism_0", label: "프리즘", rarity: "전설", shardName: "프리즘", image: "/shards/prism.webp", color: "#06B6D4", textColor: "text-cyan-400", bgColor: "bg-cyan-500/10" },
-  { key: "remnant_0", label: "잔유물", rarity: "전설", shardName: "잔유물", image: "/shards/remnant.webp", color: "#14B8A6", textColor: "text-teal-400", bgColor: "bg-teal-500/10" },
+  { key: "ancient_0", label: "고대", labelEn: "Ancient", rarity: "전설", shardName: "고대", shardNameEn: "Ancient", image: "/shards/ancient.webp", color: "#3B82F6", textColor: "text-blue-400", bgColor: "bg-blue-500/10" },
+  { key: "void_0", label: "보이드", labelEn: "Void", rarity: "전설", shardName: "보이드", shardNameEn: "Void", image: "/shards/void.webp", color: "#A855F7", textColor: "text-purple-400", bgColor: "bg-purple-500/10" },
+  { key: "sacred_0", label: "신성", labelEn: "Sacred", rarity: "전설", shardName: "신성", shardNameEn: "Sacred", image: "/shards/sacred.webp", color: "#EAB308", textColor: "text-yellow-400", bgColor: "bg-yellow-500/10" },
+  { key: "primal_0", label: "태고 전설", labelEn: "Primal Lego", rarity: "전설", shardName: "태고", shardNameEn: "Primal", image: "/shards/primal.webp", color: "#EF4444", textColor: "text-red-400", bgColor: "bg-red-500/10" },
+  { key: "primal_1", label: "태고 신화", labelEn: "Primal Myth", rarity: "신화", shardName: "태고", shardNameEn: "Primal", image: "/shards/primal.webp", color: "#F97316", textColor: "text-orange-400", bgColor: "bg-orange-500/10" },
+  { key: "prism_0", label: "프리즘", labelEn: "Prism", rarity: "전설", shardName: "프리즘", shardNameEn: "Prism", image: "/shards/prism.webp", color: "#06B6D4", textColor: "text-cyan-400", bgColor: "bg-cyan-500/10" },
+  { key: "remnant_0", label: "잔유물", labelEn: "Remnant", rarity: "전설", shardName: "잔유물", shardNameEn: "Remnant", image: "/shards/remnant.webp", color: "#14B8A6", textColor: "text-teal-400", bgColor: "bg-teal-500/10" },
 ];
 
 const SHARD_GROUPS = [
-  { keys: ["ancient_0"], label: "고대", color: "#3B82F6", image: "/shards/ancient.webp" },
-  { keys: ["void_0"], label: "보이드", color: "#A855F7", image: "/shards/void.webp" },
-  { keys: ["sacred_0"], label: "신성", color: "#EAB308", image: "/shards/sacred.webp" },
-  { keys: ["primal_0", "primal_1"], label: "태고", color: "#EF4444", image: "/shards/primal.webp" },
-  { keys: ["prism_0"], label: "프리즘", color: "#06B6D4", image: "/shards/prism.webp" },
-  { keys: ["remnant_0"], label: "잔유물", color: "#14B8A6", image: "/shards/remnant.webp" },
+  { keys: ["ancient_0"], label: "고대", labelEn: "Ancient", color: "#3B82F6", image: "/shards/ancient.webp" },
+  { keys: ["void_0"], label: "보이드", labelEn: "Void", color: "#A855F7", image: "/shards/void.webp" },
+  { keys: ["sacred_0"], label: "신성", labelEn: "Sacred", color: "#EAB308", image: "/shards/sacred.webp" },
+  { keys: ["primal_0", "primal_1"], label: "태고", labelEn: "Primal", color: "#EF4444", image: "/shards/primal.webp" },
+  { keys: ["prism_0"], label: "프리즘", labelEn: "Prism", color: "#06B6D4", image: "/shards/prism.webp" },
+  { keys: ["remnant_0"], label: "잔유물", labelEn: "Remnant", color: "#14B8A6", image: "/shards/remnant.webp" },
 ];
 
 function toTrackKey(shardType: string, rarity: string): string {
@@ -58,7 +59,7 @@ function toTrackKey(shardType: string, rarity: string): string {
 }
 
 // ── 차트 (대시보드 복사) ──────────────────────────
-function RateTrendChart({ history, height = 300 }: { history: PullRecord[]; height?: number }) {
+function RateTrendChart({ history, height = 300, locale }: { history: PullRecord[]; height?: number; locale?: string }) {
   const chartData = useMemo(() => {
     if (history.length === 0) return null;
     const allDates = new Map<string, number>();
@@ -95,7 +96,7 @@ function RateTrendChart({ history, height = 300 }: { history: PullRecord[]; heig
   }, [history]);
 
   if (!chartData || chartData.lines.length === 0) {
-    return <div className="flex items-center justify-center text-gray-600 text-xs" style={{ height }}>데이터 없음</div>;
+    return <div className="flex items-center justify-center text-gray-600 text-xs" style={{ height }}>{locale === "ko" ? "데이터 없음" : "No data"}</div>;
   }
 
   const { dateKeys, lines } = chartData;
@@ -135,7 +136,7 @@ function RateTrendChart({ history, height = 300 }: { history: PullRecord[]; heig
         })}
       </svg>
       <div className="flex justify-center gap-5 mt-3">
-        {SHARD_GROUPS.map((g) => (<div key={g.label} className="flex items-center gap-1.5"><div className="w-4 h-[2.5px] rounded" style={{ backgroundColor: g.color }} /><Image src={g.image} alt={g.label} width={16} height={16} /><span className="text-[10px] text-gray-400">{g.label}</span></div>))}
+        {SHARD_GROUPS.map((g) => (<div key={g.label} className="flex items-center gap-1.5"><div className="w-4 h-[2.5px] rounded" style={{ backgroundColor: g.color }} /><Image src={g.image} alt={locale === "ko" ? g.label : g.labelEn} width={16} height={16} /><span className="text-[10px] text-gray-400">{locale === "ko" ? g.label : g.labelEn}</span></div>))}
       </div>
     </div>
   );
@@ -144,6 +145,8 @@ function RateTrendChart({ history, height = 300 }: { history: PullRecord[]; heig
 // ── 메인 ──────────────────────────────────────
 export default function AdminPage() {
   const { user, loading: authLoading } = useAuth();
+  const t = useTranslations("admin");
+  const locale = useLocale();
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<"visits" | "shards">("visits");
   const [refreshing, setRefreshing] = useState(false);
@@ -317,8 +320,8 @@ export default function AdminPage() {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="bg-[#1a1a2e] border border-red-500/30 rounded-2xl p-8 max-w-sm w-full mx-4 text-center">
           <svg className="w-12 h-12 mx-auto text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
-          <h2 className="text-white text-lg font-bold mb-2">접근 권한 없음</h2>
-          <p className="text-gray-500 text-sm">관리자만 접근할 수 있습니다.</p>
+          <h2 className="text-white text-lg font-bold mb-2">{t("accessDenied")}</h2>
+          <p className="text-gray-500 text-sm">{t("adminOnly")}</p>
         </div>
       </div>
     );
@@ -327,7 +330,9 @@ export default function AdminPage() {
   const fmt = (d: string) => { if (!d) return "-"; const date = new Date(d); return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`; };
   const totalUserPages = Math.ceil(users.length / USERS_PER_PAGE);
   const pagedUsers = users.slice(userPage * USERS_PER_PAGE, (userPage + 1) * USERS_PER_PAGE);
-  const pageName: Record<string, string> = { "/": "메인", "/clan-boss": "클랜보스 계산기", "/shard": "파편 확률 계산기", "/search": "버프/디버프 검색", "/dashboard": "대시보드" };
+  const pageName: Record<string, string> = locale === "ko"
+    ? { "/": "메인", "/clan-boss": "클랜보스 계산기", "/shard": "파편 확률 계산기", "/search": "버프/디버프 검색", "/dashboard": "대시보드" }
+    : { "/": "Home", "/clan-boss": "Clan Boss Calc", "/shard": "Shard Calc", "/search": "Buff/Debuff Search", "/dashboard": "Dashboard" };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
@@ -336,19 +341,19 @@ export default function AdminPage() {
         <div>
           <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
           <p className="text-sm text-gray-500 mt-1">
-            {lastRefresh && <span className="text-[10px] text-gray-600">마지막 갱신: {fmt(lastRefresh.toISOString())}</span>}
+            {lastRefresh && <span className="text-[10px] text-gray-600">{t("lastRefresh")}: {fmt(lastRefresh.toISOString())}</span>}
           </p>
         </div>
         <button onClick={handleRefresh} disabled={refreshing}
           className="flex items-center gap-2 px-4 py-2 bg-gold text-background rounded-lg font-semibold text-sm hover:bg-gold-dark transition-colors cursor-pointer disabled:opacity-50">
           <svg className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-          {refreshing ? "갱신 중..." : "새로고침"}
+          {refreshing ? t("refreshing") : t("refresh")}
         </button>
       </div>
 
       {/* 탭 */}
       <div className="flex gap-1 mb-6 bg-[#0d0d1a] rounded-lg p-1 w-fit">
-        {([["visits", "방문 통계"], ["shards", "파편 통계"]] as const).map(([key, label]) => (
+        {([["visits", t("tabVisits")], ["shards", t("tabShards")]] as [("visits" | "shards"), string][]).map(([key, label]) => (
           <button key={key} onClick={() => setTab(key)}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer ${tab === key ? "bg-gold text-background" : "text-gray-400 hover:text-white"}`}>
             {label}
@@ -360,33 +365,33 @@ export default function AdminPage() {
       {tab === "visits" && (
         <>
           {/* 상단 카드 */}
-          <h2 className="text-xs text-gray-500 mb-2 uppercase tracking-wider">오늘 (00:00 ~ 23:59)</h2>
+          <h2 className="text-xs text-gray-500 mb-2 uppercase tracking-wider">{t("today")}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">페이지뷰</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("pageViews")}</div>
               <div className="text-2xl font-bold font-mono text-gold">{visits?.totalPageViews ?? 0}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">유니크 방문자</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("uniqueVisitors")}</div>
               <div className="text-2xl font-bold font-mono text-emerald-400">{visits?.uniqueVisitors ?? 0}</div>
-              <div className="text-[9px] text-gray-600 mt-0.5">디바이스 ID 기준</div>
+              <div className="text-[9px] text-gray-600 mt-0.5">{t("byDeviceId")}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">로그인 유저</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("loggedInUsers")}</div>
               <div className="text-2xl font-bold font-mono text-blue-400">{visits?.loggedInUsers ?? 0}</div>
-              <div className="text-[9px] text-gray-600 mt-0.5">계정 기준</div>
+              <div className="text-[9px] text-gray-600 mt-0.5">{t("byAccount")}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">비로그인 방문자</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("anonymousVisitors")}</div>
               <div className="text-2xl font-bold font-mono text-gray-400">{visits?.anonymousVisitors ?? 0}</div>
-              <div className="text-[9px] text-gray-600 mt-0.5">디바이스 ID 기준</div>
+              <div className="text-[9px] text-gray-600 mt-0.5">{t("byDeviceId")}</div>
             </div>
           </div>
 
           {/* 페이지별 */}
           {visits && visits.pageBreakdown.length > 0 && (
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-8">
-              <h2 className="text-sm font-bold text-white mb-3">페이지별 유니크 방문자 (오늘)</h2>
+              <h2 className="text-sm font-bold text-white mb-3">{t("pageVisitorsToday")}</h2>
               <div className="space-y-2">
                 {visits.pageBreakdown.map((p) => {
                   const maxC = visits.pageBreakdown[0]?.count || 1;
@@ -405,20 +410,20 @@ export default function AdminPage() {
           {/* 유저 목록 */}
           <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4 mb-8">
             <h2 className="text-sm font-bold text-white mb-3">
-              등록 유저 <span className="ml-2 text-[10px] bg-gold/20 text-gold px-1.5 py-0.5 rounded">{users.length}명</span>
+              {t("registeredUsers")} <span className="ml-2 text-[10px] bg-gold/20 text-gold px-1.5 py-0.5 rounded">{users.length}{locale === "ko" ? "명" : ""}</span>
             </h2>
-            {users.length === 0 ? <p className="text-gray-600 text-xs">아직 등록된 유저가 없습니다.</p> : (
+            {users.length === 0 ? <p className="text-gray-600 text-xs">{t("noUsersYet")}</p> : (
               <>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs">
                     <thead><tr className="text-gray-500 border-b border-gray-800">
                       <th className="text-left py-2 px-2">#</th>
                       <th className="text-left py-2 px-2">User ID</th>
-                      <th className="text-center py-2 px-2">파편 계정</th>
-                      <th className="text-center py-2 px-2">획득 기록</th>
-                      <th className="text-center py-2 px-2">총 소환</th>
-                      <th className="text-center py-2 px-2">클보 프리셋</th>
-                      <th className="text-right py-2 px-2">가입일</th>
+                      <th className="text-center py-2 px-2">{t("shardAccounts")}</th>
+                      <th className="text-center py-2 px-2">{t("pullRecords")}</th>
+                      <th className="text-center py-2 px-2">{t("totalSummons")}</th>
+                      <th className="text-center py-2 px-2">{t("cbPresets")}</th>
+                      <th className="text-right py-2 px-2">{t("joinDate")}</th>
                     </tr></thead>
                     <tbody>{pagedUsers.map((u, i) => (
                       <tr key={u.id} className="border-b border-gray-800/50 hover:bg-gray-800/20">
@@ -436,10 +441,10 @@ export default function AdminPage() {
                 {totalUserPages > 1 && (
                   <div className="flex items-center justify-center gap-2 mt-4">
                     <button onClick={() => setUserPage((p) => Math.max(0, p - 1))} disabled={userPage === 0}
-                      className="px-3 py-1 text-xs rounded bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed">이전</button>
+                      className="px-3 py-1 text-xs rounded bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed">{t("prev")}</button>
                     <span className="text-xs text-gray-500">{userPage + 1} / {totalUserPages}</span>
                     <button onClick={() => setUserPage((p) => Math.min(totalUserPages - 1, p + 1))} disabled={userPage >= totalUserPages - 1}
-                      className="px-3 py-1 text-xs rounded bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed">다음</button>
+                      className="px-3 py-1 text-xs rounded bg-[#0d0d1a] border border-gray-700 text-gray-400 hover:text-white disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed">{t("next")}</button>
                   </div>
                 )}
               </>
@@ -448,14 +453,14 @@ export default function AdminPage() {
 
           {/* DB 관리 */}
           <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-            <h2 className="text-sm font-bold text-white mb-3">DB 관리</h2>
+            <h2 className="text-sm font-bold text-white mb-3">{t("dbManagement")}</h2>
             <div className="flex items-center justify-between">
               <div className="text-xs text-gray-500">
-                page_visits 총 <span className="text-white font-mono font-bold">{totalVisitRows.toLocaleString()}</span>건
+                page_visits {t("totalRows")} <span className="text-white font-mono font-bold">{totalVisitRows.toLocaleString()}</span>
               </div>
               <button onClick={handlePurgeVisits}
                 className="px-3 py-1.5 text-xs bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer">
-                7일 이전 데이터 삭제
+                {t("purgeOldData")}
               </button>
             </div>
           </div>
@@ -467,13 +472,13 @@ export default function AdminPage() {
         <>
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <p className="text-sm text-gray-500">
-              모든 유저의 모든 계정 합산
+              {t("allUsersSum")}
               {shardDateRange !== "all" && (
-                <span className="ml-2 text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">기간 필터 적용중</span>
+                <span className="ml-2 text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">{t("periodFilterActive")}</span>
               )}
             </p>
             <div className="flex gap-1 ml-auto">
-              {([["all", "전체"], ["7d", "7일"], ["30d", "30일"], ["90d", "90일"], ["custom", "직접"]] as const).map(([key, label]) => (
+              {([["all", locale === "ko" ? "전체" : "All"], ["7d", locale === "ko" ? "7일" : "7d"], ["30d", locale === "ko" ? "30일" : "30d"], ["90d", locale === "ko" ? "90일" : "90d"], ["custom", locale === "ko" ? "직접" : "Custom"]] as const).map(([key, label]) => (
                 <button key={key} onClick={() => setShardDateRange(key)}
                   className={`px-2.5 py-1 text-[10px] rounded-lg border transition-colors ${shardDateRange === key ? "bg-gold/20 border-gold text-gold" : "bg-[#1a1a2e] border-gray-700 text-gray-400 hover:border-gray-500"}`}
                 >{label}</button>
@@ -493,26 +498,26 @@ export default function AdminPage() {
           {/* 총합 카드 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">총 파편 소모</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("totalShardsUsed")}</div>
               <div className="text-2xl font-bold font-mono text-gold">{totalShardsUsed.toLocaleString()}</div>
-              <div className="text-[10px] text-gray-600 mt-0.5">모든 파편 합산</div>
+              <div className="text-[10px] text-gray-600 mt-0.5">{t("allShardsSum")}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">총 획득 횟수</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("totalPullCount")}</div>
               <div className="text-2xl font-bold font-mono text-emerald-400">{totalPullCount}</div>
-              <div className="text-[10px] text-gray-600 mt-0.5">전설 + 신화</div>
+              <div className="text-[10px] text-gray-600 mt-0.5">{t("legendaryMythical")}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">전체 체감 확률</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("overallFeltRate")}</div>
               <div className="text-2xl font-bold font-mono text-amber-400">
                 {totalPullCount > 0 && totalShardsUsed > 0 ? ((totalPullCount / totalShardsUsed) * 100).toFixed(2) + "%" : "-"}
               </div>
-              <div className="text-[10px] text-gray-600 mt-0.5">획득 / 소모</div>
+              <div className="text-[10px] text-gray-600 mt-0.5">{t("pullsOverUsed")}</div>
             </div>
             <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-              <div className="text-[10px] text-gray-500 mb-1">참여 유저</div>
-              <div className="text-2xl font-bold font-mono text-blue-400">{users.filter((u) => u.shardRecords > 0).length}명</div>
-              <div className="text-[10px] text-gray-600 mt-0.5">기록이 있는 유저</div>
+              <div className="text-[10px] text-gray-500 mb-1">{t("activeUsers")}</div>
+              <div className="text-2xl font-bold font-mono text-blue-400">{users.filter((u) => u.shardRecords > 0).length}{locale === "ko" ? "명" : ""}</div>
+              <div className="text-[10px] text-gray-600 mt-0.5">{t("usersWithRecords")}</div>
             </div>
           </div>
 
@@ -523,15 +528,15 @@ export default function AdminPage() {
               return (
                 <div key={track.key} className={`bg-[#1a1a2e] border border-gray-800 rounded-xl p-3 ${track.bgColor}`}>
                   <div className="flex items-center gap-2 mb-2">
-                    <Image src={track.image} alt={track.shardName} width={28} height={28} className="drop-shadow" />
-                    <div className={`text-xs font-bold ${track.textColor}`}>{track.label}</div>
+                    <Image src={track.image} alt={locale === "ko" ? track.shardName : track.shardNameEn} width={28} height={28} className="drop-shadow" />
+                    <div className={`text-xs font-bold ${track.textColor}`}>{locale === "ko" ? track.label : track.labelEn}</div>
                   </div>
                   <div className="space-y-1 text-[10px]">
-                    <div className="flex justify-between"><span className="text-gray-500">총 소환</span><span className="text-white font-mono font-bold">{s?.totalPulls.toLocaleString() || 0}</span></div>
-                    <div className="flex justify-between"><span className="text-gray-500">획득</span><span className="text-emerald-400 font-mono font-bold">{s?.pullCount || 0}회</span></div>
-                    <div className="flex justify-between"><span className="text-gray-500">평균</span><span className="text-gray-300 font-mono">{s?.avg || "-"}개</span></div>
-                    <div className="flex justify-between"><span className="text-gray-500">체감</span><span className={`font-mono font-bold ${track.textColor}`}>{s?.rate || "-"}</span></div>
-                    <div className="flex justify-between"><span className="text-gray-500">현재 pity 합산</span><span className="text-gray-400 font-mono">{s?.currentPity || 0}</span></div>
+                    <div className="flex justify-between"><span className="text-gray-500">{t("totalSummon")}</span><span className="text-white font-mono font-bold">{s?.totalPulls.toLocaleString() || 0}</span></div>
+                    <div className="flex justify-between"><span className="text-gray-500">{t("pulled")}</span><span className="text-emerald-400 font-mono font-bold">{s?.pullCount || 0}{locale === "ko" ? "회" : "x"}</span></div>
+                    <div className="flex justify-between"><span className="text-gray-500">{t("avg")}</span><span className="text-gray-300 font-mono">{s?.avg || "-"}{locale === "ko" ? "개" : ""}</span></div>
+                    <div className="flex justify-between"><span className="text-gray-500">{t("felt")}</span><span className={`font-mono font-bold ${track.textColor}`}>{s?.rate || "-"}</span></div>
+                    <div className="flex justify-between"><span className="text-gray-500">{t("currentPitySum")}</span><span className="text-gray-400 font-mono">{s?.currentPity || 0}</span></div>
                   </div>
                 </div>
               );
@@ -540,8 +545,8 @@ export default function AdminPage() {
 
           {/* 체감 확률 추이 차트 */}
           <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl p-4">
-            <h2 className="text-sm font-bold text-white mb-4">파편별 체감 확률 추이 (전체 유저)</h2>
-            <RateTrendChart history={filteredHistory} height={300} />
+            <h2 className="text-sm font-bold text-white mb-4">{t("chartTitle")}</h2>
+            <RateTrendChart history={filteredHistory} height={300} locale={locale} />
           </div>
         </>
       )}
