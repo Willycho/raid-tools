@@ -157,20 +157,14 @@ export default function Home() {
       {/* ════════════════════════════════════════════════ */}
       {/* TRUST STRIP — Metrics Marquee                    */}
       {/* ════════════════════════════════════════════════ */}
-      <section className="border-y border-card-border/50 bg-card/30 py-5 overflow-hidden">
-        <div className="flex items-center gap-12 whitespace-nowrap" style={{ animation: "marquee 25s linear infinite" }}>
-          {[0, 1].map((dup) => (
-            <div key={dup} className="flex items-center gap-12">
-              {[
-                { val: t("trustMetric1"), label: t("trustMetric1Label") },
-                { val: t("trustMetric2"), label: t("trustMetric2Label") },
-                { val: t("trustMetric3"), label: t("trustMetric3Label") },
-                { val: t("trustMetric4"), label: t("trustMetric4Label") },
-              ].map((m, i) => (
-                <div key={`${dup}-${i}`} className="flex items-center gap-3 px-6">
-                  <span className="text-2xl font-bold text-gold font-mono">{m.val}</span>
-                  <span className="text-[13px] text-gray-500">{m.label}</span>
-                  {i < 3 && <div className="w-1 h-1 rounded-full bg-card-border ml-6" />}
+      <section className="border-y border-card-border/50 bg-card/30 py-4 overflow-hidden">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 20s linear infinite" }}>
+          {[0, 1, 2, 3].map((dup) => (
+            <div key={dup} className="flex items-center shrink-0">
+              {[t("trustMetric1"), t("trustMetric2"), t("trustMetric3")].map((text, i) => (
+                <div key={`${dup}-${i}`} className="flex items-center">
+                  <span className="text-sm font-semibold text-gold/90 px-8">{text}</span>
+                  <div className="w-1 h-1 rounded-full bg-gold/30" />
                 </div>
               ))}
             </div>
