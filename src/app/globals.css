@@ -18,3 +18,45 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
 }
+
+/* ── Landing page animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(2rem); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.landing-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  filter: blur(4px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.landing-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.landing-stagger > * {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.landing-stagger.visible > * { opacity: 1; transform: translateY(0); }
+.landing-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+.landing-stagger.visible > *:nth-child(2) { transition-delay: 100ms; }
+.landing-stagger.visible > *:nth-child(3) { transition-delay: 200ms; }
+.landing-stagger.visible > *:nth-child(4) { transition-delay: 300ms; }
+.landing-stagger.visible > *:nth-child(5) { transition-delay: 400ms; }

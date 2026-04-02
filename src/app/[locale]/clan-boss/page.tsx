@@ -2375,6 +2375,11 @@ export default function ClanBossPage() {
         )}
       </div>
 
+      {/* AD SLOT — Below simulation results */}
+      <div className="hidden mt-4 flex items-center justify-center h-[120px] w-full rounded-xl border-2 border-dashed border-card-border/60 bg-card/30" id="ad-slot-cb-bottom">
+        <span className="text-[11px] text-gray-700 font-mono">AD</span>
+      </div>
+
       {/* Champion Search Modal */}
       {searchSlot !== null && (
         <ChampionSearch

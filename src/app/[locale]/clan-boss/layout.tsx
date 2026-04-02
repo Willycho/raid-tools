@@ -1,3 +1,5 @@
+import AdSidebar from "@/components/AdSidebar";
+
 export default function ClanBossLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <AdSidebar>{children}</AdSidebar>;
 }

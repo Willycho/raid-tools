@@ -65,6 +65,11 @@ export default async function LocaleLayout({
     >
       <head>
         <meta name="referrer" content="no-referrer" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065412448100399"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
