@@ -35,6 +35,6 @@ export default function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // 모든 경로에 매칭하되, api, _next, 정적 파일 등은 제외
-    "/((?!api|_next|_vercel|data|.*\\..*).*)",
+    "/((?!api|_next|_vercel|data|auth|.*\\..*).*)",
   ],
 };
