@@ -95,6 +95,7 @@ export default async function LocaleLayout({
     >
       <head>
         <meta name="referrer" content="no-referrer" />
+        <meta name="naver-site-verification" content="df764b16751ea8d1ae2dac077d5db25d31050224" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065412448100399"
