@@ -5,6 +5,15 @@ import { NextRequest } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
+  // URL에 이미 locale prefix가 있으면 감지 로직 스킵 (SEO: 리다이렉트 방지)
+  const pathname = request.nextUrl.pathname;
+  const hasLocalePrefix = routing.locales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+  if (hasLocalePrefix) {
+    return intlMiddleware(request);
+  }
+
   // 쿠키에 사용자가 직접 선택한 locale이 있으면 우선 사용
   const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
   if (cookieLocale && routing.locales.includes(cookieLocale as "ko" | "en")) {
